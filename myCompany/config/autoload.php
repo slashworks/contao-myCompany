@@ -21,12 +21,15 @@ ClassLoader::addClasses(array
 
 	// Helpers
 	'BoziFearuresHelper'        => 'system/modules/myCompany/helpers/BoziFearuresHelper.php',
+    'MyCompany\Text'            => 'system/modules/myCompany/helpers/Text.php',
 
 	// Models
 	'Contao\MycConfigModel'     => 'system/modules/myCompany/models/MycConfigModel.php',
+	'Contao\MycTeamModel'     => 'system/modules/myCompany/models/MycTeamModel.php',
 
 	// Modules
 	'BE_ModuleMycConfiguration' => 'system/modules/myCompany/modules/BE_ModuleMycConfiguration.php',
+	'Contao\MycTeamModule' => 'system/modules/myCompany/modules/MycTeamModule.php',
 ));
 
 
@@ -36,4 +39,5 @@ ClassLoader::addClasses(array
 TemplateLoader::addFiles(array
 (
 	'be_mycConfig' => 'system/modules/myCompany/templates',
+	'myc_team_list' => 'system/modules/myCompany/templates',
 ));

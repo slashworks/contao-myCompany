@@ -1,0 +1,16 @@
+<dl class="<?php echo $this->class ?>">
+
+<?php foreach($this->members as $member): ?>
+    <dt>
+        <?php if($member['picture']): ?>
+            <figure class="image_container">
+                <img src="<?php echo $member['picture'] ?>" alt="<?php echo $member['name'] ?>">
+            </figure>
+        <?php endif; ?>
+    </dt>
+    <dd><?php echo $member['surname'] ?> <?php echo $member['lastname'] ?></dd>
+    <dd><?php echo $member['mail'] ?></dd>
+    <dd><?php echo $member['phone'] ?></dd>
+    <dd><?php echo $member['about'] ?></dd>
+<?php endforeach; ?>
+</dl>

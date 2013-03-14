@@ -32,7 +32,7 @@
  * Backend Features
  */
 
-$modulePath = 'system/modules/boziFeatures/';
+$modulePath = 'system/modules/myCompany/';
 
 array_insert($GLOBALS['BE_MOD'], 0, array(
     'MyCompany' => array(
@@ -58,7 +58,7 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
         ),
         'mycConfig' => array(
             'tables' => array('tl_mycConfig'),
-            'icon'   => $modulePath.'assets/icons/team.png'
+            'icon'   => $modulePath.'assets/icons/config.png'
         ),
         /*'mycConfiguration' => array(
             'callback' => 'BE_ModuleMycConfiguration',
@@ -66,11 +66,12 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
     )
 ));
 
-$GLOBALS['FE_MOD']['boziFeatures'] = array
+$GLOBALS['FE_MOD']['myCompany'] = array
 (
-    'boziPinboradByGroup'       => 'BoziAttainmentModule',
-    'boziCustomerList'          => 'BoziCustomerListModule',
-    'boziPinboardSortable'      => 'BoziPinboardSortableModule'
+    'mycTeam'       => 'MycTeamModule',
+    //'boziPinboradByGroup'       => 'BoziAttainmentModule',
+    //'boziCustomerList'          => 'BoziCustomerListModule',
+    //'boziPinboardSortable'      => 'BoziPinboardSortableModule'
 );
 
 /**

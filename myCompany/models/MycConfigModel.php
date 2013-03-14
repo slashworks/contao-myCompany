@@ -53,4 +53,6 @@ class MycConfigModel extends \Model
         $t = \Database::getInstance()->prepare("SELECT * from tl_mycConfig WHERE shorthandle = ?")->execute($shorthandle);
         return $t->row();
     }
+
+
 }
