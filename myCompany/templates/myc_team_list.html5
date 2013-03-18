@@ -12,5 +12,13 @@
     <dd><?php echo $member['mail'] ?></dd>
     <dd><?php echo $member['phone'] ?></dd>
     <dd><?php echo $member['about'] ?></dd>
+    <?php if($member['socialButtons']): ?>
+        <dd>
+        <?php foreach($member['socialButtons'] as $social): ?>
+            <a href="<?php echo $social['url'] ?>" class="<?php echo $social['class'] ?>" title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
+        <?php endforeach; ?>
+        </dd>
+    <?php endif; ?>
+
 <?php endforeach; ?>
 </dl>

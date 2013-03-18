@@ -79,7 +79,7 @@ $GLOBALS['FE_MOD']['myCompany'] = array
  */
 $GLOBALS['TL_CTE']['boziFeatures'] = array
 (
-    //'boziTeamMember' => 'BoziTeamMember'
+    'mycTeamMember' => 'MyCompany\CE\TeamMember'
 );
 
 /**

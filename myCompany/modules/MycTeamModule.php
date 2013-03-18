@@ -28,26 +28,14 @@ class MycTeamModule extends \Module
         $member = deserialize($this->mycTeamMember);
         $imgSize = deserialize($this->imgSize);
 
-        $teamMemberData = \MycTeamModel::findMembersByIdAsArray($member);
+        $teamMemberData = \MyCompany\TeamModel::findMembersByIdAsArray($member);
         $curCompany = \MycConfigModel::findByPk($this->mycCompany);
 
         $membersArr = array();
 
         foreach($teamMemberData as $member)
         {
-            $membersArr[] = array
-            (
-                'name' => $member['surname'].' '.$member['lastname'],
-                'surname' => $member['surname'],
-                'lastname' => $member['lastname'],
-                'picture' => \Image::get(CtoTplHelper::getImagePath($member['picture']), $imgSize[0], $imgSize[1], $imgSize[2]),
-                'mail' => \MyCompany\Text::generateMailAddress($member['mailSuffix'], $curCompany->companyDomain),
-                'phone' => \MyCompany\Text::generatePhoneNumber($curCompany->phoneBasic, $member['directDial']),
-                'about' => $member['about'],
-                'mailSuffix' => $member['mailSuffix'],
-                'directDial' => $member['directDial'],
-                //TODO Adding: positions, qualifications, twitter, xing and facebook
-            );
+            $membersArr[] = \MyCompany\Helper\DataMaps::memberData($member, $curCompany, $imgSize);
         }
 
         $this->Template->members = $membersArr;

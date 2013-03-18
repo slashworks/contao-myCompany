@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => 'company,surname,lastname,picture,about,jobTitle,directDial,mailSuffix'
+		'default'                     => 'company,surname,lastname,picture,about,jobTitle,directDial,mailSuffix,facebook,twitter,xing'
 		//'default'                     => 'position,surname,lastname,picture,about,jobTitle,directDial,mailSuffix,boziCategorys,qualification'
 	),
 
@@ -190,6 +190,30 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
             'inputType'               => 'select',
             'options_callback'        => array('MycConfigModel', 'getAllCompanysAsArray'),
             'eval'                    => array('tl_class'=>'clr long'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'facebook' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['facebook'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'twitter' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['twitter'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'xing' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['xing'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         )
 	)

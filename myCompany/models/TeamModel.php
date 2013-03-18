@@ -14,7 +14,7 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace Contao;
+namespace MyCompany;
 
 
 /**
@@ -25,7 +25,7 @@ namespace Contao;
  * @copyright Leo Feyer 2005-2013
  */
 
-class MycTeamModel extends \Model
+class TeamModel extends \Model
 {
 
     /**
@@ -48,13 +48,26 @@ class MycTeamModel extends \Model
         return $data;
     }
 
+    public static function getAllMemberByCompanyAsArray($id)
+    {
+        $t = \Database::getInstance()->prepare('SELECT id,surname,lastname FROM tl_mycTeam WHERE company=?')->execute($id);
+
+        $data = array();
+
+        while ($t->next())
+        {
+            $data[$t->id] = $t->surname.' '.$t->lastname;
+        }
+
+        return $data;
+    }
+
     public static function findMembersByIdAsArray($memberArr)
     {
         if(is_array($memberArr))
         {
             $membersStr = implode($memberArr, ',');
-
-            $t = \Database::getInstance()->prepare("SELECT * FROM tl_mycTeam WHERE id IN(".$membersStr.")")->execute();
+            $t = \Database::getInstance()->prepare("SELECT * FROM tl_mycTeam WHERE id IN(".$membersStr.") ORDER BY FIELD(id,".$membersStr.")")->execute();
 
             $data = array();
 
@@ -67,5 +80,16 @@ class MycTeamModel extends \Model
         }
 
         return array();
+    }
+
+    /**
+     * Get the member by it`s id
+     * @param $id
+     * @return \Model|null
+     */
+    public static function getMemberById($id)
+    {
+        $t = self::findByPk($id);
+        return $t;
     }
 }

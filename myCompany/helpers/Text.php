@@ -1,6 +1,6 @@
 <?php
 
-namespace MyCompany;
+namespace MyCompany\Helper;
 
 class Text extends \Controller
 {

@@ -1,0 +1,31 @@
+
+<dl class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+    <dt class="member-headline"><h3><?php echo $this->name; ?></h3></dt>
+    <dd class="member-position"><?php echo $this->position; ?></dd>
+    <dd class="member-image">
+        <figure>
+            <img src="<?php echo $this->picture; ?>" alt="<?php echo $this->name; ?>" title="<?php echo $this->name; ?>">
+        </figure>
+    </dd>
+    <dd class="member-phone"><?php echo $this->phone; ?><dd>
+
+
+        <?php if($this->qualification): ?>
+    <dd class="member-qualification">
+        <?php foreach($this->qualification as $item): ?>
+            <?php echo $item; ?>
+        <?php endforeach; ?>
+    </dd>
+<?php endif; ?>
+
+    <dd class="member-description"><?php echo $this->description; ?></dd>
+    <dd class="member-mail">[<a class="link mailto" href="mailto:<?php echo $this->mail; ?>"><?php echo $this->label['contactUs']; ?></a>]</dd>
+
+    <?php if($this->socialButtons): ?>
+        <dd>
+            <?php foreach($this->socialButtons as $social): ?>
+                <a href="<?php echo $social['url'] ?>" class="<?php echo $social['class'] ?>" title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
+            <?php endforeach; ?>
+        </dd>
+    <?php endif; ?>
+</dl>

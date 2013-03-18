@@ -40,4 +40,19 @@ $GLOBALS['TL_LANG']['MSC']['company']['companyFax'] = 'companyFax';
 
 $GLOBALS['TL_LANG']['MSC']['boziFeatures']['contactUs'] = 'Kontakt aufnehmen';
 
+/**
+ * Social buttons.
+ */
+
+// Xing
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['xing']['title'] = 'Diese Person auf xing besuchen';
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['xing']['label'] = 'Xing';
+
+// Facebook
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['facebook']['title'] = 'Diese Person auf Facebook besuchen';
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['facebook']['label'] = 'Facebook';
+
+// Twitter
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['twitter']['title'] = 'Diese Person auf Twitter besuchen';
+$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['twitter']['label'] = 'Twitter';
 ?>

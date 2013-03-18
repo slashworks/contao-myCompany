@@ -133,7 +133,7 @@ class MycInsertTags extends Frontend
         $_cfg = $this->companysArr;
 
         //build the mail string
-        $_mail = \MyCompany\Text::generateMailAddress($_cfg['companyMainMail'],$_cfg['companyDomain']);
+        $_mail = \MyCompany\Helper\Text::generateMailAddress($_cfg['companyMainMail'],$_cfg['companyDomain']);
 
         //check if is plain or not
         if($plain === true)
@@ -154,7 +154,7 @@ class MycInsertTags extends Frontend
     private function _getPhoneBasic($number)
     {
         $_cfg = $this->companysArr;
-        return \MyCompany\Text::generatePhoneNumber($_cfg['phoneBasic'], $number);
+        return \MyCompany\Helper\Text::generatePhoneNumber($_cfg['phoneBasic'], $number);
     }
 
     /**
