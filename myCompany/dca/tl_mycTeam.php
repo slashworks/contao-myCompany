@@ -164,7 +164,6 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
             'search'                  => true,
             'inputType'               => 'textarea',
             'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true),
-            'explanation'             => 'insertTags',
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'directDial' => array
@@ -188,7 +187,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['position'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options_callback'        => array('MycConfigModel', 'getAllCompanysAsArray'),
+            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompanysAsArray'),
             'eval'                    => array('tl_class'=>'clr long'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),

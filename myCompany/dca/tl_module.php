@@ -17,7 +17,7 @@ $fields = array
         'label'                   => &$GLOBALS['TL_LANG']['tl_content']['mycTeamMember'],
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('MycConfigModel', 'getAllCompanysAsArray'),
+        'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompanysAsArray'),
         'eval'                    => array('includeBlankOption'=>true, 'submitOnChange' => true),
         'sql'                     => "varchar(32) NOT NULL default ''"
     ),

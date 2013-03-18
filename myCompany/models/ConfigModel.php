@@ -14,7 +14,7 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace Contao;
+namespace MyCompany;
 
 
 /**
@@ -25,7 +25,7 @@ namespace Contao;
  * @copyright Leo Feyer 2005-2013
  */
 
-class MycConfigModel extends \Model
+class ConfigModel extends \Model
 {
 
     /**

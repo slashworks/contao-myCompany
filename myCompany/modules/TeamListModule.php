@@ -1,8 +1,8 @@
 <?php
 
-namespace Contao;
+namespace MyCompany;
 
-class MycTeamModule extends \Module
+class TeamListModule extends \Module
 {
     /**
      * Template
@@ -29,7 +29,7 @@ class MycTeamModule extends \Module
         $imgSize = deserialize($this->imgSize);
 
         $teamMemberData = \MyCompany\TeamModel::findMembersByIdAsArray($member);
-        $curCompany = \MycConfigModel::findByPk($this->mycCompany);
+        $curCompany = \MyCompany\ConfigModel::findByPk($this->mycCompany);
 
         $membersArr = array();
 

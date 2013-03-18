@@ -21,7 +21,7 @@ class TeamMember extends \ContentElement
     public function compile()
     {
         $teamMember = \MyCompany\TeamModel::getMemberById($this->mycTeamMember);
-        $curCompany = \MycConfigModel::findByPk($teamMember->company);
+        $curCompany = \MyCompany\ConfigModel::findByPk($teamMember->company);
         $imgSize = deserialize($this->size);
 
         $teamMemberName = $teamMember->surname.' '.$teamMember->lastname;

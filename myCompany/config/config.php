@@ -68,7 +68,7 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 
 $GLOBALS['FE_MOD']['myCompany'] = array
 (
-    'mycTeam'       => 'MycTeamModule',
+    'mycTeam'       => '\MyCompany\TeamListModule',
     //'boziPinboradByGroup'       => 'BoziAttainmentModule',
     //'boziCustomerList'          => 'BoziCustomerListModule',
     //'boziPinboardSortable'      => 'BoziPinboardSortableModule'
@@ -90,7 +90,7 @@ $GLOBALS['TL_CTE']['boziFeatures'] = array
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('MycInsertTags', 'generateInsertTags');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTags', 'generateInsertTags');
 //$GLOBALS['TL_HOOKS']['generatePage'][] = array('BoziTags', 'getPage');
 
 /**

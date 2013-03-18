@@ -17,7 +17,7 @@
 ClassLoader::addClasses(array
 (
 	// Classes
-	'Contao\MycInsertTags'      => 'system/modules/myCompany/classes/MycInsertTags.php',
+	'MyCompany\InsertTags'      => 'system/modules/myCompany/classes/InsertTags.php',
 
     //Content elements
     'MyCompany\CE\TeamMember'   => 'system/modules/myCompany/contentElements/TeamMember.php',
@@ -28,12 +28,11 @@ ClassLoader::addClasses(array
     'MyCompany\Helper\DataMaps' => 'system/modules/myCompany/helpers/DataMaps.php',
 
 	// Models
-	'Contao\MycConfigModel'     => 'system/modules/myCompany/models/MycConfigModel.php',
+	'MyCompany\ConfigModel'     => 'system/modules/myCompany/models/ConfigModel.php',
 	'MyCompany\TeamModel'     => 'system/modules/myCompany/models/TeamModel.php',
 
 	// Modules
-	'BE_ModuleMycConfiguration' => 'system/modules/myCompany/modules/BE_ModuleMycConfiguration.php',
-	'Contao\MycTeamModule' => 'system/modules/myCompany/modules/MycTeamModule.php',
+	'MyCompany\TeamListModule' => 'system/modules/myCompany/modules/TeamListModule.php',
 ));
 
 
