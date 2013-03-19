@@ -33,6 +33,7 @@ ClassLoader::addClasses(array
 
 	// Modules
 	'MyCompany\TeamListModule' => 'system/modules/myCompany/modules/TeamListModule.php',
+	'MyCompany\CompanyLogoModule' => 'system/modules/myCompany/modules/CompanyLogoModule.php',
 ));
 
 
@@ -44,4 +45,5 @@ TemplateLoader::addFiles(array
 	'be_mycConfig' => 'system/modules/myCompany/templates',
 	'myc_team_list' => 'system/modules/myCompany/templates',
     'ce_myc_teamMember' => 'system/modules/myCompany/templates',
+    'myc_company_logo' => 'system/modules/myCompany/templates',
 ));

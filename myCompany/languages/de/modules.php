@@ -32,12 +32,14 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['boziCustomers']     = array('Kunden', 'Verwalten Sie die Kunden für diese Seite.');
-$GLOBALS['TL_LANG']['MOD']['boziAttainment']     = array('Leistungen', 'Verwalten Sie die Leistungen von borowiakziehe');
-$GLOBALS['TL_LANG']['MOD']['boziCustomersStatements']     = array('Kundenmeinungen', 'Verwalten Sie die Kundenmeinungen für diese Seite.');
-$GLOBALS['TL_LANG']['MOD']['boziwebsiteFeatures'] = array('borowiakziehe KG', 'FTW');
-$GLOBALS['TL_LANG']['MOD']['boziTeam'] = array('Teammitglieder', 'Ale Team Mitglieder Ihrer Firma');
-$GLOBALS['TL_LANG']['MOD']['boziConfiguration'] = array('Firmen Konfiguration', 'Legen Sie Grundlegende Konfigurationen für Ihr Unternehmen Fest');
+$GLOBALS['TL_LANG']['MOD']['mycCustomers']     = array('Kunden', 'Verwalten Sie die Kunden für diese Seite.');
+$GLOBALS['TL_LANG']['MOD']['mycAttainment']     = array('Leistungen', 'Verwalten Sie die Leistungen von borowiakziehe');
+$GLOBALS['TL_LANG']['MOD']['mycCustomersStatements']     = array('Kundenmeinungen', 'Verwalten Sie die Kundenmeinungen für diese Seite.');
+$GLOBALS['TL_LANG']['MOD']['mycwebsiteFeatures'] = array('borowiakziehe KG', 'FTW');
+$GLOBALS['TL_LANG']['MOD']['mycTeam'] = array('Teammitglieder', 'Ale Team Mitglieder Ihrer Firma');
+$GLOBALS['TL_LANG']['MOD']['mycConfig'] = array('Firmen Konfiguration', 'Legen Sie Grundlegende Konfigurationen für Ihr Unternehmen Fest');
+
+$GLOBALS['TL_LANG']['MOD']['MyCompany'] = 'Mein Unternehmen';
 
 
 

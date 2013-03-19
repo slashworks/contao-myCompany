@@ -1,0 +1,5 @@
+<div class="<?php echo $this->class; ?> pagination block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+    <a href="<?php echo $this->logoLink ?>" title="<?php echo $this->title ?>" class="companylogo">
+        <img src="<?php echo $this->logoSrc ?>" alt="<?php echo $this->logoAlt ?>" <?php echo $this->logoSize ?>>
+    </a>
+</div>

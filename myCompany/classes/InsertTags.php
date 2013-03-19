@@ -73,7 +73,7 @@ class InsertTags extends \Frontend
 
     private function _getData($el)
     {
-        $strip_prefix = str_replace('c_', '', $el);
+        $strip_prefix = str_replace('company_', '', $el);
         $itagArr = explode("::", $strip_prefix);
         $shorthandle = $itagArr[0];
 

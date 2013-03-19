@@ -52,6 +52,10 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
             'tables' => array('tl_boziAttainment'),
             'icon'   => 'system/modules/boziFeatures/res/icons/attainment.png'
         ),*/
+        'mycCustomers' => array(
+            'tables' => array('tl_mycCustomers'),
+            'icon'   => $modulePath.'assets/icons/customers.png'
+        ),
         'mycTeam' => array(
             'tables' => array('tl_mycTeam'),
             'icon'   => $modulePath.'assets/icons/team.png'
@@ -69,6 +73,7 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 $GLOBALS['FE_MOD']['myCompany'] = array
 (
     'mycTeam'       => '\MyCompany\TeamListModule',
+    'mycCompanyLogo'       => '\MyCompany\CompanyLogoModule',
     //'boziPinboradByGroup'       => 'BoziAttainmentModule',
     //'boziCustomerList'          => 'BoziCustomerListModule',
     //'boziPinboardSortable'      => 'BoziPinboardSortableModule'
