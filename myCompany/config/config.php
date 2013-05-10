@@ -72,8 +72,8 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 
 $GLOBALS['FE_MOD']['myCompany'] = array
 (
-    'mycTeam'       => '\MyCompany\TeamListModule',
-    'mycCompanyLogo'       => '\MyCompany\CompanyLogoModule',
+    'mycTeam'           => '\MyCompany\TeamListModule',
+    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
     //'boziPinboradByGroup'       => 'BoziAttainmentModule',
     //'boziCustomerList'          => 'BoziCustomerListModule',
     //'boziPinboardSortable'      => 'BoziPinboardSortableModule'
@@ -82,7 +82,7 @@ $GLOBALS['FE_MOD']['myCompany'] = array
 /**
  * Content Elements
  */
-$GLOBALS['TL_CTE']['boziFeatures'] = array
+$GLOBALS['TL_CTE']['myCompany'] = array
 (
     'mycTeamMember' => 'MyCompany\CE\TeamMember'
 );

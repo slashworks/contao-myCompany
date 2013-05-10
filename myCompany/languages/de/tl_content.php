@@ -14,4 +14,5 @@
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-$GLOBALS['TL_LANG']['tl_content']['boziTeamMember'] = array('Mitarbeiter wählen', 'Bitte wählen Sie einen Mitarbeiter aus der ausgegeben werden soll.');
+$GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][0] = 'Teammitglied wählen';
+$GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';

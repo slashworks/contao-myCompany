@@ -32,10 +32,14 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['customerId'] = array('Kunde', 'Wählen Sie einen Kunden aus.');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['cite'] = array('Zitat', 'Fügen Sie hier das Kundenzitat ein.');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['author'] = array('Author (Kunden)', 'Tragen Sie hier bitte den Namen des Kundens ein ein, der das Zitat verfasst hat.');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['authorTitle'] = array('Position innerhalb der Firma', 'Fügen Sie eine Stellung innerhalb der Firma hinzu (z.B. Geschäftsführer).');
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['customerId'][0] = 'Kunde';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['customerId'][0] = 'Wählen Sie einen Kunden aus.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['cite'][0] = 'Zitat';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['cite'][0] = 'Fügen Sie hier das Kundenzitat ein.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['author'][0] = 'Autor (Kunden)';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['author'][0] = 'Tragen Sie hier bitte den Namen des Kundens ein, der das Zitat verfasst hat.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['authorTitle'][0] = 'Position innerhalb der Firma';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['authorTitle'][0] = 'Fügen Sie eine Position innerhalb der Firma hinzu (z. B. Geschäftsführer).';
 
 
 /**
@@ -47,10 +51,15 @@ $GLOBALS['TL_LANG']['tl_boziCustomerStatements'][''] = '';
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['new']    = array('Neue Kundenmeinung', 'Legen Sie eine neue Kundenmeinung an.');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['edit']   = array('Kundenmeinung bearbeiten', 'Bearbeiten Sie eine Kundemeinung');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['copy']   = array('Kundenmeinung kopieren', 'Kopieren Sie eine Kundemeinung');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['delete'] = array('Kundenmeinung löschen', 'Löschen Sie eine Kundemeinung');
-$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['show']   = array('Informationen', 'Informationen zu dieser Kundenmeinung.');
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['new'][0]    = 'Neue Kundenmeinung';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['new'][0]    = 'Legen Sie eine neue Kundenmeinung an.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['edit'][0]   = 'Kundenmeinung bearbeiten';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['edit'][0]   = 'Bearbeiten Sie eine Kundemeinung.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['copy'][0]   = 'Kundenmeinung kopieren';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['copy'][0]   = 'Kopieren Sie eine Kundemeinung.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['delete'][0] = 'Kundenmeinung löschen';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['delete'][0] = 'Löschen Sie eine Kundemeinung.';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['show'][0]   = 'Informationen';
+$GLOBALS['TL_LANG']['tl_boziCustomerStatements']['show'][0]   = 'Informationen zu dieser Kundenmeinung anzeigen.';
 
 ?>

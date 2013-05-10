@@ -28,7 +28,7 @@ class CompanyLogoModule extends \Module
         $imgSize = deserialize($this->imgSize);
         $company = \MyCompany\ConfigModel::findByPk($this->mycCompany);
 
-        $imagePath = \Image::get(\CtoTplHelper::getImagePath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
+        $imagePath = \Image::get(\CtoTplHelper::getImagePath($company->companyLogo), $imgSize[0], $imgSize[1], $imgSize[2]);
 
         $logoSize = @getimagesize(TL_ROOT .'/'. $imagePath);
 
@@ -43,6 +43,7 @@ class CompanyLogoModule extends \Module
         );
 
         $this->Template->setData($itemArr);
+
     }
 
 }

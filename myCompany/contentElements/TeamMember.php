@@ -29,7 +29,9 @@ class TeamMember extends \ContentElement
         if (TL_MODE == 'BE')
         {
             $this->Template = \CtoTplHelper::generateWildCardTpl('Team Member', $teamMemberName);
-        } else {
+        }
+        else
+        {
             $data = \MyCompany\Helper\DataMaps::memberData($teamMember, $curCompany, $imgSize);
             $this->Template->setData($data);
         }

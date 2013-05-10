@@ -32,23 +32,52 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyName'] = array('Firmen Name', 'Geben Sie hier den Firmennamen ein');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneBasic'] = array('Telefonnummer ohne Durchwahl', 'Geben Sie hier die Telefonnummer ohne Durchwahl an! Diese Nummer steht Ihnen dann bei jeder Person Ihres Unternehmens zur Verfügung.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneDirectDial'] = array('Durchwahlwahlnummer zur Zentrale', 'Geben Sie hier die Durchwahl zur Zentrale an.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyFaxDirectDial'] = array('Durchwahlwahlnummer für Ihr Fax', 'Geben Sie hier den Firmennamen ein');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyMainMail'] = array('E-Mail Adresse', 'Die Kontakt E-Mail Adresse');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyLogo'] = array('Firmen Logo', 'Wählen Sie hier ihr Firmenlogo aus. Dieses kann dann für Verschiedene Bereich der Seite verwendet werden.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyPositions'] = array('Positionen innerhalb der Firma', 'Legen sie hier die Positionen innerhalb Ihrer Firma fest. Diese können Sie dann Ihren Personen im Unternehmen zuweisen. Somit ist es später dann möglich nur die Geschäftsführer auszuwählen.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyQualifications'] = array('Qualifikationen', 'Legen sie hier die Qualifikationen fest welche Personen später z.B. Personen zugeordnet werden können.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyStreet'] = array('Straße', 'Die Straße in der Ihr Firmensitz sich befindet inklusive Nummer.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyZip'] = array('Postleitzahl', 'Die Postleitzahl Ihres Ortes.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyCity'] = array('Ort', 'Der Ort in dem Ihr Unternehmen sitzt.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['companyDomain'] = array('Webseite ohne www und ohne http', 'Tragen sie bitte hier Ihre Webseite ohne http und www ein. Diese kann dann für E-Mails und weitere urls verwendet werden.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['facebook'] = array('Link zur Facebook Seite', 'Tragen sie hier den vollständigen Pfad zu Facebook ein.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['xing'] = array('Link zur Xing Seite', 'Tragen sie hier den vollständigen Pfad zu xing ein.');
-$GLOBALS['TL_LANG']['tl_mycConfig']['googlePlaces'] = array('Link zur Google Places Seite', 'Tragen sie hier den vollständigen Pfad zu Google Places ein.');
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyName'][0] = 'Firmenname';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyName'][1] = 'Geben Sie hier den Firmennamen ein.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyShorthandle'][0] = 'Abkürzung';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyShorthandle'][1] = 'Geben Sie hier die Abkürzung Ihrer Firma ein.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneBasic'][0] = 'Telefonnummer ohne Durchwahl';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneBasic'][1] = 'Geben Sie hier die Telefonnummer (ohne Durchwahl!) an. Diese Nummer steht Ihnen dann bei jeder Person Ihres Unternehmens zur Verfügung.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneDirectDial'][0] = 'Durchwahlwahlnummer zur Zentrale';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneDirectDial'][1] = 'Geben Sie hier die Durchwahl zur Zentrale an.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyFaxDirectDial'][0] = 'Durchwahlwahlnummer für Ihr Fax';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyFaxDirectDial'][1] = 'Geben Sie hier die Durchwahlnummer für Fax ein.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyMainMail'][0] = 'E-Mail-Adresse';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyMainMail'][1] = 'Geben Sie hier die Kontakt E-Mail-Adresse';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyLogo'][0] = 'Firmenlogo';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyLogo'][1] = 'Wählen Sie hier Ihr Firmenlogo aus. Dieses kann dann in Verschiedenen Bereichen der Seite verwendet werden.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPositions'][0] = 'Positionen innerhalb der Firma';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyPositions'][1] = 'Legen sie hier die Positionen innerhalb Ihrer Firma fest. Diese können Sie dann  Personen im Unternehmen zuweisen. Dadurch ist es später möglich, nur einzelne Positionen (z. B. Buchführung) auszuwählen.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyQualifications'][0] = 'Qualifikationen';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyQualifications'][1] = 'Legen sie hier die Qualifikationen fest, später Personen zugeordnet werden können.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyStreet'][0] = 'Straße';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyStreet'][1] = 'Die Straße, in der Ihr Firmensitz sich befindet, inklusive Nummer.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyZip'][0] = 'Postleitzahl';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyZip'][1] = 'Die Postleitzahl Ihres Ortes.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyCity'][0] = 'Ort';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyCity'][1] = 'Der Ort, in dem Ihr Unternehmen sitzt.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyDomain'][0] = 'Webseite ohne www und ohne http';
+$GLOBALS['TL_LANG']['tl_mycConfig']['companyDomain'][1] = 'Tragen Sie bitte hier Ihre Webseite ohne http und www ein. Diese kann dann für E-Mails und weitere URLs verwendet werden.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['facebook'][0] = 'Link zur Facebook Seite';
+$GLOBALS['TL_LANG']['tl_mycConfig']['facebook'][1] = 'Tragen sie hier den vollständigen Pfad zu Ihrer Facebook-Seite ein.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['xing'][0] = 'Link zur Xing Seite';
+$GLOBALS['TL_LANG']['tl_mycConfig']['xing'][1] = 'Tragen sie hier den vollständigen Pfad zu Ihrer Xing-Seite ein.';
+$GLOBALS['TL_LANG']['tl_mycConfig']['googlePlaces'][0] = 'Link zur Google Places Seite';
+$GLOBALS['TL_LANG']['tl_mycConfig']['googlePlaces'][1] = 'Tragen sie hier den vollständigen Pfad zu Ihrer Google Places Seite ein.';
 $GLOBALS['TL_LANG']['tl_mycConfig']['submit'] = 'Konfiguration Speichern';
 $GLOBALS['TL_LANG']['tl_mycConfig']['headline'] = 'Firmen Konfiguration';
+
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_mycConfig']['address_legend'] = 'Adressdaten';
+$GLOBALS['TL_LANG']['tl_mycConfig']['address_logo'] = 'Firmenlogo';
+$GLOBALS['TL_LANG']['tl_mycConfig']['contact_legend'] = 'Kontaktdaten';
+$GLOBALS['TL_LANG']['tl_mycConfig']['mailAndDomain_legend'] = 'Internetadresse und E-Mail';
+$GLOBALS['TL_LANG']['tl_mycConfig']['structure_legend'] = 'Interne Strukturen';
+$GLOBALS['TL_LANG']['tl_mycConfig']['syndications_legend'] = 'Social Media Links';
+
 /**
  * Reference
  */
@@ -58,14 +87,21 @@ $GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['NameAndAddress'] = 'Name und A
 $GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['PhoneAndFax'] = 'Einstellungen für Telefon und Fax';
 $GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['MailAndDomains'] = 'Einstellungen für Domains und E-Mails';
 $GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['Structure'] = 'Einstellungen für Firmenstrukturen';
-$GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['Syntication'] = 'Unternehmens Syndikationen';
+$GLOBALS['TL_LANG']['tl_mycConfig']['fieldsets']['Syndication'] = 'Unternehmens Syndikationen';
 
 
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_boziAttainment']['new']    = array('Leistung hinzufügen', 'Einen neuen Kunden hinzufügen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['edit']   = array('Diese Leistung bearbeiten', 'Klicken Sie hier wenn Sie die Leistung bearbeiten wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['copy']   = array('Diese Leistung kopieren', 'Klicken Sie hier wenn Sie die Leistung kopieren wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'] = array('Diese Leistung löschen', 'Klicken Sie hier wenn Sie die Leistung löschen wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['show']   = array('Informationen anzeigen', 'Klicken Sie hier wenn Sie den Information über diese Leistung sehen möchten.');
+$GLOBALS['TL_LANG']['tl_mycConfig']['new'][0] = 'Neue Firmenonfiguration';
+$GLOBALS['TL_LANG']['tl_mycConfig']['new'][1] = 'Eine neue Firmenkonfiguration hinzufügen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['new'][0] = 'Leistung hinzufügen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['new'][1] = 'Einen neuen Kunden hinzufügen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][0] = 'Diese Leistung bearbeiten';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][1] = 'Klicken Sie hier wenn Sie die Leistung bearbeiten wollen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][0] = 'Diese Leistung kopieren';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][1] = 'Klicken Sie hier wenn Sie die Leistung kopieren wollen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][0] = 'Diese Leistung löschen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][1] = 'Klicken Sie hier wenn Sie die Leistung löschen wollen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['show'][0] = 'Informationen anzeigen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['show'][1] = 'Klicken Sie hier wenn Sie den Information über diese Leistung sehen möchten.';

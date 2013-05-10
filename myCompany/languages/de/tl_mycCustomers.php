@@ -32,10 +32,14 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_mycCustomers']['name'] = array('Kundenname', 'Geben Sie hier den Namen des Kundens ein.');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['url'] = array('Webseite', 'Bitte geben Sie hier die vollständige Url zur Kunden Webseite ein. Bitte denken Sie daran das eine vollständige URL immer mit http:// beginnt.');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'] = array('Logo', 'Wählen Sie das auf dem Dateisystem hinterlegte Logo für diesen Kunden aus.');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['description'] = array('Beschreibung des Kunden', 'Hier können Sie eine Beschreibung für den Kunden Hinterlegen.');
+$GLOBALS['TL_LANG']['tl_mycCustomers']['name'][0] = 'Kundenname';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['name'][1] = 'Geben Sie hier den Namen des Kundens ein.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['url'][0] = 'Webseite';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['url'][1] = 'Bitte geben Sie hier die vollständige URL zur Kunden-Webseite ein. Bitte denken Sie daran, dass eine vollständige URL immer mit "http://" beginnt.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'][0] = 'Logo';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'][1] = 'Wählen Sie das auf dem Dateisystem hinterlegte Logo für diesen Kunden aus.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['description'][0] = 'Beschreibung des Kunden';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['description'][1] = 'Hier können Sie eine Beschreibung für den Kunden hinterlegen.';
 
 
 /**
@@ -47,8 +51,13 @@ $GLOBALS['TL_LANG']['tl_mycCustomers'][''] = '';
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_mycCustomers']['new']    = array('Kunde hinzufügen', 'Einen neuen Kunden hinzufügen');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['edit']   = array('Diesen Kunden bearbeiten', 'Klicken Sie hier wenn Sie den Kunden bearbeiten wollen');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['copy']   = array('Diesen Kunden lopieren', 'Klicken Sie hier wenn Sie den Kunden kopieren wollen');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['delete'] = array('Diesen Kunden löschen', 'Klicken Sie hier wenn Sie den Kunden löschen wollen');
-$GLOBALS['TL_LANG']['tl_mycCustomers']['show']   = array('Informationen anzeigen', 'Klicken Sie hier wenn Sie den Information über diesen Kunden sehen möchten.');
+$GLOBALS['TL_LANG']['tl_mycCustomers']['new'][0] = 'Kunde hinzufügen';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['new'][1] = 'Einen neuen Kunden hinzufügen';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['edit'][0] = 'Diesen Kunden bearbeiten';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['edit'][1] = 'Klicken Sie hier, wenn Sie den Kunden bearbeiten wollen.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['copy'][0] = 'Diesen Kunden kopieren';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['copy'][1] = 'Klicken Sie hier, wenn Sie den Kunden kopieren wollen.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['delete'][0] = 'Diesen Kunden löschen';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['delete'][1] = 'Klicken Sie hier, wenn Sie den Kunden löschen wollen.';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['show'][0] = 'Informationen anzeigen';
+$GLOBALS['TL_LANG']['tl_mycCustomers']['show'][1] = 'Klicken Sie hier, wenn Sie Informationen über diesen Kunden sehen möchten.';

@@ -32,7 +32,7 @@ class DataMaps extends \Frontend {
             'lastname' => $memberObj->lastname,
             'picture' => \Image::get(\CtoTplHelper::getImagePath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
             'mail' => \MyCompany\Helper\Text::generateMailAddress($memberObj->mailSuffix, $companyObj->companyDomain),
-            'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->phoneBasic, $memberObj->directDial),
+            'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->companyPhoneBasic, $memberObj->directDial),
             'about' => $memberObj->about,
             'mailSuffix' => $memberObj->mailSuffix,
             'directDial' => $memberObj->directDial,

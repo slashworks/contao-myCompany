@@ -26,12 +26,12 @@ $GLOBALS['TL_DCA']['tl_mycConfig'] = array
         'sorting' => array
         (
             'mode'                    => 1,
-            'fields'                  => array('name'),
+            'fields'                  => array('companyName'),
             'flag'                    => 1
         ),
         'label' => array
         (
-            'fields'                  => array('name'),
+            'fields'                  => array('companyName'),
             'format'                  => '%s'
         ),
         'global_operations' => array
@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_mycConfig'] = array
     'palettes' => array
     (
         '__selector__'                => array(''),
-        'default'                     => '{address_legend},name,shorthandle,street,zip,city;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,FaxDirectDial;{mailAndDomain_legend},companyDomain,companyMainMail;{structure_legend},positions,qualificarions;{syndications_legend},facebook,xing,googlePlaces'
+        'default'                     => '{address_legend},companyName,companyShorthandle,companyStreet,companyZip,companyCity;{address_logo},companyLogo;{contact_legend},companyPhoneBasic,companyPhoneDirectDial,companyFaxDirectDial;{mailAndDomain_legend},companyDomain,companyMainMail;{structure_legend},companyPositions,companyQualifications;{syndications_legend},facebook,xing,googlePlaces'
     ),
 
     // Subpalettes
@@ -102,73 +102,73 @@ $GLOBALS['TL_DCA']['tl_mycConfig'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
-        'name' => array
+        'companyName' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['name'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyName'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'shorthandle' => array
+        'companyShorthandle' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['shorthandle'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyShorthandle'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'street' => array
+        'companyStreet' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['street'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyStreet'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'zip' => array
+        'companyZip' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['zip'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyZip'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'city' => array
+        'companyCity' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['city'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyCity'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'logo' => array
+        'companyLogo' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['logo'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyLogo'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'mandatory'=>true, 'files'=>true, 'tl_class'=>'clr'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'phoneBasic' => array
+        'companyPhoneBasic' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['city'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneBasic'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'phoneDirectDial' => array
+        'companyPhoneDirectDial' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['phoneDirectDial'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyPhoneDirectDial'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'FaxDirectDial' => array
+        'companyFaxDirectDial' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['FaxDirectDial'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyFaxDirectDial'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -190,16 +190,16 @@ $GLOBALS['TL_DCA']['tl_mycConfig'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'positions' => array
+        'companyPositions' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['positions'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyPositions'],
             'exclude'                 => true,
             'inputType'               => 'listWizard',
             'sql'                     => "blob NULL"
         ),
-        'qualificarions' => array
+        'companyQualifications' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['qualificarions'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycConfig']['companyQualifications'],
             'exclude'                 => true,
             'inputType'               => 'listWizard',
             'sql'                     => "blob NULL"

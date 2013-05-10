@@ -7,7 +7,7 @@
             <img src="<?php echo $this->picture; ?>" alt="<?php echo $this->name; ?>" title="<?php echo $this->name; ?>">
         </figure>
     </dd>
-    <dd class="member-phone"><?php echo $this->phone; ?><dd>
+    <dd class="member-phone"><a href="tel:<?php echo $this->phone; ?>"><?php echo $this->phone; ?></a><dd>
 
 
         <?php if($this->qualification): ?>

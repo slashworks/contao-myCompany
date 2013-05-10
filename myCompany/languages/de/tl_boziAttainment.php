@@ -32,9 +32,12 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_boziAttainment']['name'] = array('Leistungsname', 'Geben Sie hier den Namen der Leistung ein.');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['logo'] = array('Logo', 'Falls Sie ein Logo oder Icon für diese Leistung haben, können Sie diese hier auswählen.');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['teaser'] = array('Beschreibung der Leistung', 'Hier können Sie eine Beschreibung für die Leistung Hinterlegen.');
+$GLOBALS['TL_LANG']['tl_boziAttainment']['name'][0] = 'Leistungsname';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['name'][1] = 'Geben Sie hier den Namen der Leistung ein.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['logo'][0] = 'Logo';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['logo'][1] = 'Falls Sie ein Logo oder Icon für diese Leistung haben, können Sie dieses hier auswählen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['teaser'][0] = 'Beschreibung der Leistung';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['teaser'][1] = 'Hier können Sie eine Beschreibung für die Leistung hinterlegen.';
 
 
 /**
@@ -46,8 +49,13 @@ $GLOBALS['TL_LANG']['tl_boziCustomers'][''] = '';
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_boziAttainment']['new']    = array('Leistung hinzufügen', 'Einen neuen Kunden hinzufügen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['edit']   = array('Diese Leistung bearbeiten', 'Klicken Sie hier wenn Sie die Leistung bearbeiten wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['copy']   = array('Diese Leistung kopieren', 'Klicken Sie hier wenn Sie die Leistung kopieren wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'] = array('Diese Leistung löschen', 'Klicken Sie hier wenn Sie die Leistung löschen wollen');
-$GLOBALS['TL_LANG']['tl_boziAttainment']['show']   = array('Informationen anzeigen', 'Klicken Sie hier wenn Sie den Information über diese Leistung sehen möchten.');
+$GLOBALS['TL_LANG']['tl_boziAttainment']['new'][0]    = 'Leistung hinzufügen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['new'][1]    = 'Eine neue Leistung hinzufügen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][0]   = 'Diese Leistung bearbeiten.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][1]   = 'Klicken Sie hier, wenn Sie die Leistung bearbeiten wollen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][0]   = 'Diese Leistung kopieren.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][1]   = 'Klicken Sie hier, wenn Sie die Leistung kopieren wollen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][0] = 'Diese Leistung löschen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][1] = 'Klicken Sie hier, wenn Sie die Leistung löschen wollen.';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['show'][0]   = 'Informationen anzeigen';
+$GLOBALS['TL_LANG']['tl_boziAttainment']['show'][1]   =  'Klicken Sie hier, wenn Sie Information über diese Leistung sehen möchten.';

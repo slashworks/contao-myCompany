@@ -13,10 +13,10 @@ $fields = array
 (
     'mycCompany' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mycTeamMember'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['mycCompany'],
         'exclude'                 => true,
         'inputType'               => 'select',
-        'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompanysAsArray'),
+        'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompaniesAsArray'),
         'eval'                    => array('includeBlankOption'=>true, 'submitOnChange' => true),
         'sql'                     => "varchar(32) NOT NULL default ''"
     ),
@@ -47,7 +47,7 @@ $fields = array
 
     'companyLogoTitle' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['companyLogoTitle'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['title'],
         'exclude'                 => true,
         'search'                  => true,
         'inputType'               => 'text',
@@ -56,7 +56,7 @@ $fields = array
 
     'companyLogoAlt' => array
     (
-        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['companyLogoAlt'],
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['alt'],
         'exclude'                 => true,
         'search'                  => true,
         'inputType'               => 'text',

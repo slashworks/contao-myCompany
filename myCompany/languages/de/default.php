@@ -28,6 +28,14 @@
  * @filesource
  */
 
+/**
+ * Content Elements
+ */
+
+$GLOBALS['TL_LANG']['CTE']['myCompany'] = 'Mein Unternehmen';
+$GLOBALS['TL_LANG']['CTE']['mycTeamMember'][0] = 'Teammitglied';
+$GLOBALS['TL_LANG']['CTE']['mycTeamMember'][1] = 'Gibt ein Teammitglied aus.';
+
 
 /**
  * Miscellaneous
@@ -36,7 +44,7 @@ $GLOBALS['TL_LANG']['MSC'][''] = '';
 
 $GLOBALS['TL_LANG']['MSC']['company']['companyEmail'] = 'E-Mail';
 $GLOBALS['TL_LANG']['MSC']['company']['companyPhone'] = 'Telefon';
-$GLOBALS['TL_LANG']['MSC']['company']['companyFax'] = 'companyFax';
+$GLOBALS['TL_LANG']['MSC']['company']['companyFax'] = 'Fax';
 
 $GLOBALS['TL_LANG']['MSC']['boziFeatures']['contactUs'] = 'Kontakt aufnehmen';
 

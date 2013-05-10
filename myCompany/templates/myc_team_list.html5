@@ -9,8 +9,8 @@
         <?php endif; ?>
     </dt>
     <dd><?php echo $member['surname'] ?> <?php echo $member['lastname'] ?></dd>
-    <dd><?php echo $member['mail'] ?></dd>
-    <dd><?php echo $member['phone'] ?></dd>
+    <dd><a href="mailto:<?php echo $member['mail']; ?>"><?php echo $member['mail'] ?></a></dd>
+    <dd><a href="tel:<?php echo $member['phone']; ?>"><?php echo $member['phone'] ?></a></dd>
     <dd><?php echo $member['about'] ?></dd>
     <?php if($member['socialButtons']): ?>
         <dd>

@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => 'company,surname,lastname,picture,about,jobTitle,directDial,mailSuffix,facebook,twitter,xing'
+		'default'                     => 'surname,lastname,company,position,picture,about,jobTitle,directDial,mailSuffix,facebook,twitter,xing'
 		//'default'                     => 'position,surname,lastname,picture,about,jobTitle,directDial,mailSuffix,boziCategorys,qualification'
 	),
 
@@ -182,13 +182,22 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'company' => array
+        'company'   => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['company'],
+            'exclude'                 => true,
+            'inputType'               => 'select',
+            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompaniesAsArray'),
+            'eval'                    => array('tl_class'=>'w50','submitOnChange'=>true),
+            'sql'                     =>"varchar(255) NOT NULL default ''"
+        ),
+        'position' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['position'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompanysAsArray'),
-            'eval'                    => array('tl_class'=>'clr long'),
+            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllPositionsAsArray'),
+            'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'facebook' => array
