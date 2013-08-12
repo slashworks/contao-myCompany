@@ -82,7 +82,7 @@ class ConfigModel extends \Model
 
     public static function getAllShorthandlesAsArray($shorthandle)
     {
-        $t = \Database::getInstance()->prepare("SELECT * from tl_mycConfig WHERE shorthandle = ?")->execute($shorthandle);
+        $t = \Database::getInstance()->prepare("SELECT * from tl_mycConfig WHERE companyShorthandle = ?")->execute($shorthandle);
         return $t->row();
     }
 
