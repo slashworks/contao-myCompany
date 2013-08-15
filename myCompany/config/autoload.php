@@ -28,8 +28,8 @@ ClassLoader::addClasses(array
     'MyCompany\Helper\DataMaps' => 'system/modules/myCompany/helpers/DataMaps.php',
 
 	// Models
-	'MyCompany\ConfigModel'     => 'system/modules/myCompany/models/ConfigModel.php',
-	'MyCompany\TeamModel'     => 'system/modules/myCompany/models/TeamModel.php',
+	'MyCompany\CompanysModel'     => 'system/modules/myCompany/models/CompanysModel.php',
+	'MyCompany\TeamMembersModel'     => 'system/modules/myCompany/models/TeamMembersModel.php',
 
 	// Modules
 	'MyCompany\TeamListModule' => 'system/modules/myCompany/modules/TeamListModule.php',

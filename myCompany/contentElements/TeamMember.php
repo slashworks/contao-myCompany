@@ -10,6 +10,8 @@
 namespace MyCompany\CE;
 
 
+use SW\SlashHelper;
+
 class TeamMember extends \ContentElement
 {
     /**
@@ -20,19 +22,19 @@ class TeamMember extends \ContentElement
 
     public function compile()
     {
-        $teamMember = \MyCompany\TeamModel::getMemberById($this->mycTeamMember);
-        $curCompany = \MyCompany\ConfigModel::findByPk($teamMember->company);
+        $teamMember = \MyCompany\TeamMembersModel::getMemberById($this->mycTeamMember);
+        $curCompany = \MyCompany\CompanysModel::findByPk($this->mycCompany);
         $imgSize = deserialize($this->size);
 
         $teamMemberName = $teamMember->surname.' '.$teamMember->lastname;
 
         if (TL_MODE == 'BE')
         {
-            $this->Template = \CtoTplHelper::generateWildCardTpl('Team Member', $teamMemberName);
+            $this->Template = SlashHelper::generateWildCardTpl('Team Member', $teamMemberName);
         }
         else
         {
-            $data = \MyCompany\Helper\DataMaps::memberData($teamMember, $curCompany, $imgSize);
+            $data = \MyCompany\Helper\DataMaps::memberData($teamMember, $curCompany, $imgSize, $this);
             $this->Template->setData($data);
         }
 

@@ -56,27 +56,21 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
             'tables' => array('tl_mycCustomers'),
             'icon'   => $modulePath.'assets/icons/customers.png'
         ),
-        'mycTeam' => array(
-            'tables' => array('tl_mycTeam'),
+        'mycTeamMember' => array(
+            'tables' => array('tl_mycTeamMembers'),
             'icon'   => $modulePath.'assets/icons/team.png'
         ),
-        'mycConfig' => array(
-            'tables' => array('tl_mycConfig'),
+        'mycCompanys' => array(
+            'tables' => array('tl_mycCompanys'),
             'icon'   => $modulePath.'assets/icons/config.png'
-        ),
-        /*'mycConfiguration' => array(
-            'callback' => 'BE_ModuleMycConfiguration',
-        )*/
+        )
     )
 ));
 
 $GLOBALS['FE_MOD']['myCompany'] = array
 (
-    'mycTeam'           => '\MyCompany\TeamListModule',
-    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
-    //'boziPinboradByGroup'       => 'BoziAttainmentModule',
-    //'boziCustomerList'          => 'BoziCustomerListModule',
-    //'boziPinboardSortable'      => 'BoziPinboardSortableModule'
+    'mycTeamList'           => '\MyCompany\TeamListModule',
+    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule'
 );
 
 /**

@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Joe Ray Gregory @ borowiakziehe KG 2012 
+ * @copyright  Joe Ray Gregory @ slashworks 2013
  * @author     Joe Ray Gregory 
  * @package    BoziFeatures 
  * @license    LGPL 
@@ -31,9 +31,9 @@
 //Import Bozi Helper
 $this->import('BoziFearuresHelper', 'Helper');
 /**
- * Table tl_mycTeam 
+ * Table tl_mycTeamMembers 
  */
-$GLOBALS['TL_DCA']['tl_mycTeam'] = array
+$GLOBALS['TL_DCA']['tl_mycTeamMembers'] = array
 (
 
 	// Config
@@ -78,26 +78,26 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
 		(
 			'edit' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeam']['edit'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['edit'],
 				'href'                => 'act=edit',
 				'icon'                => 'edit.gif'
 			),
 			'copy' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeam']['copy'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['copy'],
 				'href'                => 'act=copy',
 				'icon'                => 'copy.gif'
 			),
 			'delete' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeam']['delete'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
 			),
 			'show' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeam']['show'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.gif'
 			)
@@ -108,8 +108,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => 'surname,lastname,company,position,picture,about,jobTitle,directDial,mailSuffix,facebook,twitter,xing'
-		//'default'                     => 'position,surname,lastname,picture,about,jobTitle,directDial,mailSuffix,boziCategorys,qualification'
+		'default'                     => 'surname,lastname,companys,picture,about,jobTitle,directDial,mailSuffix'
 	),
 
 	// Subpalettes
@@ -135,7 +134,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
         ),
 		'surname' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['surname'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['surname'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -143,7 +142,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
 		),
         'lastname' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['lastname'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['lastname'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -151,7 +150,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
         ),
         'picture' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['picture'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['picture'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'files'=>true, 'tl_class'=>'clr'),
@@ -159,7 +158,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
         ),
         'about' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['about'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['about'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'textarea',
@@ -168,7 +167,7 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
         ),
         'directDial' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['directDial'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['directDial'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -176,53 +175,20 @@ $GLOBALS['TL_DCA']['tl_mycTeam'] = array
         ),
         'mailSuffix' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['mailSuffix'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['mailSuffix'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'company'   => array
+        'companys'   => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['company'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['company'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllCompaniesAsArray'),
-            'eval'                    => array('tl_class'=>'w50','submitOnChange'=>true),
-            'sql'                     =>"varchar(255) NOT NULL default ''"
-        ),
-        'position' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['position'],
-            'exclude'                 => true,
-            'inputType'               => 'select',
-            'options_callback'        => array('\MyCompany\ConfigModel', 'getAllPositionsAsArray'),
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'facebook' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['facebook'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'twitter' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['twitter'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'xing' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeam']['xing'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'options_callback'        => array('\MyCompany\CompanysModel', 'getAllCompaniesAsArray'),
+            'eval'                    => array('tl_class'=>'w50','multiple'=>true, 'chosen'=>true),
+            'sql'                     =>"BLOB NULL"
         )
 	)
 );

@@ -2,6 +2,8 @@
 
 namespace MyCompany;
 
+use SW\SlashHelper;
+
 class CompanyLogoModule extends \Module
 {
     /**
@@ -26,9 +28,9 @@ class CompanyLogoModule extends \Module
         global $objPage;
 
         $imgSize = deserialize($this->imgSize);
-        $company = \MyCompany\ConfigModel::findByPk($this->mycCompany);
+        $company = CompanysModel::findByPk($this->mycCompany);
 
-        $imagePath = \Image::get(\CtoTplHelper::getImagePath($company->companyLogo), $imgSize[0], $imgSize[1], $imgSize[2]);
+        $imagePath = \Image::get(SlashHelper::getImagePath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
 
         $logoSize = @getimagesize(TL_ROOT .'/'. $imagePath);
 

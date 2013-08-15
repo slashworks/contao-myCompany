@@ -25,24 +25,24 @@ namespace MyCompany;
  * @copyright Leo Feyer 2005-2013
  */
 
-class ConfigModel extends \Model
+class CompanysModel extends \Model
 {
 
     /**
      * Table name
      * @var string
      */
-    protected static $strTable = 'tl_mycConfig';
+    protected static $strTable = 'tl_mycCompanys';
 
     public static function getAllCompaniesAsArray()
     {
-        $t = \Database::getInstance()->execute('SELECT id,companyName FROM tl_mycConfig');
+        $t = \Database::getInstance()->execute('SELECT id,name FROM tl_mycCompanys');
 
         $data = array();
 
         while ($t->next())
         {
-            $data[$t->id] = $t->companyName;
+            $data[$t->id] = $t->name;
         }
 
         return $data;
@@ -51,7 +51,7 @@ class ConfigModel extends \Model
     public static function getAllPositionsAsArray()
     {
         // select company id from active member
-        $c = \Database::getInstance()->prepare('SELECT company FROM tl_mycTeam WHERE id=?')->execute(\Input::get('id'));
+        $c = \Database::getInstance()->prepare('SELECT company FROM tl_mycTeamMembers WHERE id=?')->execute(\Input::get('id'));
 
         while ($c->next())
         {
@@ -61,7 +61,7 @@ class ConfigModel extends \Model
         // if member has no company (e. g. when creating a new member), get first company id
         if(!$companyId)
         {
-            $objCompanyId = \Database::getInstance()->execute('SELECT id FROM tl_mycConfig LIMIT 1');
+            $objCompanyId = \Database::getInstance()->execute('SELECT id FROM tl_mycCompanys LIMIT 1');
             while ($objCompanyId->next())
             {
                 $companyId = $objCompanyId->id;
@@ -69,12 +69,12 @@ class ConfigModel extends \Model
         }
 
         // get all positions from the company
-        $objPositions = \Database::getInstance()->prepare('SELECT companyPositions FROM tl_mycConfig WHERE id=?')->execute($companyId);
+        $objPositions = \Database::getInstance()->prepare('SELECT positions FROM tl_mycCompanys WHERE id=?')->execute($companyId);
         $arrPositions = array();
 
         while ($objPositions->next())
         {
-            $arrPositions = deserialize($objPositions->companyPositions);
+            $arrPositions = deserialize($objPositions->positions);
         }
 
         return $arrPositions;
@@ -82,7 +82,7 @@ class ConfigModel extends \Model
 
     public static function getAllShorthandlesAsArray($shorthandle)
     {
-        $t = \Database::getInstance()->prepare("SELECT * from tl_mycConfig WHERE companyShorthandle = ?")->execute($shorthandle);
+        $t = \Database::getInstance()->prepare("SELECT * from tl_mycCompanys WHERE shorthandle = ?")->execute($shorthandle);
         return $t->row();
     }
 

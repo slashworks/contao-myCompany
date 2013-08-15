@@ -25,18 +25,18 @@ namespace MyCompany;
  * @copyright Leo Feyer 2005-2013
  */
 
-class TeamModel extends \Model
+class TeamMembersModel extends \Model
 {
 
     /**
      * Table name
      * @var string
      */
-    protected static $strTable = 'tl_mycTeam';
+    protected static $strTable = 'tl_mycTeamMembers';
 
     public static function getAllMemberAsArray()
     {
-        $t = \Database::getInstance()->execute('SELECT id,surname,lastname FROM tl_mycTeam');
+        $t = \Database::getInstance()->execute('SELECT id,surname,lastname FROM tl_mycTeamMembers');
 
         $data = array();
 
@@ -50,16 +50,23 @@ class TeamModel extends \Model
 
     public static function getAllMemberByCompanyAsArray($id)
     {
-        $t = \Database::getInstance()->prepare('SELECT id,surname,lastname FROM tl_mycTeam WHERE company=?')->execute($id);
+        $t = \Database::getInstance()->prepare('SELECT id,surname,lastname,companys FROM tl_mycTeamMembers')->execute($id);
 
         $data = array();
 
         while ($t->next())
         {
-            $data[$t->id] = $t->surname.' '.$t->lastname;
+            $companys = deserialize($t->companys);
+
+            if(in_array($id, $companys)) {
+                $data[$t->id] = $t->surname.' '.$t->lastname;
+            }
         }
 
+
         return $data;
+
+
     }
 
     public static function findMembersByIdAsArray($memberArr)
@@ -67,7 +74,7 @@ class TeamModel extends \Model
         if(is_array($memberArr))
         {
             $membersStr = implode($memberArr, ',');
-            $t = \Database::getInstance()->prepare("SELECT * FROM tl_mycTeam WHERE id IN(".$membersStr.") ORDER BY FIELD(id,".$membersStr.")")->execute();
+            $t = \Database::getInstance()->prepare("SELECT * FROM tl_mycTeamMembers WHERE id IN(".$membersStr.") ORDER BY FIELD(id,".$membersStr.")")->execute();
 
             $data = array();
 

@@ -7,8 +7,15 @@ class InsertTags extends \Frontend
     public $companysArr;
     public $documentType;
 
+
+
     public function generateInsertTags($strTag)
     {
+        // check if the insertTag is from type company
+        if(strpos($strTag, 'company_') != 0) {
+            return false;
+        }
+
         global $objPage;
 
         //set pageType
@@ -55,7 +62,7 @@ class InsertTags extends \Frontend
                 $_r = $this->_getPhoneBasic();
                 break;
             case 'fax':
-                $_r = $this->_getPhoneBasic($curScope['FaxDirectDial']);
+                $_r = $this->_getPhoneBasic($curScope['faxDirectDial']);
                 break;
             case 'address':
                 $_r = $this->_getAddress();
@@ -77,7 +84,7 @@ class InsertTags extends \Frontend
         $itagArr = explode("::", $strip_prefix);
         $shorthandle = $itagArr[0];
 
-        $t = \MyCompany\ConfigModel::getAllShorthandlesAsArray($shorthandle);
+        $t = \MyCompany\CompanysModel::getAllShorthandlesAsArray($shorthandle);
 
         if(is_array($t) && count($t) > 0)
         {
@@ -114,7 +121,7 @@ class InsertTags extends \Frontend
         (
             'companyEmail'       => $this->_getEmail(),
             'companyPhone'       => $this->_getPhoneBasic($_cfg['phoneDirectDial']),
-            'companyFax'         => $this->_getPhoneBasic($_cfg['FaxDirectDial'])
+            'companyFax'         => $this->_getPhoneBasic($_cfg['faxDirectDial'])
         );
         $out = $this->blockBuilder($itemsArr, $useLabel);
         return $out;
@@ -133,7 +140,7 @@ class InsertTags extends \Frontend
         $_cfg = $this->companysArr;
 
         //build the mail string
-        $_mail = \MyCompany\Helper\Text::generateMailAddress($_cfg['companyMainMail'],$_cfg['companyDomain']);
+        $_mail = \MyCompany\Helper\Text::generateMailAddress($_cfg['mainMail'],$_cfg['domain']);
 
         //check if is plain or not
         if($plain === true)

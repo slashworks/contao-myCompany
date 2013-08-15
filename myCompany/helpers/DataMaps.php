@@ -2,6 +2,7 @@
 
 namespace MyCompany\Helper;
 
+use SW\SlashHelper;
 
 class DataMaps extends \Frontend {
 
@@ -12,7 +13,7 @@ class DataMaps extends \Frontend {
      * @param array $imgSize
      * @return array
      */
-    static public function memberData($member, $curCompany, $imgSize = array())
+    static public function memberData($member, $curCompany, $imgSize = array(), $scope)
     {
         //check and convert params if they are an array
         $memberObj = (is_array($member)) ? json_decode(json_encode($member), FALSE): $member;
@@ -30,66 +31,24 @@ class DataMaps extends \Frontend {
             'name' => $memberObj->surname.' '.$memberObj->lastname,
             'surname' => $memberObj->surname,
             'lastname' => $memberObj->lastname,
-            'picture' => \Image::get(\CtoTplHelper::getImagePath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
+            'picture' => \Image::get(SlashHelper::getImagePath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
             'mail' => \MyCompany\Helper\Text::generateMailAddress($memberObj->mailSuffix, $companyObj->companyDomain),
-            'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->companyPhoneBasic, $memberObj->directDial),
+            'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->phoneBasic, $memberObj->directDial),
             'about' => $memberObj->about,
             'mailSuffix' => $memberObj->mailSuffix,
             'directDial' => $memberObj->directDial,
-            'socialButtons' => static::generateSocialButtons($memberObj),
-            'directDial' => $memberObj->directDial,
             'label' => $labels
-            //TODO Adding: positions, qualifications
         );
 
-        return $data;
-    }
-
-    /**
-     * Generates socialButton array
-     * @param $obj
-     * @return array
-     */
-    static public function generateSocialButtons($obj)
-    {
-        // List with allowed networks including the url to a single user profile
-        $socials = array
-        (
-            'xing' => 'https://www.xing.com/profile/',
-            'twitter' => 'https://www.twitter.com//',
-            'facebook' => 'https://www.facebook.com/'
-        );
-
-        $dataArr = array();
-
-        //check if the user has any accounts and if true add them to array
-        foreach($socials as $k => $v)
+        if (isset($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']) && is_array($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']))
         {
-            if($obj->$k)
+            foreach ($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData'] as $callback)
             {
-                // Add the details
-                $dataArr[$k] = static::generateSocialSet($v.$obj->$k, $k);
+                $scope->import($callback[0]);
+                $data = $scope->$callback[0]->$callback[1]($companyObj, $memberObj, $data);
             }
-
         }
 
-        return $dataArr;
-    }
-
-    /**
-     * Generates the basic informations for each social link
-     * @param $link
-     * @param $type
-     * @return array
-     */
-    static private function generateSocialSet($link, $type)
-    {
-        return array
-        (
-            'url' => $link,
-            'title' => &$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons'][$type]['title'],
-            'class' => 'buttons social '.$type,
-            'label' => &$GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons'][$type]['label']
-        );
+        return $data;
     }
 }
