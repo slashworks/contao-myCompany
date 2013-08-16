@@ -17,7 +17,8 @@
 ClassLoader::addClasses(array
 (
 	// Classes
-	'MyCompany\InsertTags'      => 'system/modules/myCompany/classes/InsertTags.php',
+	'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/InsertTagsCompany.php',
+	'MyCompany\InsertTagsMember'      => 'system/modules/myCompany/classes/InsertTagsMember.php',
 
     //Content elements
     'MyCompany\CE\TeamMember'   => 'system/modules/myCompany/contentElements/TeamMember.php',

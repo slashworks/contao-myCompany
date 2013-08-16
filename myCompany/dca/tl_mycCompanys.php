@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_mycCompanys'] = array
     'palettes' => array
     (
         '__selector__'                => array(''),
-        'default'                     => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxDirectDial;{mailAndDomain_legend},domain,mainMail;{structure_legend},positions,qualifications;{syndications_legend},socials'
+        'default'                     => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxBasic,faxDirectDial;{mailAndDomain_legend},domain,mainMail;{structure_legend},positions,qualifications;{syndications_legend},socials;optionals'
     ),
 
     // Subpalettes
@@ -184,12 +184,20 @@ $GLOBALS['TL_DCA']['tl_mycCompanys'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
+        'faxBasic' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['faxBasic'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
         'faxDirectDial' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['faxDirectDial'],
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'domain' => array
@@ -218,10 +226,31 @@ $GLOBALS['TL_DCA']['tl_mycCompanys'] = array
                     'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['name'],
                     'exclude'                 => true,
                     'inputType'               => 'text',
-                    'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'style' => 'width:200px')
+                    'eval'                    => array('maxlength'=>255, 'style' => 'width:200px')
                 ),
                 'url' => array(
                     'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['url'],
+                    'exclude'                 => true,
+                    'inputType'               => 'text',
+                    'eval'                    => array('maxlength'=>255, 'style' => 'width: 300px')
+                )
+            )),
+            'sql'                     => "blob NULL"
+        ),
+        'optionals' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['optionals'],
+            'exclude'                 => true,
+            'inputType'               => 'multiColumnWizard',
+            'eval'                    => array('tl_class'=>'clr long', 'columnFields' => array(
+                'label' => array(
+                    'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['optionals']['name'],
+                    'exclude'                 => true,
+                    'inputType'               => 'text',
+                    'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'style' => 'width:200px', 'columnPos'=>1)
+                ),
+                'optiontext' => array(
+                    'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['optionals']['text'],
                     'exclude'                 => true,
                     'inputType'               => 'text',
                     'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'style' => 'width: 300px')

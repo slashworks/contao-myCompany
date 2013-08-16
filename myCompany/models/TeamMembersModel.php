@@ -99,4 +99,10 @@ class TeamMembersModel extends \Model
         $t = self::findByPk($id);
         return $t;
     }
+
+    public static function getAllShorthandlesAsArray($shorthandle)
+    {
+        $t = \Database::getInstance()->prepare("SELECT * from tl_mycTeamMembers WHERE shorthandle = ?")->execute($shorthandle);
+        return $t->row();
+    }
 }

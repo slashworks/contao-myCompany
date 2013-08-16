@@ -89,7 +89,8 @@ $GLOBALS['TL_CTE']['myCompany'] = array
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTags', 'generateInsertTags');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsCompany', 'generateInsertTags');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsMember', 'generateInsertTags');
 //$GLOBALS['TL_HOOKS']['generatePage'][] = array('BoziTags', 'getPage');
 
 /**
