@@ -1,0 +1,2 @@
+<img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php echo $this->street ?>,<?php echo $this->zip ?>,<?php echo $this->city ?>&zoom=16&size=269x136&maptype=roadmap&markers=color:red%7Clabel:A%7C
+<?php echo $this->street ?>,<?php echo $this->zip ?>,<?php echo $this->city ?>‎‎&sensor=false">

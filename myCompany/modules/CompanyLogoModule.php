@@ -10,7 +10,7 @@ class CompanyLogoModule extends \Module
      * Template
      * @var string
      */
-    protected $strTemplate = 'myc_company_logo';
+    protected $strTemplate = 'mod_myc_wrapper';
 
     /**
      * No markup
@@ -44,7 +44,14 @@ class CompanyLogoModule extends \Module
             'logoSize' => $logoSize[3]
         );
 
-        $this->Template->setData($itemArr);
+        // generate the template for the myCompany Module
+        $mycModuleTpl = new \FrontendTemplate($this->mycTemplate);
+
+        // Add some template vars
+        $mycModuleTpl->setData($itemArr);
+
+        // implement the Template into the myCompany Template Wrapper
+        $this->Template->mycModule = $mycModuleTpl->parse();
 
     }
 

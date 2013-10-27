@@ -70,7 +70,8 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 $GLOBALS['FE_MOD']['myCompany'] = array
 (
     'mycTeamList'           => '\MyCompany\TeamListModule',
-    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule'
+    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
+    'mycSocialMediaLinks'    => '\MyCompany\SocialMediaLinks',
 );
 
 /**
@@ -78,7 +79,10 @@ $GLOBALS['FE_MOD']['myCompany'] = array
  */
 $GLOBALS['TL_CTE']['myCompany'] = array
 (
-    'mycTeamMember' => 'MyCompany\CE\TeamMember'
+    'mycTeamMember' => 'MyCompany\CE\TeamMember',
+    'mycTeamMembers' => 'MyCompany\CE\TeamMembers',
+    'mycRoutingButton' => 'MyCompany\CE\RoutingButton',
+    'mycStaticMap' => 'MyCompany\CE\StaticMap',
 );
 
 /**

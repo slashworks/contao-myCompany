@@ -3,7 +3,8 @@
 
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['mycTeam'] = '{title_legend},name,headline,type;mycCompany,mycTeamMember,imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['mycCompanyLogo'] = '{title_legend},name,headline,type;mycCompany,imgSize,companyLogoUrl,companyLogoTitle,companyLogoAlt;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mycCompanyLogo'] = '{title_legend},name,headline,type;mycCompany,imgSize,companyLogoUrl,companyLogoTitle,companyLogoAlt;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['mycSocialMediaLinks'] = '{title_legend},name,headline,type;mycCompany,companySocialLinks;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space';
 
 /*$GLOBALS['TL_DCA']['tl_module']['palettes']['boziPinboradByGroup'] = '{title_legend},name,headline,type;boziPinBoardGroup';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['boziCustomerList'] = '{title_legend},name,headline,type;imgSize';
@@ -61,6 +62,26 @@ $fields = array
         'search'                  => true,
         'inputType'               => 'text',
         'sql'                     => "varchar(255) NOT NULL default ''"
+    ),
+
+    'companySocialLinks' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['companySocialLinks'],
+        'exclude'                 => true,
+        'filter'                  => true,
+        'inputType'               => 'checkboxWizard',
+        'options_callback'        => array('tl_mycModule', 'generateSocialLinks'),
+        'eval'                    => array('multiple'=>true, 'helpwizard'=>true),
+        'sql'                     => "blob NULL"
+    ),
+
+    'mycTemplate' => array
+    (
+        'label'                   => &$GLOBALS['TL_LANG']['tl_content']['mycTemplate'],
+        'exclude'                 => true,
+        'inputType'               => 'select',
+        'options_callback'        => array('tl_mycModule', 'getMyCTemplate'),
+        'sql'                     => "varchar(64) NOT NULL default ''"
     )
 );
 
@@ -76,6 +97,26 @@ class tl_mycModule extends Backend
             return \MyCompany\TeamModel::getAllMemberByCompanyAsArray($dc->activeRecord->mycCompany);
         }
 
+    }
+
+    public function getMyCTemplate($dc)
+    {
+        return $this->getTemplateGroup($dc->activeRecord->type.'_');
+    }
+
+    public function generateSocialLinks($dc)
+    {
+
+        $items = \MyCompany\CompanysModel::getSocialLinksAsArray($dc->activeRecord->mycCompany);
+
+        $rArr = array();
+        if(count($items) > 0) {
+            foreach ($items as $k => $v) {
+                $rArr[] = $v['name'];
+            }
+        }
+
+        return $rArr;
     }
 
     /**

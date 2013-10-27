@@ -86,5 +86,10 @@ class CompanysModel extends \Model
         return $t->row();
     }
 
+    public static function getSocialLinksAsArray($id)
+    {
+        $t = \Database::getInstance()->prepare("SELECT socials from tl_mycCompanys WHERE id = ?")->execute($id);
+        return deserialize($t->socials);
+    }
 
 }

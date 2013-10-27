@@ -16,8 +16,8 @@ class DataMaps extends \Frontend {
     static public function memberData($member, $curCompany, $imgSize = array(), $scope)
     {
         //check and convert params if they are an array
-        $memberObj = (is_array($member)) ? json_decode(json_encode($member), FALSE): $member;
-        $companyObj = (is_array($curCompany)) ? json_decode(json_encode($curCompany), FALSE): $curCompany;
+        $memberObj = (is_array($member)) ? json_decode(json_encode($member), false): $member;
+        $companyObj = (is_array($curCompany)) ? json_decode(json_encode($curCompany), false): $curCompany;
 
         // Add language vars
         $langArr = $GLOBALS['TL_LANG']['MSC']['boziFeatures'];
@@ -26,18 +26,38 @@ class DataMaps extends \Frontend {
             'contactUs' => $langArr['contactUs']
         );
 
+        $socialLinksArr = deserialize($memberObj->socials);
+
+
+
+        /**
+         * Workaround to compare multicolumn wizard blob data
+         */
+
+
+
+        for($i = 0; $i < count($socialLinksArr); $i++)
+        {
+            $socialLinksArr[$i]['cssClass'] = 'myc_social_'.standardize($socialLinksArr[$i]['name']);
+        }
+
         //generate data array
         $data = array(
             'name' => $memberObj->surname.' '.$memberObj->lastname,
             'surname' => $memberObj->surname,
             'lastname' => $memberObj->lastname,
+            'jobTitle' => $memberObj->jobTitle,
+            'about' => $memberObj->about,
             'picture' => \Image::get(SlashHelper::getImagePath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
-            'mail' => \MyCompany\Helper\Text::generateMailAddress($memberObj->mailSuffix, $companyObj->companyDomain),
+            'mail' => \MyCompany\Helper\Text::generateMailAddress($memberObj->mailSuffix, $companyObj->domain),
             'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->phoneBasic, $memberObj->directDial),
             'about' => $memberObj->about,
             'mailSuffix' => $memberObj->mailSuffix,
             'directDial' => $memberObj->directDial,
-            'label' => $labels
+            'mobile' => $memberObj->mobile,
+            'label' => $GLOBALS['TL_LANG']['MSC']['MyCompany'],
+            'socials' => $socialLinksArr,
+            'detailLink' => ($memberObj->detailPage) ? SlashHelper::getUrlByPageId($memberObj->detailPage) : false
         );
 
         if (isset($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']) && is_array($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']))

@@ -108,7 +108,7 @@ $GLOBALS['TL_DCA']['tl_mycTeamMembers'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => 'title,surname,lastname,shorthandle,companys,picture,about,jobTitle,directDial,mailSuffix'
+		'default'                     => 'title,surname,lastname,shorthandle,companys,jobTitle,picture,about,directDial,mailSuffix,mobile,socials,detailPage'
 	),
 
 	// Subpalettes
@@ -151,6 +151,14 @@ $GLOBALS['TL_DCA']['tl_mycTeamMembers'] = array
         'lastname' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['lastname'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'jobTitle' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['jobTitle'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
@@ -205,7 +213,46 @@ $GLOBALS['TL_DCA']['tl_mycTeamMembers'] = array
             'options_callback'        => array('\MyCompany\CompanysModel', 'getAllCompaniesAsArray'),
             'eval'                    => array('tl_class'=>'w50','multiple'=>true, 'chosen'=>true),
             'sql'                     =>"blob NULL"
-        )
+        ),
+        'mobile' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['mobile'],
+            'exclude'                 => true,
+            'inputType'               => 'text',
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'socials' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['socials'],
+            'exclude'                 => true,
+            'inputType'               => 'multiColumnWizard',
+            'eval'                    => array('tl_class'=>'clr long', 'columnFields' => array(
+                'name' => array(
+                    'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['name'],
+                    'exclude'                 => true,
+                    'inputType'               => 'text',
+                    'eval'                    => array('maxlength'=>255, 'style' => 'width:200px')
+                ),
+                'url' => array(
+                    'label'                   => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['url'],
+                    'exclude'                 => true,
+                    'inputType'               => 'text',
+                    'eval'                    => array('maxlength'=>255, 'style' => 'width: 300px')
+                )
+            )),
+            'sql'                     => "blob NULL"
+        ),
+        'detailPage' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_mycTeamMembers']['detailPage'],
+            'exclude'                 => true,
+            'inputType'               => 'pageTree',
+            'foreignKey'              => 'tl_page.title',
+            'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'clr'),
+            'sql'                     => "int(10) unsigned NOT NULL default '0'",
+            'relation'                => array('type'=>'hasOne', 'load'=>'eager')
+        ),
 	)
 );
 
