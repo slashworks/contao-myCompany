@@ -2,7 +2,8 @@
 
 namespace MyCompany\Helper;
 
-use SW\SlashHelper;
+use SlashHelper\HelperFile;
+use SlashHelper\HelperUrl;
 
 class DataMaps extends \Frontend {
 
@@ -48,7 +49,7 @@ class DataMaps extends \Frontend {
             'lastname' => $memberObj->lastname,
             'jobTitle' => $memberObj->jobTitle,
             'about' => $memberObj->about,
-            'picture' => \Image::get(SlashHelper::getImagePath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
+            'picture' => \Image::get(HelperFile::getPath($memberObj->picture), $imgSize[0], $imgSize[1], $imgSize[2]),
             'mail' => \MyCompany\Helper\Text::generateMailAddress($memberObj->mailSuffix, $companyObj->domain),
             'phone' => \MyCompany\Helper\Text::generatePhoneNumber($companyObj->phoneBasic, $memberObj->directDial),
             'about' => $memberObj->about,
@@ -57,7 +58,7 @@ class DataMaps extends \Frontend {
             'mobile' => $memberObj->mobile,
             'label' => $GLOBALS['TL_LANG']['MSC']['MyCompany'],
             'socials' => $socialLinksArr,
-            'detailLink' => ($memberObj->detailPage) ? SlashHelper::getUrlByPageId($memberObj->detailPage) : false
+            'detailLink' => ($memberObj->detailPage) ? HelperUrl::fromPageId($memberObj->detailPage) : false
         );
 
         if (isset($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']) && is_array($GLOBALS['TL_HOOKS']['MyCompany']['addMemberData']))

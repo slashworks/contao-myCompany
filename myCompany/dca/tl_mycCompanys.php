@@ -166,7 +166,7 @@ $GLOBALS['TL_DCA']['tl_mycCompanys'] = array
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('fieldType'=>'radio', 'mandatory'=>true, 'files'=>true, 'tl_class'=>'clr'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'sql'                     => "binary(16) NULL"
         ),
         'phoneBasic' => array
         (

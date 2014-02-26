@@ -12,7 +12,6 @@ namespace MyCompany\CE;
 
 use MyCompany\CompanysModel;
 use MyCompany\TeamMembersModel;
-use SW\SlashHelper;
 
 class TeamMembers extends CeMycWrapper
 {

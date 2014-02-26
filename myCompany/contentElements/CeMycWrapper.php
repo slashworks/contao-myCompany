@@ -12,7 +12,7 @@ namespace MyCompany\CE;
 
 use Contao\ContentElement;
 use Contao\FrontendTemplate;
-use SW\SlashHelper;
+use SlashHelper\HelperTemplate;
 
 abstract class CeMycWrapper extends ContentElement {
 
@@ -29,7 +29,7 @@ abstract class CeMycWrapper extends ContentElement {
         if (TL_MODE == 'BE')
         {
             $varsArr = $this->setBETplArr();
-            $this->Template = SlashHelper::generateWildCardTpl($varsArr['content'], $varsArr['title']);
+            $this->Template = HelperTemplate::wildCard($varsArr['content'], $varsArr['title']);
 
         }
 

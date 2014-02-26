@@ -10,8 +10,6 @@
 namespace MyCompany\CE;
 
 
-use SW\SlashHelper;
-
 class TeamMember extends CeMycWrapper
 {
 

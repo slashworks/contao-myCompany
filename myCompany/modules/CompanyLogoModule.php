@@ -2,7 +2,7 @@
 
 namespace MyCompany;
 
-use SW\SlashHelper;
+use SlashHelper\HelperFile;
 
 class CompanyLogoModule extends \Module
 {
@@ -30,7 +30,7 @@ class CompanyLogoModule extends \Module
         $imgSize = deserialize($this->imgSize);
         $company = CompanysModel::findByPk($this->mycCompany);
 
-        $imagePath = \Image::get(SlashHelper::getImagePath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
+        $imagePath = \Image::get(HelperFile::getPath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
 
         $logoSize = @getimagesize(TL_ROOT .'/'. $imagePath);
 
