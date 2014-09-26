@@ -1,105 +1,49 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-/**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
- *
- * Formerly known as TYPOlight Open Source CMS.
- *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  Joe Ray Gregory @ borowiakziehe KG 2012
- * @author     Joe Ray Gregory
- * @package    BoziFeatures
- * @license    LGPL
- * @filesource
- */
 
-/**
- * Backend Features
- */
+    /**
+     * Backend Features
+     */
 
-$modulePath = 'system/modules/myCompany/';
+    $modulePath = 'system/modules/myCompany/';
 
-array_insert($GLOBALS['BE_MOD'], 0, array(
-    'MyCompany' => array(
-        /*'boziPinBoard' => array(
-            'tables' => array('tl_boziPinBoard'),
-            'icon'   => 'system/modules/boziFeatures/res/icons/pinBoard.png'
-        ),*/
-        /*'MycCustomers' => array(
-            'tables' => array('tl_mycCustomers'),
-            'icon'   => $modulePath.'res/icons/customers.png'
-        ),*/
-        /*'boziCustomersStatements' => array(
-            'tables' => array('tl_boziCustomerStatements'),
-            'icon'   => 'system/modules/boziFeatures/res/icons/customersStatements.png'
-        ),*/
-        /*'boziAttainment' => array(
-            'tables' => array('tl_boziAttainment'),
-            'icon'   => 'system/modules/boziFeatures/res/icons/attainment.png'
-        ),*/
-        'mycCustomers' => array(
-            'tables' => array('tl_mycCustomers'),
-            'icon'   => $modulePath.'assets/icons/customers.png'
-        ),
-        'mycTeamMember' => array(
-            'tables' => array('tl_mycTeamMembers'),
-            'icon'   => $modulePath.'assets/icons/team.png'
-        ),
-        'mycCompanys' => array(
-            'tables' => array('tl_mycCompanys'),
-            'icon'   => $modulePath.'assets/icons/config.png'
+    array_insert($GLOBALS['BE_MOD'], 0, array(
+        'MyCompany' => array(
+            'mycCompanies'  => array(
+                'tables' => array('tl_mycCompanies','tl_mycEmployee','tl_mycEmployeeData'),
+                'icon'   => $modulePath . 'assets/icons/config.png'
+            ),
+            'mycEmployees'  => array(
+                'tables' => array('tl_mycEmployee','tl_mycEmployeeData'),
+                'icon'   => $modulePath . 'assets/icons/config.png'
+            ),
+            'mycCustomers'  => array(
+                'tables' => array('tl_mycCustomers','tl_mycCompanies'),
+                'icon'   => $modulePath . 'assets/icons/config.png'
+            ),
+            'mycProjects'  => array(
+                'tables' => array('tl_mycProjects','tl_mycCustomers','tl_mycCompanies'),
+                'icon'   => $modulePath . 'assets/icons/config.png'
+            )
         )
-    )
-));
+    ));
 
-$GLOBALS['FE_MOD']['myCompany'] = array
-(
-    'mycTeamList'           => '\MyCompany\TeamListModule',
-    'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
-    'mycSocialMediaLinks'    => '\MyCompany\SocialMediaLinks',
-);
-
-/**
- * Content Elements
- */
-$GLOBALS['TL_CTE']['myCompany'] = array
-(
-    'mycTeamMember' => 'MyCompany\CE\TeamMember',
-    'mycTeamMembers' => 'MyCompany\CE\TeamMembers',
-    'mycRoutingButton' => 'MyCompany\CE\RoutingButton',
-    'mycStaticMap' => 'MyCompany\CE\StaticMap',
-);
-
-/**
- * Back end form fields
- */
-//$GLOBALS['BE_FFL']['pinboardTree'] = 'PinboardTree';
-
-/**
- * Hooks
- */
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsCompany', 'generateInsertTags');
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsMember', 'generateInsertTags');
-//$GLOBALS['TL_HOOKS']['generatePage'][] = array('BoziTags', 'getPage');
-
-/**
- * Stylesheet
- */
-if(TL_MODE == 'FE') {
-    //$GLOBALS['TL_CSS'][] = 'assets/boziweb/css/style.css';
-}

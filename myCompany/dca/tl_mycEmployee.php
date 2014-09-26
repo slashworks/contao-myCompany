@@ -19,17 +19,17 @@
      *
      */
 
-
     /**
-     * Table tl_mycCustomers
+     * Table tl_mycEmployee
      */
-    $GLOBALS['TL_DCA']['tl_mycCustomers'] = array
+    $GLOBALS['TL_DCA']['tl_mycEmployee'] = array
     (
 
         // Config
         'config'      => array
         (
             'dataContainer'    => 'Table',
+            'ctable'           => array('tl_mycEmployeeData'),
             'enableVersioning' => true,
             'sql'              => array
             (
@@ -46,13 +46,13 @@
             'sorting'           => array
             (
                 'mode'   => 1,
-                'fields' => array('name'),
+                'fields' => array('lastname', 'surname'),
                 'flag'   => 1
             ),
             'label'             => array
             (
-                'fields' => array('name'),
-                'format' => '%s'
+                'fields' => array('lastname', 'surname'),
+                'format' => '%s %s'
             ),
             'global_operations' => array
             (
@@ -68,26 +68,26 @@
             (
                 'edit'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycCustomers']['edit'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['edit'],
                     'href'  => 'act=edit',
                     'icon'  => 'edit.gif'
                 ),
                 'copy'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycCustomers']['copy'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['copy'],
                     'href'  => 'act=copy',
                     'icon'  => 'copy.gif'
                 ),
                 'delete' => array
                 (
-                    'label'      => &$GLOBALS['TL_LANG']['tl_mycCustomers']['delete'],
+                    'label'      => &$GLOBALS['TL_LANG']['tl_mycEmployee']['delete'],
                     'href'       => 'act=delete',
                     'icon'       => 'delete.gif',
                     'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
                 ),
                 'show'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycCustomers']['show'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['show'],
                     'href'  => 'act=show',
                     'icon'  => 'show.gif'
                 )
@@ -98,7 +98,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => 'name,url,logo,company;description'
+            'default'      => 'gender,title,surname,lastname;{employeeData_legend},employeeData'
         ),
 
         // Subpalettes
@@ -110,58 +110,84 @@
         // Fields
         'fields'      => array
         (
-            'id'          => array
+            'id'           => array
             (
                 'sql' => "int(10) unsigned NOT NULL auto_increment"
             ),
-            'sorting'     => array
+            'sorting'      => array
             (
                 'sql' => "int(10) unsigned NOT NULL default '0'"
             ),
-            'tstamp'      => array
+            'tstamp'       => array
             (
                 'sql' => "int(10) unsigned NOT NULL default '0'"
             ),
-            'name'        => array
+            'title'        => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['name'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['title'],
+                'exclude'   => true,
+                'inputType' => 'text',
+                'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
+                'sql'       => "varchar(255) NOT NULL default ''"
+            ),
+            'gender'       => array
+            (
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['title'],
+                'exclude'   => true,
+                'inputType' => 'select',
+                'options'   => array(
+                    "m" => &$GLOBALS['TL_LANG']['tl_mycEmployee']['male'],
+                    "f" => &$GLOBALS['TL_LANG']['tl_mycEmployee']['female']
+                ),
+                'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+                'sql'       => "varchar(1) NOT NULL default ''"
+            ),
+            'surname'      => array
+            (
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['surname'],
                 'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'url'         => array
+            'lastname'     => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['url'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['lastname'],
                 'exclude'   => true,
                 'inputType' => 'text',
-                'eval'      => array('maxlength' => 255, 'tl_class' => 'w50', 'rgxp' => 'url'),
+                'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'logo'        => array
-            (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'],
-                'exclude'   => true,
-                'inputType' => 'fileTree',
-                'eval'      => array('fieldType' => 'radio', 'files' => true, 'tl_class' => 'clr'),
-                'sql'       => "varchar(255) NOT NULL default ''"
-            ),
-            'company'     => array(
-                'label'      => &$GLOBALS['TL_LANG']['tl_mycProjects']['company'],
-                'exclude'    => true,
-                'inputType'  => 'select',
-                'foreignKey' => "tl_mycCompanies.name",
-                'eval'       => array('mandatory' => false, 'includeBlankOption' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
-                'sql'        => "int(10) unsigned NOT NULL default '0'"
-            ),
-            'description' => array
-            (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['description'],
-                'exclude'   => true,
-                'search'    => true,
-                'inputType' => 'textarea',
-                'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
-                'sql'       => "text NULL"
+            'employeeData' => array(
+                'label'        => &$GLOBALS['TL_LANG']['tl_mycEmployee']['data'],
+                'inputType'    => 'dcaWizard',
+                'foreignTable' => 'tl_mycEmployeeData',
+                'eval'         => array
+                (
+                    // A list of fields to be displayed in the table
+                    'fields'           => array('id', 'position'),
+
+                    // Header fields of the table (leave empty to use labels)
+                    'headerFields'     => array('ID', 'position'),
+
+                    // Use a custom label for the edit button
+                    'editButtonLabel'  => $GLOBALS['TL_LANG']['tl_mycEmployee']['employee_data_edit_button'],
+
+                    // Use a custom label for the apply button
+                    'applyButtonLabel' => $GLOBALS['TL_LANG']['tl_mycEmployee']['employee_data_prices_apply_button'],
+
+                    // Order records by a particular field
+                    'orderField'       => 'position DESC',
+
+                    // Use the callback to generate the list
+                    'listCallback'     => array('MyCompany\EmployeeData', 'generateWizardList'),
+                )
             )
         )
     );
+
+
+
+
+
+

@@ -1,1 +1,1 @@
-<a href="<?php echo $this->googleLink?>"><span><?php echo $this->linkLabel; ?></span></a>
+<a href="<?php echo $this->googleLink ?>"><span><?php echo $this->linkLabel; ?></span></a>

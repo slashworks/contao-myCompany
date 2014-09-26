@@ -1,14 +1,16 @@
 <div>
-    <?php $c = 0; foreach($this->members as $member):?>
+    <?php $c = 0;
+        foreach ($this->members as $member): ?>
 
-        <div class="list-allmembers<?php echo ($c % 2 == 0) ? ' first': ''; ?>">
+            <div class="list-allmembers<?php echo ($c % 2 == 0) ? ' first' : ''; ?>">
 
-            <img src="<?php echo $member['picture']; ?>" alt="<?php echo $member['name']; ?>">
-            <h3><?php echo $member['name']; ?></h3>
-        </div>
+                <img src="<?php echo $member['picture']; ?>" alt="<?php echo $member['name']; ?>">
 
-        <?php $c++ ?>
+                <h3><?php echo $member['name']; ?></h3>
+            </div>
 
-    <?php endforeach; ?>
+            <?php $c++ ?>
+
+        <?php endforeach; ?>
 </div>
 

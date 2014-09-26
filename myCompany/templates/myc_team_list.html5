@@ -1,24 +1,25 @@
 <dl class="<?php echo $this->class ?>">
 
-<?php foreach($this->members as $member): ?>
-    <dt>
-        <?php if($member['picture']): ?>
-            <figure class="image_container">
-                <img src="<?php echo $member['picture'] ?>" alt="<?php echo $member['name'] ?>">
-            </figure>
+    <?php foreach ($this->members as $member): ?>
+        <dt>
+            <?php if ($member['picture']): ?>
+                <figure class="image_container">
+                    <img src="<?php echo $member['picture'] ?>" alt="<?php echo $member['name'] ?>">
+                </figure>
+            <?php endif; ?>
+        </dt>
+        <dd><?php echo $member['surname'] ?> <?php echo $member['lastname'] ?></dd>
+        <dd><a href="mailto:<?php echo $member['mail']; ?>"><?php echo $member['mail'] ?></a></dd>
+        <dd><a href="tel:<?php echo $member['phone']; ?>"><?php echo $member['phone'] ?></a></dd>
+        <dd><?php echo $member['about'] ?></dd>
+        <?php if ($member['socialButtons']): ?>
+            <dd>
+                <?php foreach ($member['socialButtons'] as $social): ?>
+                    <a href="<?php echo $social['url'] ?>" class="<?php echo $social['class'] ?>"
+                       title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
+                <?php endforeach; ?>
+            </dd>
         <?php endif; ?>
-    </dt>
-    <dd><?php echo $member['surname'] ?> <?php echo $member['lastname'] ?></dd>
-    <dd><a href="mailto:<?php echo $member['mail']; ?>"><?php echo $member['mail'] ?></a></dd>
-    <dd><a href="tel:<?php echo $member['phone']; ?>"><?php echo $member['phone'] ?></a></dd>
-    <dd><?php echo $member['about'] ?></dd>
-    <?php if($member['socialButtons']): ?>
-        <dd>
-        <?php foreach($member['socialButtons'] as $social): ?>
-            <a href="<?php echo $social['url'] ?>" class="<?php echo $social['class'] ?>" title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
-        <?php endforeach; ?>
-        </dd>
-    <?php endif; ?>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </dl>

@@ -1,5 +1,5 @@
 <ul class="myc_social_list">
-    <?php foreach($this->links as $link): ?>
+    <?php foreach ($this->links as $link): ?>
         <li class="<?php echo $link['cssClass'] ?>">
             <a href="<?php echo $link['url'] ?>"><?php echo $link['name'] ?></a>
         </li>

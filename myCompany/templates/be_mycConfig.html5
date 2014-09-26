@@ -1,15 +1,13 @@
-
-
 <h2 class="sub_headline"><?php echo $this->headline; ?></h2>
 <form action="<?php echo $this->request; ?>" id="tl_mycConfig" class="tl_form" method="post">
     <div class="tl_formbody_edit">
         <input type="hidden" name="FORM_SUBMIT" value="tl_mycConfig">
         <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
-        <?php foreach($this->FormElements as $dataItem): ?>
-            <?php if($dataItem['fieldset']): ?>
+        <?php foreach ($this->FormElements as $dataItem): ?>
+            <?php if ($dataItem['fieldset']): ?>
                 <fieldset class="tl_tbox">
                     <legend><?php echo $dataItem['fieldset']; ?></legend>
-                    <?php foreach($dataItem['data'] as $item): ?>
+                    <?php foreach ($dataItem['data'] as $item): ?>
                         <?php echo $item; ?>
                     <?php endforeach; ?>
                 </fieldset>
@@ -19,7 +17,8 @@
     </div>
     <div class="tl_formbody_submit">
         <div class="tl_submit_container">
-            <input type="submit" name="save" id="save" class="tl_submit" accesskey="s" value="<?php echo $this->submit; ?>">
+            <input type="submit" name="save" id="save" class="tl_submit" accesskey="s"
+                   value="<?php echo $this->submit; ?>">
         </div>
     </div>
 </form>

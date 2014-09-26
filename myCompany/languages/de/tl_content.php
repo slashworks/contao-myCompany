@@ -1,18 +1,24 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2013 Leo Feyer
- * 
- * Core translations are managed using Transifex. To create a new translation
- * or to help to maintain an existing one, please register at transifex.com.
- * 
- * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao/language/de/
- * 
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
- */
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-$GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][0] = 'Teammitglied wählen';
-$GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';
+    $GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][0] = 'Teammitglied wählen';
+    $GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';
