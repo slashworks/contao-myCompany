@@ -22,7 +22,7 @@
     namespace MyCompany;
 
     /**
-     * Class CompaniesModel
+     * Class CompanyModel
      *
      * @package MyCompany
      */

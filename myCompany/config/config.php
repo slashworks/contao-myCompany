@@ -47,3 +47,29 @@
         )
     ));
 
+
+    $GLOBALS['FE_MOD']['myCompany'] = array
+    (
+        'mycEmployeeList'           => '\MyCompany\EmployeeListModule',
+        'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
+        'mycSocialMediaLinks'    => '\MyCompany\SocialMediaLinks',
+    );
+
+    /**
+     * Content Elements
+     */
+    $GLOBALS['TL_CTE']['myCompany'] = array
+    (
+        'mycEmployee' => 'MyCompany\CE\Employee',
+        'mycEmployees' => 'MyCompany\CE\Employees',
+        'mycRoutingButton' => 'MyCompany\CE\RoutingButton',
+        'mycStaticMap' => 'MyCompany\CE\StaticMap',
+    );
+
+    /**
+     * Hooks
+     */
+    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsCompany', 'generateInsertTags');
+//    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsEmployee', 'generateInsertTags');
+    //$GLOBALS['TL_HOOKS']['generatePage'][] = array('BoziTags', 'getPage');
+

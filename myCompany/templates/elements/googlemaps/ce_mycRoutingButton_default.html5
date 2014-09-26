@@ -1,0 +1,1 @@
+<a href="<?php echo $this->googleLink ?>" onclick="window.open(this.href);return false;"><span><?php echo $this->linkLabel; ?></span></a>

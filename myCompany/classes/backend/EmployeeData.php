@@ -62,7 +62,8 @@ class EmployeeData extends \Backend {
                 </div>
                 <div class="mycEmployeeDataColumn">
                     <b>{$objRecords->position}</b><br>
-                    {$oCompany["name"]} {$oCompany["legalForm"]}
+                    {$oCompany["name"]} {$oCompany["legalForm"]}<br>
+                    <span style="color:#999">Kürzel: {$objRecords->shorthandle}</span>
                 </div>
             </li>
 LISTITEM;
@@ -84,7 +85,9 @@ LISTITEM;
 
     public function getLabel($row, $label){
 
-        return "<div style='padding:10px 0;'><b>".$row['position']."</b><br><span style='color:#888;display:inline-block;width:45px;margin-top:5px;'>E-Mail:</span><a style='color:#888;' href='mailto:".$row['email']."'>".$row['email']."</a><br><span style='color:#888;display:inline-block;width:45px;'>Tel.:</span><a style='color:#888' href='callto:".$row['phone']."'>".$row['phone']."</a></div>";
+
+        $iColWidth = 70;
+        return "<div style='padding:10px 0;'><b>".$row['position']."</b><br><span style='color:#888;display:inline-block;width:".$iColWidth."px;margin-top:5px;'>E-Mail:</span><a style='color:#888;' href='mailto:".$row['email']."'>".$row['email']."</a><br><span style='color:#888;display:inline-block;width:".$iColWidth."px;'>Durchwahl:</span><span style='color:#888'>".$row['phoneExt']."</span><br><span style='color:#888;display:inline-block;width:".$iColWidth."px;'>Kürzel.:</span><span style='color:#888;display:inline-block;'> ".$row['shorthandle']."</span></div>";
     }
 
 

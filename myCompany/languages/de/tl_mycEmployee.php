@@ -27,3 +27,5 @@
     $GLOBALS['TL_LANG']['tl_mycEmployee']['male'] = "Herr";
     $GLOBALS['TL_LANG']['tl_mycEmployee']['female'] = "Frau";
     $GLOBALS['TL_LANG']['tl_mycEmployee']['employeeData_legend'] = "Firmenzugehörigkeit";
+
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['positions'] = "Position";

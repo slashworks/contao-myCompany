@@ -25,19 +25,31 @@
     ClassLoader::addClasses(array
                             (
                                 // Classes
-                                'MyCompany\Employee'    => 'system/modules/myCompany/classes/backend/Employee.php',
-                                'MyCompany\EmployeeData'    => 'system/modules/myCompany/classes/backend/EmployeeData.php',
+                                'MyCompany\Employee'           => 'system/modules/myCompany/classes/backend/Employee.php',
+                                'MyCompany\EmployeeData'       => 'system/modules/myCompany/classes/backend/EmployeeData.php',
+                                'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
+                                'MyCompany\InsertTagsEmployee'      => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
 
 
                                 //Content elements
+                                'MyCompany\CE\Employee'        => 'system/modules/myCompany/contentElements/employee/Employee.php',
+                                'MyCompany\CE\Employees'       => 'system/modules/myCompany/contentElements/employee/Employees.php',
+                                'MyCompany\CE\RoutingButton'   => 'system/modules/myCompany/contentElements/googlemaps/RoutingButton.php',
+                                'MyCompany\CE\CeMycWrapper'    => 'system/modules/myCompany/contentElements/CeMycWrapper.php',
+                                'MyCompany\CE\StaticMap'       => 'system/modules/myCompany/contentElements/googlemaps/StaticMap.php',
 
                                 // Helpers
+                                'MyCompany\Helper\DataMaps'    => 'system/modules/myCompany/helpers/DataMaps.php',
 
                                 // Models
-                                'MyCompany\EmployeeModel'    => 'system/modules/myCompany/models/EmployeeModel.php',
-                                'MyCompany\CompanyModel'    => 'system/modules/myCompany/models/CompanyModel.php',
+                                'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',
+                                'MyCompany\EmployeeDataModel'      => 'system/modules/myCompany/models/EmployeeDataModel.php',
+                                'MyCompany\CompanyModel'       => 'system/modules/myCompany/models/CompanyModel.php',
 
                                 // Modules
+                                'MyCompany\EmployeeListModule' => 'system/modules/myCompany/modules/EmployeeListModule.php',
+                                'MyCompany\CompanyLogoModule'  => 'system/modules/myCompany/modules/CompanyLogoModule.php',
+                                'MyCompany\SocialMediaLinks'   => 'system/modules/myCompany/modules/SocialMediaLinks.php',
                             ));
 
 
@@ -50,9 +62,9 @@
                                  'myc_team_list'               => 'system/modules/myCompany/templates',
 
                                  'ce_mycwrapper'               => 'system/modules/myCompany/templates/elements',
-                                 'ce_mycTeamMember_default'    => 'system/modules/myCompany/templates/elements/teammember',
-                                 'ce_mycTeamMember_short'      => 'system/modules/myCompany/templates/elements/teammember',
-                                 'ce_mycTeamMembers_default'   => 'system/modules/myCompany/templates/elements/teammember',
+                                 'ce_mycEmployee_default'      => 'system/modules/myCompany/templates/elements/employee',
+                                 'ce_mycEmployee_short'        => 'system/modules/myCompany/templates/elements/employee',
+                                 'ce_mycEmployees_default'     => 'system/modules/myCompany/templates/elements/employee',
                                  'ce_mycRoutingButton_default' => 'system/modules/myCompany/templates/elements/googlemaps',
                                  'ce_mycStaticMap_default'     => 'system/modules/myCompany/templates/elements/googlemaps',
 

@@ -109,7 +109,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => 'company,position;{contact_legend},email,phone,mobile;{about_legend},about,picture;{social_legend:hide},socials;{otherinfo_legend:hide},shorthandle,detailPage;'
+            'default'      => 'company,position;{contact_legend},email,phoneExt,faxExt,mobile;{about_legend},about,picture;{social_legend:hide},socials;{otherinfo_legend:hide},shorthandle,detailPage;'
         ),
 
         // Subpalettes
@@ -181,13 +181,21 @@
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
                 'sql'       => "text NULL"
             ),
-            'phone'       => array
+            'phoneExt'       => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['phone'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt'],
                 'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
-                'sql'       => "varchar(255) NOT NULL default ''"
+                'sql'       => "varchar(10) NOT NULL default ''"
+            ),
+            'faxExt'       => array
+            (
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt'],
+                'exclude'   => true,
+                'inputType' => 'text',
+                'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+                'sql'       => "varchar(10) NOT NULL default ''"
             ),
             'email'       => array
             (

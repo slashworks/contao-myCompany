@@ -19,7 +19,7 @@
      *
      */
 
-    $GLOBALS['TL_DCA']['tl_module']['palettes']['mycTeam']             = '{title_legend},name,headline,type;mycCompany,mycTeamMember,imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+    $GLOBALS['TL_DCA']['tl_module']['palettes']['mycTeam']             = '{title_legend},name,headline,type;mycCompany,mycEmployee,imgSize;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
     $GLOBALS['TL_DCA']['tl_module']['palettes']['mycCompanyLogo']      = '{title_legend},name,headline,type;mycCompany,imgSize,companyLogoUrl,companyLogoTitle,companyLogoAlt;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space';
     $GLOBALS['TL_DCA']['tl_module']['palettes']['mycSocialMediaLinks'] = '{title_legend},name,headline,type;mycCompany,companySocialLinks;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space';
 
@@ -31,17 +31,17 @@
             'label'            => &$GLOBALS['TL_LANG']['tl_module']['mycCompany'],
             'exclude'          => true,
             'inputType'        => 'select',
-            'options_callback' => array('\MyCompany\CompaniesModel', 'getAllCompaniesAsArray'),
+            'options_callback' => array('\MyCompany\CompanyModel', 'getAllCompaniesAsArray'),
             'eval'             => array('includeBlankOption' => true, 'submitOnChange' => true),
             'sql'              => "varchar(32) NOT NULL default ''"
         ),
 
-        'mycTeamMember'      => array
+        'mycEmployee'      => array
         (
-            'label'            => &$GLOBALS['TL_LANG']['tl_module']['mycTeamMember'],
+            'label'            => &$GLOBALS['TL_LANG']['tl_module']['mycEmployee'],
             'exclude'          => true,
             'inputType'        => 'checkboxWizard',
-            'options_callback' => array('tl_mycModule', 'getTeamMembersByCompany'),
+            'options_callback' => array('tl_mycModule', 'getEmployeesByCompany'),
             'eval'             => array('multiple' => true),
             'sql'              => "blob NULL"
         ),
@@ -112,13 +112,13 @@
          *
          * @return mixed
          */
-        public function getTeamMembersByCompany($dc)
+        public function getEmployeesByCompany($dc)
         {
 
-            $t = \MyCompany\TeamModel::getAllMemberByCompanyAsArray($dc->activeRecord->mycCompany);
+            $t = \MyCompany\EmployeeModel::getAllEmployeeByCompanyAsArray($dc->activeRecord->mycCompany);
 
             if (count($t) > 0) {
-                return \MyCompany\TeamModel::getAllMemberByCompanyAsArray($dc->activeRecord->mycCompany);
+                return $t;
             }
 
         }
@@ -144,7 +144,7 @@
         public function generateSocialLinks($dc)
         {
 
-            $items = \MyCompany\CompaniesModel::getSocialLinksAsArray($dc->activeRecord->mycCompany);
+            $items = \MyCompany\CompanyModel::getSocialLinksAsArray($dc->activeRecord->mycCompany);
 
             $aSocialLinks = array();
             if (count($items) > 0) {

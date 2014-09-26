@@ -1,0 +1,7 @@
+<h3>Employee Short</h3>
+<pre>
+<?php
+    print_r($this->name);
+    echo "<br>Positionen:<br>";
+    print_r($this->positions );
+?></pre>

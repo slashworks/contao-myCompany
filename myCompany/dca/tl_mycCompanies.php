@@ -98,7 +98,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxBasic,faxDirectDial;{mailAndDomain_legend},domain,mainMail;{structure_legend},positions,qualifications;{syndications_legend},socials;optionals,employees'
+            'default'      => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxBasic,faxDirectDial;{mailAndDomain_legend},domain,email;{structure_legend},positions,qualifications;{syndications_legend},socials;optionals,employees'
         ),
 
         // Subpalettes
@@ -229,9 +229,9 @@
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'mainMail'        => array
+            'email'        => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['mainMail'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['email'],
                 'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
@@ -295,13 +295,13 @@
                         'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['name'],
                         'exclude'   => true,
                         'inputType' => 'text',
-                        'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width:200px', 'columnPos' => 1)
+                        'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width:200px', 'columnPos' => 1)
                     ),
                     'optiontext' => array(
                         'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['text'],
                         'exclude'   => true,
                         'inputType' => 'text',
-                        'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width: 300px')
+                        'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width: 300px')
                     )
                 )),
                 'sql'       => "blob NULL"

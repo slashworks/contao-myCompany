@@ -30,7 +30,8 @@
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['company']          = array("Firma", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['position']         = array("Position", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['email']            = array("E-Mail", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['phone']            = array("Telefon", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt']            = array("Telenfondurchwahl", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt']            = array("Faxdurchwahl", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['mobile']           = array("Mobil", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['about']            = array("Zur Person", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['picture']          = array("Bild", "");

@@ -1,6 +1,0 @@
-<dl class="mycmember-wrapper">
-    <dt class="mycmember-name"><?php echo $this->name; ?></dt>
-    <dd class="mycmember-jobTitle"><?php echo $this->jobTitle; ?></dd>
-    <dd class="mycmember-mail"><?php echo $this->mail; ?></dd>
-    <dd class="mycmember-phone"><?php echo $this->phone; ?></dd>
-</dl>
