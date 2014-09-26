@@ -29,6 +29,8 @@
                                 'MyCompany\EmployeeData'       => 'system/modules/myCompany/classes/backend/EmployeeData.php',
                                 'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
                                 'MyCompany\InsertTagsEmployee'      => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
+                                'MyCompany\InsertTagsCustomer'      => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
+                                'MyCompany\InsertTagsProject'      => 'system/modules/myCompany/classes/frontend/InsertTagsProject.php',
 
 
                                 //Content elements

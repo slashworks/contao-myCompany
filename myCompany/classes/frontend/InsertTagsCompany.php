@@ -4,7 +4,7 @@ namespace MyCompany;
 
 class InsertTagsCompany extends \Frontend
 {
-    public $companies;
+    public $company;
 
     public $documentType;
 
@@ -15,7 +15,7 @@ class InsertTagsCompany extends \Frontend
     public function getCompany()
     {
 
-        return $this->companies;
+        return $this->company;
     }
 
 
@@ -25,7 +25,7 @@ class InsertTagsCompany extends \Frontend
     public function setCompany($companies)
     {
 
-        $this->companies = $companies;
+        $this->company = $companies;
     }
 
 

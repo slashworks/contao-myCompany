@@ -70,6 +70,8 @@
      * Hooks
      */
     $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsCompany', 'generateInsertTags');
-//    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsEmployee', 'generateInsertTags');
+    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsEmployee', 'generateInsertTags');
+    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsCustomer', 'generateInsertTags');
+    $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\MyCompany\InsertTagsProject', 'generateInsertTags');
     //$GLOBALS['TL_HOOKS']['generatePage'][] = array('BoziTags', 'getPage');
 
