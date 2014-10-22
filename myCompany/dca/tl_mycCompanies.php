@@ -30,7 +30,7 @@
         (
             'dataContainer'    => 'Table',
             'enableVersioning' => true,
-            'ctable' => array(),
+            'ctable'           => array(),
             'sql'              => array
             (
                 'keys' => array
@@ -98,7 +98,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxBasic,faxDirectDial;{mailAndDomain_legend},domain,email;{structure_legend},positions,qualifications;{syndications_legend},socials;optionals,employees'
+            'default'      => '{address_legend},name,legalForm,shorthandle,street,zip,city,country;{address_logo},logo;{contact_legend},phoneBasic,phoneDirectDial,faxBasic,faxDirectDial;{mailAndDomain_legend},domain,email;{structure_legend},positions,qualifications;{syndications_legend},socials;optionals'
         ),
 
         // Subpalettes
@@ -229,7 +229,7 @@
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'email'        => array
+            'email'           => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['email'],
                 'exclude'   => true,
@@ -309,24 +309,15 @@
             'employees'       => array(
                 'label'        => &$GLOBALS['TL_LANG']['tl_mycCompanies']['employees'],
                 'inputType'    => 'dcaWizard',
-                'foreignTable' => 'tl_mycEmployeeData',
                 'foreignField' => 'company',
-                'params'                  => array
-                (
-                    // Change the do parameter
-//                    'do'                  => 'member',
-
-                    // Add new parameter, for example to filter the list
-//                    'filter'         => '1',
-                ),
-
+                'foreignTable' => 'tl_mycEmployeeData',
                 'eval'         => array
                 (
                     // A list of fields to be displayed in the table
-                    'fields'           => array('id','position'),
+                    'fields'           => array('id', 'position'),
 
                     // Header fields of the table (leave empty to use labels)
-                    'headerFields'     => array('ID', 'Position'),
+                    'headerFields'     => array('ID', 'position'),
 
                     // Use a custom label for the edit button
                     'editButtonLabel'  => $GLOBALS['TL_LANG']['tl_mycEmployee']['employee_data_edit_button'],
@@ -335,13 +326,12 @@
                     'applyButtonLabel' => $GLOBALS['TL_LANG']['tl_mycEmployee']['employee_data_prices_apply_button'],
 
                     // Order records by a particular field
-                    'orderField'       => 'id DESC',
+                    'orderField'       => 'position DESC',
 
                     // Use the callback to generate the list
                     'listCallback'     => array('MyCompany\Employee', 'generateEmployeeListByCompany'),
-                ),
-
-            ),
+                )
+            )
         )
     );
 

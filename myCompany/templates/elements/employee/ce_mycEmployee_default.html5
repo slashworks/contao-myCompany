@@ -3,5 +3,5 @@
 <?php
     print_r($this->name);
     echo "<br>Positionen:<br>";
-    print_r($this->positions );
+    print_r($this->positions);
 ?></pre>

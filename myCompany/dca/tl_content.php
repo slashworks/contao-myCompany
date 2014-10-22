@@ -1,9 +1,4 @@
 <?php
-
-    if (!defined('TL_ROOT')) {
-        die('You cannot access this file directly!');
-    }
-
     /**
      *
      *          _           _                       _
@@ -24,15 +19,15 @@
      *
      */
 
-    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployee']    = '{type_legend},type,mycCompany,mycEmployee;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
-    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']   = '{type_legend},type,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
+    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployee']      = '{type_legend},type,mycCompany,mycEmployee;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
+    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']     = '{type_legend},type,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycRoutingButton'] = '{type_legend},type,mycCompany,linkTitle;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycStaticMap']     = '{type_legend},type,mycCompany,size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
 
 
     $fields = array
     (
-        'mycCompany'            => array
+        'mycCompany'          => array
         (
             'label'            => &$GLOBALS['TL_LANG']['tl_content']['mycCompany'],
             'exclude'          => true,
@@ -76,7 +71,7 @@
             'sql'              => "varchar(64) NOT NULL default ''"
         ),
 
-        'mycTemplate'           => array
+        'mycTemplate'         => array
         (
             'label'            => &$GLOBALS['TL_LANG']['tl_content']['mycTemplate'],
             'exclude'          => true,

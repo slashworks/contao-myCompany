@@ -36,7 +36,7 @@
             'sql'              => "varchar(32) NOT NULL default ''"
         ),
 
-        'mycEmployee'      => array
+        'mycEmployee'        => array
         (
             'label'            => &$GLOBALS['TL_LANG']['tl_module']['mycEmployee'],
             'exclude'          => true,

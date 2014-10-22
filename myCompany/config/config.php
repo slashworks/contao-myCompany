@@ -28,20 +28,20 @@
 
     array_insert($GLOBALS['BE_MOD'], 0, array(
         'MyCompany' => array(
-            'mycCompanies'  => array(
-                'tables' => array('tl_mycCompanies','tl_mycEmployee','tl_mycEmployeeData'),
+            'mycCompanies' => array(
+                'tables' => array('tl_mycCompanies', 'tl_mycEmployee', 'tl_mycEmployeeData'),
                 'icon'   => $modulePath . 'assets/icons/config.png'
             ),
-            'mycEmployees'  => array(
-                'tables' => array('tl_mycEmployee','tl_mycEmployeeData'),
+            'mycEmployees' => array(
+                'tables' => array('tl_mycEmployee', 'tl_mycEmployeeData'),
                 'icon'   => $modulePath . 'assets/icons/config.png'
             ),
-            'mycCustomers'  => array(
-                'tables' => array('tl_mycCustomers','tl_mycCompanies'),
+            'mycCustomers' => array(
+                'tables' => array('tl_mycCustomers', 'tl_mycCompanies'),
                 'icon'   => $modulePath . 'assets/icons/config.png'
             ),
             'mycProjects'  => array(
-                'tables' => array('tl_mycProjects','tl_mycCustomers','tl_mycCompanies'),
+                'tables' => array('tl_mycProjects', 'tl_mycCustomers', 'tl_mycCompanies'),
                 'icon'   => $modulePath . 'assets/icons/config.png'
             )
         )
@@ -50,9 +50,9 @@
 
     $GLOBALS['FE_MOD']['myCompany'] = array
     (
-        'mycEmployeeList'           => '\MyCompany\EmployeeListModule',
-        'mycCompanyLogo'    => '\MyCompany\CompanyLogoModule',
-        'mycSocialMediaLinks'    => '\MyCompany\SocialMediaLinks',
+        'mycEmployeeList'     => '\MyCompany\EmployeeListModule',
+        'mycCompanyLogo'      => '\MyCompany\CompanyLogoModule',
+        'mycSocialMediaLinks' => '\MyCompany\SocialMediaLinks',
     );
 
     /**
@@ -60,10 +60,10 @@
      */
     $GLOBALS['TL_CTE']['myCompany'] = array
     (
-        'mycEmployee' => 'MyCompany\CE\Employee',
-        'mycEmployees' => 'MyCompany\CE\Employees',
+        'mycEmployee'      => 'MyCompany\CE\Employee',
+        'mycEmployees'     => 'MyCompany\CE\Employees',
         'mycRoutingButton' => 'MyCompany\CE\RoutingButton',
-        'mycStaticMap' => 'MyCompany\CE\StaticMap',
+        'mycStaticMap'     => 'MyCompany\CE\StaticMap',
     );
 
     /**

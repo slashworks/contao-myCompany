@@ -44,6 +44,7 @@
             return $oResult->row();
         }
 
+
         /**
          * @param $employee_id
          *
@@ -52,14 +53,14 @@
         public static function getDataByEmployee($employee_id, $company = null)
         {
 
-            if($company == null) {
+            if ($company == null) {
                 $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycEmployeeData WHERE pid = ?')->execute($employee_id);
-            }else{
+            } else {
                 $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycEmployeeData WHERE pid = ? AND company = ?')->execute($employee_id, $company);
             }
 
             $aResult = array();
-            while($oResult->next()){
+            while ($oResult->next()) {
                 $aResult[] = $oResult->row();
             }
 

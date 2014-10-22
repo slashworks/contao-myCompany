@@ -1,46 +1,57 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: jrgregory
- * Date: 18.03.13
- * Time: 11:12
- * To change this template use File | Settings | File Templates.
- */
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-namespace MyCompany\CE;
+    namespace MyCompany\CE;
 
 
-
-class Employee extends CeMycWrapper
-{
-
-    public function setBeTplArr()
+    class Employee extends CeMycWrapper
     {
 
-        $employee = \MyCompany\EmployeeModel::getById($this->mycEmployee);
-        $employeeName = $employee['surname'].' '.$employee['lastname'];
+        public function setBeTplArr()
+        {
 
-        return array
-        (
+            $employee     = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            $employeeName = $employee['surname'] . ' ' . $employee['lastname'];
 
-            'title' => 'Employee Data',
-            'content' => $employeeName
+            return array
+            (
 
-        );
+                'title'   => 'Employee Data',
+                'content' => $employeeName
+
+            );
+
+        }
+
+
+        public function setTplDataArr()
+        {
+
+            $employee   = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            $curCompany = \MyCompany\CompanyModel::findByPk($this->mycCompany);
+            $imgSize    = deserialize($this->size);
+
+            $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
+
+            return $aData;
+        }
 
     }
-
-
-    public function setTplDataArr()
-    {
-
-        $employee = \MyCompany\EmployeeModel::getById($this->mycEmployee);
-        $curCompany = \MyCompany\CompanyModel::findByPk($this->mycCompany);
-        $imgSize = deserialize($this->size);
-
-        $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
-
-        return $aData;
-    }
-
-}

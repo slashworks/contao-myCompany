@@ -181,7 +181,7 @@
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
                 'sql'       => "text NULL"
             ),
-            'phoneExt'       => array
+            'phoneExt'    => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt'],
                 'exclude'   => true,
@@ -189,7 +189,7 @@
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(10) NOT NULL default ''"
             ),
-            'faxExt'       => array
+            'faxExt'      => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt'],
                 'exclude'   => true,

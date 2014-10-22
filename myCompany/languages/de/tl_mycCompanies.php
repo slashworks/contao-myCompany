@@ -37,8 +37,8 @@
     $GLOBALS['TL_LANG']['tl_mycCompanies']['phoneDirectDial'][1] = 'Geben Sie hier die Durchwahl zur Zentrale an.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['faxDirectDial'][0]   = 'Durchwahlwahlnummer für Ihr Fax';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['faxDirectDial'][1]   = 'Geben Sie hier die Durchwahlnummer für Fax ein.';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['email'][0]        = 'E-Mail-Adresse';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['email'][1]        = 'Geben Sie hier die Kontakt E-Mail-Adresse';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['email'][0]           = 'E-Mail-Adresse';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['email'][1]           = 'Geben Sie hier die Kontakt E-Mail-Adresse';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['logo'][0]            = 'Firmenlogo';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['logo'][1]            = 'Wählen Sie hier Ihr Firmenlogo aus. Dieses kann dann in Verschiedenen Bereichen der Seite verwendet werden.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['positions'][0]       = 'Positionen innerhalb der Firma';

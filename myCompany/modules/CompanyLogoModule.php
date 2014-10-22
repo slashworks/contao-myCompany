@@ -1,58 +1,85 @@
 <?php
-
-namespace MyCompany;
-
-use SlashHelper\HelperFile;
-
-class CompanyLogoModule extends \Module
-{
     /**
-     * Template
-     * @var string
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
      */
-    protected $strTemplate = 'mod_myc_wrapper';
+
+    namespace MyCompany;
+
+    use SlashHelper\HelperFile;
 
     /**
-     * No markup
-     * @var boolean
+     * Class CompanyLogoModule
+     *
+     * @package MyCompany
      */
-    protected $blnNoMarkup = false;
-
-
-
-    /**
-     * Generate the module
-     */
-    protected function compile()
+    class CompanyLogoModule extends \Module
     {
-        global $objPage;
 
-        $imgSize = deserialize($this->imgSize);
-        $company = CompanysModel::findByPk($this->mycCompany);
+        /**
+         * Template
+         *
+         * @var string
+         */
+        protected $strTemplate = 'mod_myc_wrapper';
 
-        $imagePath = \Image::get(HelperFile::getPath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
+        /**
+         * No markup
+         *
+         * @var boolean
+         */
+        protected $blnNoMarkup = false;
 
-        $logoSize = @getimagesize(TL_ROOT .'/'. $imagePath);
+
+        /**
+         * Generate the module
+         */
+        protected function compile()
+        {
+
+            global $objPage;
+
+            $imgSize = deserialize($this->imgSize);
+            $company = CompanysModel::findByPk($this->mycCompany);
+
+            $imagePath = \Image::get(HelperFile::getPath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
+
+            $logoSize = @getimagesize(TL_ROOT . '/' . $imagePath);
 
 
-        $itemArr = array
-        (
-            'logoSrc' => $imagePath,
-            'title' => $this->companyLogoTitle,
-            'alt' => $this->companyLogoAlt,
-            'logoLink' => $this->companyLogoUrl,
-            'logoSize' => $logoSize[3]
-        );
+            $itemArr = array
+            (
+                'logoSrc'  => $imagePath,
+                'title'    => $this->companyLogoTitle,
+                'alt'      => $this->companyLogoAlt,
+                'logoLink' => $this->companyLogoUrl,
+                'logoSize' => $logoSize[3]
+            );
 
-        // generate the template for the myCompany Module
-        $mycModuleTpl = new \FrontendTemplate($this->mycTemplate);
+            // generate the template for the myCompany Module
+            $mycModuleTpl = new \FrontendTemplate($this->mycTemplate);
 
-        // Add some template vars
-        $mycModuleTpl->setData($itemArr);
+            // Add some template vars
+            $mycModuleTpl->setData($itemArr);
 
-        // implement the Template into the myCompany Template Wrapper
-        $this->Template->mycModule = $mycModuleTpl->parse();
+            // implement the Template into the myCompany Template Wrapper
+            $this->Template->mycModule = $mycModuleTpl->parse();
+
+        }
 
     }
-
-}

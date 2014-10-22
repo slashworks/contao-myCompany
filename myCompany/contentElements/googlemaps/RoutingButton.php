@@ -1,46 +1,59 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: jrgregory
- * Date: 18.03.13
- * Time: 11:12
- * To change this template use File | Settings | File Templates.
- */
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-namespace MyCompany\CE;
-
-
-use MyCompany\CompanyModel;
-
-class RoutingButton extends CeMycWrapper
-{
-
-    public function setBeTplArr()
-    {
-        $curCompany = CompanyModel::getById($this->mycCompany);
-
-        return array
-        (
-            'title' => 'Google Maps Routing Button',
-            'content' => $curCompany->name
-        );
-    }
+    namespace MyCompany\CE;
 
 
-    public function setTplDataArr()
+    use MyCompany\CompanyModel;
 
+    class RoutingButton extends CeMycWrapper
     {
 
-        $curCompany = CompanyModel::getById($this->mycCompany);
+        public function setBeTplArr()
+        {
 
-        $addr = urlencode($curCompany['street'].' '.$curCompany['plz'].' '.$curCompany['city']);
+            $curCompany = CompanyModel::getById($this->mycCompany);
 
-        return array
-        (
-            'googleLink' => sprintf('https://maps.google.de/maps?f=d&source=s_d&saddr=&daddr=%s&hl=de&mra=ls', $addr),
-            'linkLabel' => $this->linkTitle
-        );
+            return array
+            (
+                'title'   => 'Google Maps Routing Button',
+                'content' => $curCompany->name
+            );
+        }
+
+
+        public function setTplDataArr()
+
+        {
+
+            $curCompany = CompanyModel::getById($this->mycCompany);
+
+            $addr = urlencode($curCompany['street'] . ' ' . $curCompany['plz'] . ' ' . $curCompany['city']);
+
+            return array
+            (
+                'googleLink' => sprintf('https://maps.google.de/maps?f=d&source=s_d&saddr=&daddr=%s&hl=de&mra=ls', $addr),
+                'linkLabel'  => $this->linkTitle
+            );
+
+        }
 
     }
-
-}

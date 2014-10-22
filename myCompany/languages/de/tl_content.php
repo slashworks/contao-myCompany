@@ -20,5 +20,5 @@
      *
      */
 
-    $GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][0] = 'Teammitglied wählen';
-    $GLOBALS['TL_LANG']['tl_content']['mycTeamMember'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';
+    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][0] = 'Teammitglied wählen';
+    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';

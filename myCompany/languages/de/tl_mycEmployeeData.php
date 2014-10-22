@@ -24,17 +24,17 @@
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['contact_legend']   = "Kontaktdaten";
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['about_legend']     = "Persönlich";
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['social_legend']    = "Social Media";
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['otherinfo_legend']    = "Sonstiges";
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['otherinfo_legend'] = "Sonstiges";
 
 
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['company']          = array("Firma", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['position']         = array("Position", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['email']            = array("E-Mail", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt']            = array("Telenfondurchwahl", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt']            = array("Faxdurchwahl", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['mobile']           = array("Mobil", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['about']            = array("Zur Person", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['picture']          = array("Bild", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['socials']          = array("Soziale Netzwerke", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['shorthandle']      = array("Kürzel", "");
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['detailPage']       = array("Detailseite", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['company']     = array("Firma", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['position']    = array("Position", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['email']       = array("E-Mail", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt']    = array("Telenfondurchwahl", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt']      = array("Faxdurchwahl", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['mobile']      = array("Mobil", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['about']       = array("Zur Person", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['picture']     = array("Bild", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['socials']     = array("Soziale Netzwerke", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['shorthandle'] = array("Kürzel", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['detailPage']  = array("Detailseite", "");

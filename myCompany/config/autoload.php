@@ -27,10 +27,10 @@
                                 // Classes
                                 'MyCompany\Employee'           => 'system/modules/myCompany/classes/backend/Employee.php',
                                 'MyCompany\EmployeeData'       => 'system/modules/myCompany/classes/backend/EmployeeData.php',
-                                'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
-                                'MyCompany\InsertTagsEmployee'      => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
-                                'MyCompany\InsertTagsCustomer'      => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
-                                'MyCompany\InsertTagsProject'      => 'system/modules/myCompany/classes/frontend/InsertTagsProject.php',
+                                'MyCompany\InsertTagsCompany'  => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
+                                'MyCompany\InsertTagsEmployee' => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
+                                'MyCompany\InsertTagsCustomer' => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
+                                'MyCompany\InsertTagsProject'  => 'system/modules/myCompany/classes/frontend/InsertTagsProject.php',
 
 
                                 //Content elements
@@ -45,7 +45,7 @@
 
                                 // Models
                                 'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',
-                                'MyCompany\EmployeeDataModel'      => 'system/modules/myCompany/models/EmployeeDataModel.php',
+                                'MyCompany\EmployeeDataModel'  => 'system/modules/myCompany/models/EmployeeDataModel.php',
                                 'MyCompany\CompanyModel'       => 'system/modules/myCompany/models/CompanyModel.php',
 
                                 // Modules

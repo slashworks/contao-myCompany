@@ -159,7 +159,7 @@
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['images'],
                 'exclude'   => true,
                 'inputType' => 'fileTree',
-                'eval'      => array('fieldType' => 'checkbox', 'files' => true,'multiple' => true, 'tl_class' => 'clr'),
+                'eval'      => array('fieldType' => 'checkbox', 'files' => true, 'multiple' => true, 'tl_class' => 'clr'),
                 'sql'       => "blob NULL"
             ),
             'description' => array
@@ -171,7 +171,7 @@
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
                 'sql'       => "text NULL"
             ),
-            'properties'       => array
+            'properties'  => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties'],
                 'exclude'   => true,

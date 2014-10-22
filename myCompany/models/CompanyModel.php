@@ -26,6 +26,11 @@
      *
      * @package MyCompany
      */
+    /**
+     * Class CompanyModel
+     *
+     * @package MyCompany
+     */
     class CompanyModel extends \Model
     {
 
@@ -37,11 +42,19 @@
         protected static $strTable = 'tl_mycCompanies';
 
 
-        public static function getById($id){
-            $oCompanyResult = \Database::getInstance()->execute('SELECT * FROM tl_mycCompanies WHERE id = "'.$id.'"');
+        /**
+         * @param $id
+         *
+         * @return array
+         */
+        public static function getById($id)
+        {
+
+            $oCompanyResult = \Database::getInstance()->execute('SELECT * FROM tl_mycCompanies WHERE id = "' . $id . '"');
 
             return $oCompanyResult->row();
         }
+
 
         /**
          * @return array
@@ -49,12 +62,12 @@
         public static function getAllCompaniesAsArray()
         {
 
-            $t = \Database::getInstance()->execute('SELECT id,name FROM tl_mycCompanies');
+            $oCompany = \Database::getInstance()->execute('SELECT id,name FROM tl_mycCompanies');
 
             $data = array();
 
-            while ($t->next()) {
-                $data[$t->id] = $t->name;
+            while ($oCompany->next()) {
+                $data[$oCompany->id] = $oCompany->name;
             }
 
             return $data;
@@ -68,10 +81,10 @@
         {
 
             // select company id from active member
-            $c = \Database::getInstance()->prepare('SELECT company FROM tl_mycTeamMembers WHERE id=?')->execute(\Input::get('id'));
-
-            while ($c->next()) {
-                $companyId = $c->company;
+            $oCompany = \Database::getInstance()->prepare('SELECT company FROM tl_mycEmployee WHERE id=?')->execute(\Input::get('id'));
+            $companyId = false;
+            while ($oCompany->next()) {
+                $companyId = $oCompany->company;
             }
 
             // if member has no company (e. g. when creating a new member), get first company id
@@ -102,9 +115,9 @@
         public static function getAllShorthandlesAsArray($shorthandle)
         {
 
-            $t = \Database::getInstance()->prepare("SELECT * from tl_mycCompanies WHERE shorthandle = ?")->execute($shorthandle);
+            $oCompany = \Database::getInstance()->prepare("SELECT * from tl_mycCompanies WHERE shorthandle = ?")->execute($shorthandle);
 
-            return $t->row();
+            return $oCompany->row();
         }
 
 
@@ -116,9 +129,9 @@
         public static function getSocialLinksAsArray($id)
         {
 
-            $t = \Database::getInstance()->prepare("SELECT socials from tl_mycCompanies WHERE id = ?")->execute($id);
+            $oCompany = \Database::getInstance()->prepare("SELECT socials from tl_mycCompanies WHERE id = ?")->execute($id);
 
-            return deserialize($t->socials);
+            return deserialize($oCompany->socials);
         }
 
     }

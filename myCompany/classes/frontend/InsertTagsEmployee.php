@@ -1,5 +1,23 @@
 <?php
-
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
     namespace MyCompany;
 
     /**
@@ -68,6 +86,7 @@
          */
         public function generateInsertTags($strTag)
         {
+
             // check if the insertTag is from type company
             if (strpos($strTag, 'cmember_') != 0) {
                 return false;
@@ -93,40 +112,40 @@
         private function parseEmployeeInsertTags()
         {
 
-            $_r       = false;
+            $sReturn  = false;
             $curScope = $this->getEmployees();
 
             switch ($curScope['getItem']) {
                 case 'nameFull':
-                    $_r = self::_generateFullName($curScope);
+                    $sReturn = self::_generateFullName($curScope);
                     break;
                 case 'name':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'surname':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'lastname':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'title':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'about':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'phoneExt':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'faxExt':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
                 case 'mail':
-                    $_r = self::_generateName($curScope);
+                    $sReturn = self::_generateName($curScope);
                     break;
             }
 
-            return $_r;
+            return $sReturn;
         }
 
 
@@ -173,6 +192,8 @@
 
             return $item['surname'] . ' ' . $item['lastname'];
         }
+
+
         /**
          * @param $item
          *
@@ -181,6 +202,6 @@
         private function _generateFullName($item)
         {
 
-            return $item['title'].' '.$item['surname'] . ' ' . $item['lastname'];
+            return $item['title'] . ' ' . $item['surname'] . ' ' . $item['lastname'];
         }
     }

@@ -1,62 +1,76 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: jrgregory
- * Date: 10.10.13
- * Time: 13:49
- * To change this template use File | Settings | File Templates.
- */
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-namespace MyCompany\CE;
+    namespace MyCompany\CE;
 
 
-use Contao\ContentElement;
-use Contao\FrontendTemplate;
-use SlashHelper\HelperTemplate;
+    use Contao\ContentElement;
+    use Contao\FrontendTemplate;
+    use SlashHelper\HelperTemplate;
 
-abstract class CeMycWrapper extends ContentElement {
-
-    protected $strTemplate = 'ce_mycwrapper';
-
-    abstract public function setTplDataArr();
-
-    abstract public function setBeTplArr();
-
-    public function compile()
+    abstract class CeMycWrapper extends ContentElement
     {
 
+        protected $strTemplate = 'ce_mycwrapper';
 
-        if (TL_MODE == 'BE')
+
+        abstract public function setTplDataArr();
+
+
+        abstract public function setBeTplArr();
+
+
+        public function compile()
         {
-            $tplname = 'be_wildcard';
-            $varsArr = $this->setBETplArr();
-            $tpl = new \BackendTemplate($tplname);
-            $tpl->wildcard = '### '.$varsArr['title'].' ###';
-            $tpl->title = $varsArr['content'];
-            $this->Template = $tpl;
+
+
+            if (TL_MODE == 'BE') {
+                $tplname        = 'be_wildcard';
+                $varsArr        = $this->setBETplArr();
+                $tpl            = new \BackendTemplate($tplname);
+                $tpl->wildcard  = '### ' . $varsArr['title'] . ' ###';
+                $tpl->title     = $varsArr['content'];
+                $this->Template = $tpl;
+
+            } else {
+
+                // generate the template for the myCompany Module
+                $partial = new FrontendTemplate($this->mycTemplate);
+
+                // Add some template vars
+                $partial->setData($this->setTplDataArr());
+
+                // implement the Template into the myCompany Template Wrapper
+
+
+                $this->Template->partial = $partial->parse();
+            }
 
         }
 
-        else
 
+        public function getLabel($item)
         {
 
-            // generate the template for the myCompany Module
-            $partial = new FrontendTemplate($this->mycTemplate);
-
-            // Add some template vars
-            $partial->setData($this->setTplDataArr());
-
-            // implement the Template into the myCompany Template Wrapper
-
-
-            $this->Template->partial = $partial->parse();
+            return $GLOBALS['TL_LANG']['myC'][$item];
         }
 
     }
-
-    public function getLabel($item) {
-        return $GLOBALS['TL_LANG']['myC'][$item];
-    }
-
-}

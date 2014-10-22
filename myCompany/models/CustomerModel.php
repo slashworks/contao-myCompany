@@ -37,7 +37,7 @@
         public function getById($id)
         {
 
-            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomer WHERE id = ?')->execute($id);
+            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomers WHERE id = ?')->execute($id);
 
             return $oResult->row();
         }
@@ -51,7 +51,7 @@
         public function getByCompany($company_id)
         {
 
-            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomer WHERE company = ?')->execute($company_id);
+            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomers WHERE company = ?')->execute($company_id);
 
             return $oResult->row();
         }

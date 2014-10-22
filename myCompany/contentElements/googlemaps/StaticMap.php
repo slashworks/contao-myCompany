@@ -1,48 +1,60 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: jrgregory
- * Date: 18.03.13
- * Time: 11:12
- * To change this template use File | Settings | File Templates.
- */
+    /**
+     *
+     *          _           _                       _
+     *         | |         | |                     | |
+     *      ___| | __ _ ___| |____      _____  _ __| | _____
+     *     / __| |/ _` / __| '_ \ \ /\ / / _ \| '__| |/ / __|
+     *     \__ \ | (_| \__ \ | | \ V  V / (_) | |  |   <\__ \
+     *     |___/_|\__,_|___/_| |_|\_/\_/ \___/|_|  |_|\_\___/
+     *                                        web development
+     *
+     *     http://www.slash-works.de </> hallo@slash-works.de
+     *
+     *
+     * @author      rwollenburg
+     * @copyright   rwollenburg@slashworks
+     * @since       24.09.14 00:00
+     * @package     MyCompany
+     *
+     */
 
-namespace MyCompany\CE;
+    namespace MyCompany\CE;
 
 
-use MyCompany\CompanyModel;
+    use MyCompany\CompanyModel;
 
-class StaticMap extends CeMycWrapper
-{
-
-    public function setBeTplArr()
+    class StaticMap extends CeMycWrapper
     {
 
-        $curCompany = CompanyModel::getById($this->mycCompany);
+        public function setBeTplArr()
+        {
 
-        return array
-        (
+            $curCompany = CompanyModel::getById($this->mycCompany);
 
-            'title' => 'Google Maps static map',
-            'content' => $curCompany->name
+            return array
+            (
 
-        );
+                'title'   => 'Google Maps static map',
+                'content' => $curCompany->name
 
+            );
+
+        }
+
+
+        public function setTplDataArr()
+        {
+
+            $curCompany = CompanyModel::getById($this->mycCompany);
+
+            return array
+            (
+                'street'   => urlencode($curCompany['street']),
+                'zip'      => urlencode($curCompany['zip']),
+                'city'     => urlencode($curCompany['city']),
+                'isStatic' => $this->mycTeamMapStatic
+            );
+
+        }
     }
-
-
-    public function setTplDataArr()
-    {
-
-        $curCompany = CompanyModel::getById($this->mycCompany);
-
-        return array
-        (
-            'street' => urlencode($curCompany['street']),
-            'zip' => urlencode($curCompany['zip']),
-            'city' => urlencode($curCompany['city']),
-            'isStatic' => $this->mycTeamMapStatic
-        );
-
-    }
-}

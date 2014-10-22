@@ -46,13 +46,14 @@
             'sorting'           => array
             (
                 'mode'   => 1,
-                'fields' => array('lastname', 'surname'),
+                'fields' => array('lastname'),
                 'flag'   => 1
             ),
             'label'             => array
             (
-                'fields' => array('lastname', 'surname'),
-                'format' => '%s %s'
+                'fields'         => array('lastname', 'surname', 'company'),
+                'format'         => '%s %s %s',
+                'label_callback' => array('MyCompany\Employee', 'getListLabel')
             ),
             'global_operations' => array
             (

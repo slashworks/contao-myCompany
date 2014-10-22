@@ -16,7 +16,7 @@
             <dd>
                 <?php foreach ($member['socialButtons'] as $social): ?>
                     <a href="<?php echo $social['url'] ?>" class="<?php echo $social['class'] ?>"
-                       title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
+                        title="<?php echo $social['title'] ?>"><?php echo $social['label'] ?></a>
                 <?php endforeach; ?>
             </dd>
         <?php endif; ?>
