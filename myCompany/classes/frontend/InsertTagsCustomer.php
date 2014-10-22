@@ -87,8 +87,26 @@
          */
         public function generateInsertTags($strTag)
         {
+            $sReturn = false;
+            $curScope  = $this->getCustomer();
 
-            return false;
+
+            /**
+             * @TODO: IMPLEMENT INSERTTAGS HERE!
+             */
+
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                }
+            }
+
+            return $sReturn;
         }
 
     }

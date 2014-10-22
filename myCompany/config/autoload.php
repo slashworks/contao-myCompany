@@ -25,6 +25,7 @@
     ClassLoader::addClasses(array
                             (
                                 // Classes
+                                'MyCompany\Company'           => 'system/modules/myCompany/classes/backend/Company.php',
                                 'MyCompany\Employee'           => 'system/modules/myCompany/classes/backend/Employee.php',
                                 'MyCompany\EmployeeData'       => 'system/modules/myCompany/classes/backend/EmployeeData.php',
                                 'MyCompany\InsertTagsCompany'  => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',

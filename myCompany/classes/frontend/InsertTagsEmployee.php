@@ -100,18 +100,6 @@
 
             $this->_getData($strTag);
 
-            return $this->parseEmployeeInsertTags($strTag);
-        }
-
-
-        /**
-         * Actions for company insert tags
-         *
-         * @return bool|string
-         */
-        private function parseEmployeeInsertTags()
-        {
-
             $sReturn  = false;
             $curScope = $this->getEmployees();
 
@@ -143,6 +131,16 @@
                 case 'mail':
                     $sReturn = self::_generateName($curScope);
                     break;
+            }
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                }
             }
 
             return $sReturn;

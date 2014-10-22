@@ -86,8 +86,26 @@
          */
         public function generateInsertTags($strTag)
         {
+            $sReturn = false;
+            $curScope  = $this->getProject();
 
-            return false;
+
+            /**
+             * @TODO: IMPLEMENT INSERTTAGS HERE!
+             */
+
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycProjectInsertTag']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectInsertTag'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                }
+            }
+
+            return $sReturn;
         }
 
     }

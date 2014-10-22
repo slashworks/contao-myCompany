@@ -52,7 +52,19 @@
 
             $oCompanyResult = \Database::getInstance()->execute('SELECT * FROM tl_mycCompanies WHERE id = "' . $id . '"');
 
-            return $oCompanyResult->row();
+            $aReturn = $oCompanyResult->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetById']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetById']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetById'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn);
+                }
+            }
+
+            return $aReturn;
         }
 
 
@@ -68,6 +80,16 @@
 
             while ($oCompany->next()) {
                 $data[$oCompany->id] = $oCompany->name;
+            }
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($data, $oCompany);
+                }
             }
 
             return $data;
@@ -103,6 +125,16 @@
                 $arrPositions = deserialize($objPositions->positions);
             }
 
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($arrPositions, $objPositions, $objCompanyId, $oCompany);
+                }
+            }
+
             return $arrPositions;
         }
 
@@ -116,8 +148,20 @@
         {
 
             $oCompany = \Database::getInstance()->prepare("SELECT * from tl_mycCompanies WHERE shorthandle = ?")->execute($shorthandle);
+            $aReturn = $oCompany->row();
 
-            return $oCompany->row();
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, $shorthandle);
+                }
+            }
+
+
+            return $aReturn;
         }
 
 
@@ -130,8 +174,21 @@
         {
 
             $oCompany = \Database::getInstance()->prepare("SELECT socials from tl_mycCompanies WHERE id = ?")->execute($id);
+            $aReturn = deserialize($oCompany->socials);
 
-            return deserialize($oCompany->socials);
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, $oCompany);
+                }
+            }
+
+
+            return $aReturn;
         }
 
     }

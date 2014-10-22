@@ -21,11 +21,22 @@
 
     namespace MyCompany;
 
+    /**
+     * Class InsertTagsCompany
+     *
+     * @package MyCompany
+     */
     class InsertTagsCompany extends \Frontend
     {
 
+        /**
+         * @var
+         */
         public $company;
 
+        /**
+         * @var
+         */
         public $documentType;
 
 
@@ -69,6 +80,11 @@
         }
 
 
+        /**
+         * @param $strTag
+         *
+         * @return bool|string
+         */
         public function generateInsertTags($strTag)
         {
 
@@ -84,17 +100,6 @@
 
             $this->_getData($strTag);
 
-            return $this->_companyActions($strTag);
-        }
-
-
-        /**
-         * Actions for company insert tags
-         *
-         * @return bool|string
-         */
-        private function _companyActions($strTag)
-        {
 
             $sReturn  = false;
             $curScope = $this->getCompany();
@@ -149,10 +154,23 @@
                 }
             }
 
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyInsertTag']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyInsertTag'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                }
+            }
+
             return $sReturn;
         }
 
 
+        /**
+         * @param $el
+         */
         private function _getData($el)
         {
 

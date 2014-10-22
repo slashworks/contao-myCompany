@@ -39,7 +39,19 @@
 
             $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycProjects WHERE id = ?')->execute($id);
 
-            return $oResult->row();
+            $aReturn = $oResult->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetById']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetById']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetById'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($aReturn, $this);
+                }
+            }
+
+            return $aReturn;
         }
 
 
@@ -53,7 +65,19 @@
 
             $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycProjects WHERE company = ?')->execute($company_id);
 
-            return $oResult->row();
+            $aReturn = $oResult->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCompany']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCompany'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($aReturn, $this);
+                }
+            }
+
+            return $aReturn;
         }
 
 
@@ -67,7 +91,19 @@
 
             $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycProjects WHERE customer = ?')->execute($customer_id);
 
-            return $oResult->row();
+            $aReturn = $oResult->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($aReturn, $this);
+                }
+            }
+
+            return $aReturn;
         }
 
 
@@ -82,7 +118,19 @@
 
             $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycProjects WHERE customer = ? AND company = ?')->execute($customer_id, $company_id);
 
-            return $oResult->row();
+            $aReturn = $oResult->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($aReturn, $this);
+                }
+            }
+
+            return $aReturn;
         }
 
 

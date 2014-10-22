@@ -68,40 +68,18 @@
         public function generateWizardList($objRecords, $strId)
         {
 
-            $strReturn = "
-<style>
-    .mycEmployeeListItem{
-        padding:8px 8px 0 8px;
-        margin-bottom:8px;
-        border-bottom:1px solid #efefef;
-        float:none;
-
-    }
-
-    .mycEmployeeDataColumn{
-        height:56px;
-
-    }
-
-    .mycEmployeeDataImageColumn{
-        width:56px;
-        padding:0 10px 10px 10px;
-        float:left;
-
-    }
-</style>";
-
+            $strReturn = "";
 
             while ($objRecords->next()) {
                 $oCompany = CompanyModel::getById($objRecords->company);
-                $aLogo    = \FilesModel::findByUuid($oCompany['logo']);
+                $aLogo    = \FilesModel::findByUuid($objRecords->picture);
                 $path     = \Image::get($aLogo->path, 48, 48, "proportional");
                 $strReturn .= <<<LISTITEM
-            <li class="mycEmployeeListItem">
-                <div class="mycEmployeeDataColumn mycEmployeeDataImageColumn">
-                    <img src="{$path}">
+            <li style="padding:8px 8px 0 8px;margin-bottom:8px;border-bottom:1px solid #efefef;float:none;">
+                <div style="height:31px;float:left;width:56px;padding:0 10px 10px 10px;vertical-align:middle;display:inline-block;text-align:center;">
+                    <div style="display:inline-block;height:100%;"></div><img src="{$path}" style="display:inline-block;vertical-align:middle;">
                 </div>
-                <div class="mycEmployeeDataColumn">
+                <div style="height:56px;display:inline-block;vertical-align:middle;">
                     <b>{$objRecords->position}</b><br>
                     {$oCompany["name"]} {$oCompany["legalForm"]}<br>
                     <span style="color:#999">Kürzel: {$objRecords->shorthandle}</span>
@@ -140,8 +118,16 @@ LISTITEM;
 
 
             $iColWidth = 70;
+            $aLogo    = \FilesModel::findByUuid($row['picture']);
+            $path     = \Image::get($aLogo->path, 56, 56, "proportional");
 
-            return "<div style='padding:10px 0;'><b>" . $row['position'] . "</b><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;margin-top:5px;'>E-Mail:</span><a style='color:#888;' href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Durchwahl:</span><span style='color:#888'>" . $row['phoneExt'] . "</span><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Kürzel.:</span><span style='color:#888;display:inline-block;'> " . $row['shorthandle'] . "</span></div>";
+            $sReturn = "<div style=\"height:61px;float:left;width:56px;padding:8px 10px 10px 10px;vertical-align:middle;display:inline-block;text-align:center;\">
+                            <div style=\"display:inline-block;vertical-align:middle;height:100%;\"></div><img src=\"".$path."\" style=\"display:inline-block;vertical-align:middle;\">
+                        </div>";
+            $sReturn .= "<div style='height:61px;padding:10px 0;'><b>" . $row['position'] . "</b><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;margin-top:5px;'>E-Mail:</span><a style='color:#888;' href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Durchwahl:</span><span style='color:#888'>" . $row['phoneExt'] . "</span><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Kürzel.:</span><span style='color:#888;display:inline-block;'> " . $row['shorthandle'] . "</span></div>";
+
+
+            return $sReturn;
         }
 
 

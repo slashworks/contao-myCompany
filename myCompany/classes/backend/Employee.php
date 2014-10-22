@@ -75,9 +75,12 @@
 
             foreach ($aEmployeeData as $aEmployee) {
                 $aCompany = CompanyModel::getById($aEmployee['company']);
-                $aLogo    = \FilesModel::findByUuid($aCompany['logo']);
+                $aLogo    = \FilesModel::findByUuid($aEmployee['picture']);
                 $path     = \Image::get($aLogo->path, 48, 48, "proportional");
                 $sLabel .= <<<LISTITEM
+                    <div style="height:21px;float:left;width:56px;padding:0 10px 10px 10px;vertical-align:middle;display:inline-block;text-align:center;">
+                        <div style="display:inline-block;height:100%;"></div><img src="{$path}" style="display:inline-block;vertical-align:middle;">
+                    </div>
                     <div style="height:56px;float:left; margin-right:10px;padding-right:10px;border-right:1px solid #efefef;">
                         <b>{$aEmployee['position']}</b><br>
                         {$aCompany["name"]} {$aCompany["legalForm"]}<br>

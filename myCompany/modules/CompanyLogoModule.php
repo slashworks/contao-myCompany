@@ -71,6 +71,17 @@
                 'logoSize' => $logoSize[3]
             );
 
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycModifyCompanyLogo']) && is_array($GLOBALS['TL_HOOKS']['mycModifyCompanyLogo']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycModifyCompanyLogo'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($itemArr, $company, $this);
+                }
+            }
+
             // generate the template for the myCompany Module
             $mycModuleTpl = new \FrontendTemplate($this->mycTemplate);
 

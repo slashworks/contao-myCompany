@@ -87,6 +87,18 @@
             $dataArr[0]['cssClass'] .= ' first';
             $dataArr[count($dataArr) - 1]['cssClass'] .= ' last';
 
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycModifySocialMediaLinks']) && is_array($GLOBALS['TL_HOOKS']['mycModifySocialMediaLinks']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycModifySocialMediaLinks'] as $callback)
+                {
+                    $this->import($callback[0]);
+                    $this->$callback[0]->$callback[1]($dataArr, $companySocialLinksArr, $company, $this);
+                }
+            }
+
+
             // generate the template for the myCompany Module
             $mycModuleTpl = new FrontendTemplate($this->mycTemplate);
 
