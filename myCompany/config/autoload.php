@@ -49,6 +49,8 @@
                                 'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',
                                 'MyCompany\EmployeeDataModel'  => 'system/modules/myCompany/models/EmployeeDataModel.php',
                                 'MyCompany\CompanyModel'       => 'system/modules/myCompany/models/CompanyModel.php',
+                                'MyCompany\CustomerModel'       => 'system/modules/myCompany/models/CustomerModel.php',
+                                'MyCompany\ProjectModel'       => 'system/modules/myCompany/models/ProjectModel.php',
 
                                 // Modules
                                 'MyCompany\EmployeeListModule' => 'system/modules/myCompany/modules/EmployeeListModule.php',

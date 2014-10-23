@@ -138,13 +138,13 @@
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50', 'rgxp' => 'url'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'logo'        => array
+            'logo'            => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'],
                 'exclude'   => true,
                 'inputType' => 'fileTree',
-                'eval'      => array('fieldType' => 'radio', 'files' => true, 'tl_class' => 'clr'),
-                'sql'       => "varchar(255) NOT NULL default ''"
+                'eval'      => array('fieldType' => 'radio', 'mandatory' => true, 'files' => true, 'tl_class' => 'clr'),
+                'sql'       => "binary(16) NULL"
             ),
             'company'     => array(
                 'label'      => &$GLOBALS['TL_LANG']['tl_mycProjects']['company'],

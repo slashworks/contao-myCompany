@@ -134,4 +134,31 @@
         }
 
 
+
+        /**
+         * @param $shorthandle
+         *
+         * @return array
+         */
+        public static function getAllShorthandlesAsArray($shorthandle)
+        {
+
+            $oProject = \Database::getInstance()->prepare("SELECT * from tl_mycProjects WHERE shorthandle = ?")->execute($shorthandle);
+            $aReturn = $oProject->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, $shorthandle);
+                }
+            }
+
+
+            return $aReturn;
+        }
+
+
     }

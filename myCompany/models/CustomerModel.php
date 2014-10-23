@@ -56,4 +56,29 @@
             return $oResult->row();
         }
 
+        /**
+         * @param $shorthandle
+         *
+         * @return array
+         */
+        public static function getAllShorthandlesAsArray($shorthandle)
+        {
+
+            $oCustomer = \Database::getInstance()->prepare("SELECT * from tl_mycCustomers WHERE shorthandle = ?")->execute($shorthandle);
+            $aReturn = $oCustomer->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray']))
+            {
+                foreach ($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray'] as $callback)
+                {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, $shorthandle);
+                }
+            }
+
+
+            return $aReturn;
+        }
+
     }

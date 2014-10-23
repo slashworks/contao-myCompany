@@ -26,6 +26,9 @@
      *
      * @package MyCompany
      */
+    use Contao\FilesModel;
+    use MyCompany\Helper\Text;
+
     /**
      * Class InsertTagsCompany
      *
@@ -94,7 +97,7 @@
         {
 
             // check if the insertTag is from type company
-            if (strpos($strTag, 'company_') != 0) {
+            if (strpos($strTag, 'company_') !== 0) {
                 return false;
             }
 
@@ -123,7 +126,7 @@
                     $sReturn = self::_generateCompanyPhoneDirect($curScope);
                     break;
                 case 'faxDirectDial':
-                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    $sReturn = self::_generateCompanyFaxDirectDial($curScope);
                     break;
                 case 'faxDirect':
                     $sReturn = self::_generateCompanyFaxDirect($curScope);
@@ -137,11 +140,17 @@
                 case 'address':
                     $sReturn = $this->_getAddress();
                     break;
+                case 'logo':
+                    $sReturn = $this->_getLogo($curScope);
+                    break;
                 case 'contactNoLabel':
                     $sReturn = $this->_getContact();
                     break;
                 case 'contact':
                     $sReturn = $this->_getContact(true);
+                    break;
+                case 'companyEmail':
+                    $sReturn = self::_generateCompanyEmail($curScope);
                     break;
             }
 
@@ -178,6 +187,18 @@
             return $sReturn;
         }
 
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _getLogo($item)
+        {
+
+            $oFile = FilesModel::findByUuid($item['logo']);
+
+            return $oFile->path;
+        }
 
         /**
          * @param $el
@@ -293,7 +314,7 @@
         private function _generateCompanyPhoneDirectDial($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return $aCompany['phoneDirectDial'];
         }
@@ -307,7 +328,7 @@
         private function _generateCompanyPhoneDirect($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
         }
@@ -321,7 +342,7 @@
         private function _generateCompanyFaxDirectDial($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return $aCompany['faxDirectDial'];
         }
@@ -335,7 +356,7 @@
         private function _generateCompanyFaxDirect($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
         }
@@ -349,9 +370,22 @@
         private function _generateCompanyPhone($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return $aCompany['phoneBasic'];
+        }
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyEmail($item)
+        {
+
+            $aCompany = $this->getCompany();
+
+            return $aCompany['email'];
         }
 
 
@@ -363,7 +397,7 @@
         private function _generateCompanyFax($item)
         {
 
-            $aCompany = CompanyModel::getById($item['company']);
+            $aCompany = $this->getCompany();
 
             return $aCompany['faxBasic'];
         }

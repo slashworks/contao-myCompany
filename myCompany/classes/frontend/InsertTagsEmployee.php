@@ -91,7 +91,7 @@
         {
 
             // check if the insertTag is from type company
-            if (strpos($strTag, 'employee_') != 0) {
+            if (strpos($strTag, 'employee_') !== 0) {
                 return false;
             }
 
@@ -131,7 +131,7 @@
                     $sReturn = self::_generateCompanyPhoneDirect($curScope);
                     break;
                 case 'companyFaxDirectDial':
-                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    $sReturn = self::_generateCompanyFaxDirectDial($curScope);
                     break;
                 case 'companyFaxDirect':
                     $sReturn = self::_generateCompanyFaxDirect($curScope);
@@ -150,6 +150,9 @@
                     break;
                 case 'companyLogo':
                     $sReturn = self::_generateCompanyLogo($curScope);
+                    break;
+                case 'companyEmail':
+                    $sReturn = self::_generateCompanyEmail($curScope);
                     break;
             }
 
@@ -218,6 +221,18 @@
             return $item['surname'] . ' ' . $item['lastname'];
         }
 
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyEmail($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return $aCompany['email'];
+        }
 
         /**
          * @param $item

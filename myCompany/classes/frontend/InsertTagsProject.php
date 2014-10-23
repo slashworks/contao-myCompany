@@ -20,6 +20,8 @@
      */
     namespace MyCompany;
 
+    use Contao\FilesModel;
+
     /**
      * Class InsertTagsCustomer
      *
@@ -88,9 +90,15 @@
         {
 
             // check if the insertTag is from type company
-            if (strpos($strTag, 'project_') != 0) {
+            if (strpos($strTag, 'project_') !== 0) {
                 return false;
             }
+
+            global $objPage;
+
+            //set pageType
+            $this->setDocumentType($objPage->outputFormat);
+            $this->_getData($strTag);
 
             $sReturn = false;
             $curScope  = $this->getProject();
@@ -99,6 +107,15 @@
             /**
              * @TODO: IMPLEMENT INSERTTAGS HERE!
              */
+
+
+            switch ($curScope['getItem']) {
+                case 'images':
+                    $sReturn = $this->_generateImages($curScope);
+                    break;
+            }
+
+
 
 
             if ($sReturn === false) {
@@ -120,6 +137,41 @@
 
 
             return $sReturn;
+        }
+
+
+
+        private function _generateImages($item){
+            $aImages = array();
+            $aTmpImages = deserialize($item['images']);
+            $aFiles = FilesModel::findMultipleByUuids(deserialize($item['images']));
+
+            foreach($aFiles as $oFile){
+                $aImages[] = $oFile->path;
+            }
+
+
+            return implode("<br>",$aImages);
+        }
+
+
+        /**
+         * @param $el
+         */
+        private function _getData($el)
+        {
+
+            $strip_prefix = str_replace('project_', '', $el);
+            $itagArr      = explode("::", $strip_prefix);
+            $shorthandle  = $itagArr[0];
+
+
+            $t = \MyCompany\ProjectModel::getAllShorthandlesAsArray($shorthandle);
+
+            if (is_array($t) && count($t) > 0) {
+                $t['getItem'] = $itagArr[1];
+                $this->setProject($t);
+            }
         }
 
     }
