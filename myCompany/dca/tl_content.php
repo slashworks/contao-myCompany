@@ -20,7 +20,7 @@
      */
 
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployee']      = '{type_legend},type,mycCompany,mycEmployee;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
-    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']     = '{type_legend},type,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
+    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']     = '{type_legend},type,mycCompany,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycRoutingButton'] = '{type_legend},type,mycCompany,linkTitle;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycStaticMap']     = '{type_legend},type,mycCompany,size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
 
@@ -55,7 +55,8 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'checkboxWizard',
-            'options_callback' => array('\MyCompany\EmployeeModel', 'getAllEmployeeAsArray'),
+//            'options_callback' => array('\MyCompany\EmployeeModel', 'getAllEmployeeAsArray'),
+            'options_callback' => array('myCompany_tl_content', 'getEmployeeByCompany'),
             'eval'             => array('multiple' => true, 'helpwizard' => true),
             'sql'              => "blob NULL"
         ),

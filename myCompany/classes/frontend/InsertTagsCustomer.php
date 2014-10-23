@@ -26,6 +26,11 @@
      *
      * @package MyCompany
      */
+    /**
+     * Class InsertTagsCustomer
+     *
+     * @package MyCompany
+     */
     class InsertTagsCustomer extends \Frontend
     {
 
@@ -87,20 +92,30 @@
          */
         public function generateInsertTags($strTag)
         {
-            $sReturn = false;
-            $curScope  = $this->getCustomer();
 
+            // check if the insertTag is from type company
+            if (strpos($strTag, 'customer_') != 0) {
+                return false;
+            }
+
+            $sReturn  = false;
+            $curScope = $this->getCustomer();
 
             /**
              * @TODO: IMPLEMENT INSERTTAGS HERE!
              */
 
 
+            if ($sReturn === false) {
+                if (isset($curScope[$curScope['getItem']])) {
+                    $sReturn = $curScope[$curScope['getItem']];
+                }
+            }
+
+
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'] as $callback) {
                     $this->import($callback[0]);
                     $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
                 }

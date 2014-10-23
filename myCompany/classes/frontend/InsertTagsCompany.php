@@ -26,6 +26,11 @@
      *
      * @package MyCompany
      */
+    /**
+     * Class InsertTagsCompany
+     *
+     * @package MyCompany
+     */
     class InsertTagsCompany extends \Frontend
     {
 
@@ -105,29 +110,29 @@
             $curScope = $this->getCompany();
 
             switch ($curScope['getItem']) {
-                case 'zip':
-                    $sReturn = $curScope['zip'];
-                    break;
-                case 'name':
-                    $sReturn = $curScope['name'];
-                    break;
-                case 'street':
-                    $sReturn = $curScope['street'];
-                    break;
-                case 'city':
-                    $sReturn = $curScope['city'];
-                    break;
                 case 'mail':
                     $sReturn = $this->_getEmail();
                     break;
                 case 'mailPlain':
                     $sReturn = $this->_getEmail(true);
                     break;
-                case 'phone':
-                    $sReturn = $this->_getPhoneBasic($curScope['phoneDirectDial']);
+                case 'phoneDirectDial':
+                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    break;
+                case 'phoneDirect':
+                    $sReturn = self::_generateCompanyPhoneDirect($curScope);
+                    break;
+                case 'faxDirectDial':
+                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    break;
+                case 'faxDirect':
+                    $sReturn = self::_generateCompanyFaxDirect($curScope);
                     break;
                 case 'fax':
-                    $sReturn = $this->_getPhoneBasic($curScope['faxDirectDial']);
+                    $sReturn = self::_generateCompanyFax($curScope);
+                    break;
+                case 'phone':
+                    $sReturn = self::_generateCompanyPhone($curScope);
                     break;
                 case 'address':
                     $sReturn = $this->_getAddress();
@@ -139,6 +144,14 @@
                     $sReturn = $this->_getContact(true);
                     break;
             }
+
+
+            if ($sReturn === false) {
+                if (isset($curScope[$curScope['getItem']])) {
+                    $sReturn = $curScope[$curScope['getItem']];
+                }
+            }
+
 
             if (strpos($curScope['getItem'], 'opt_') === 0 && strpos($strTag, 'company_') === 0) {
 
@@ -155,10 +168,8 @@
             }
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyInsertTag']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyInsertTag'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyInsertTag'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyInsertTag'] as $callback) {
                     $this->import($callback[0]);
                     $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
                 }
@@ -271,6 +282,90 @@
             $_cfg = $this->getCompany();
 
             return $_cfg['phoneBasic'] . "-" . $number;
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyPhoneDirectDial($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return $aCompany['phoneDirectDial'];
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyPhoneDirect($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyFaxDirectDial($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return $aCompany['faxDirectDial'];
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyFaxDirect($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyPhone($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return $aCompany['phoneBasic'];
+        }
+
+
+        /**
+         * @param $item
+         *
+         * @return string
+         */
+        private function _generateCompanyFax($item)
+        {
+
+            $aCompany = CompanyModel::getById($item['company']);
+
+            return $aCompany['faxBasic'];
         }
 
 

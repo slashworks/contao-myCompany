@@ -43,6 +43,7 @@
 
                                 // Helpers
                                 'MyCompany\Helper\DataMaps'    => 'system/modules/myCompany/helpers/DataMaps.php',
+                                'MyCompany\Helper\Text'    => 'system/modules/myCompany/helpers/Text.php',
 
                                 // Models
                                 'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',

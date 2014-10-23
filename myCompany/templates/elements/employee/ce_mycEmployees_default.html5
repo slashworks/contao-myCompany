@@ -2,5 +2,5 @@
 <pre>
 <?php
     echo "<br>Positionen:<br>";
-    print_r($this->employees);
+    var_dump($this->employees);
 ?></pre>

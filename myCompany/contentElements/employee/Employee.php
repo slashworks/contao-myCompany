@@ -51,6 +51,7 @@
 
             $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
 
+
             return $aData;
         }
 

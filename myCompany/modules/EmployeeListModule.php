@@ -64,6 +64,8 @@
                 $aEmployees[] = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize);
             }
 
+
+
             // HOOK
             if (isset($GLOBALS['TL_HOOKS']['mycModifyEmployeeList']) && is_array($GLOBALS['TL_HOOKS']['mycModifyEmployeeList']))
             {

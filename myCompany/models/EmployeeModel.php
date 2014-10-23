@@ -87,6 +87,7 @@
         }
 
 
+
         /**
          * @param $aEmployeeIds
          *
@@ -120,7 +121,7 @@
         public static function getAllShorthandlesAsArray($shorthandle)
         {
 
-            $oEmployeeResult = \Database::getInstance()->prepare("SELECT * from tl_mycEmployee WHERE shorthandle = ?")->execute($shorthandle);
+            $oEmployeeResult = \Database::getInstance()->prepare("SELECT * from tl_mycEmployee e, tl_mycEmployeeData d WHERE e.id = d.pid AND d.shorthandle = ?")->execute($shorthandle);
 
             return $oEmployeeResult->row();
         }

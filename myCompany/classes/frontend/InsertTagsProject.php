@@ -86,6 +86,12 @@
          */
         public function generateInsertTags($strTag)
         {
+
+            // check if the insertTag is from type company
+            if (strpos($strTag, 'project_') != 0) {
+                return false;
+            }
+
             $sReturn = false;
             $curScope  = $this->getProject();
 
@@ -93,6 +99,13 @@
             /**
              * @TODO: IMPLEMENT INSERTTAGS HERE!
              */
+
+
+            if ($sReturn === false) {
+                if (isset($curScope[$curScope['getItem']])) {
+                    $sReturn = $curScope[$curScope['getItem']];
+                }
+            }
 
 
             // HOOK
@@ -104,6 +117,7 @@
                     $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
                 }
             }
+
 
             return $sReturn;
         }
