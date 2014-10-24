@@ -26,21 +26,17 @@
      *
      * @package MyCompany
      */
-    class CustomerModel extends \Model
+    class CustomerModel extends MyCompanyModel
     {
 
         /**
-         * @param $id
+         * Table name
          *
-         * @return array
+         * @var string
          */
-        public function getById($id)
-        {
+        protected static $strTable = 'tl_mycCustomers';
 
-            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomers WHERE id = ?')->execute($id);
 
-            return $oResult->row();
-        }
 
 
         /**
@@ -56,29 +52,5 @@
             return $oResult->row();
         }
 
-        /**
-         * @param $shorthandle
-         *
-         * @return array
-         */
-        public static function getAllShorthandlesAsArray($shorthandle)
-        {
-
-            $oCustomer = \Database::getInstance()->prepare("SELECT * from tl_mycCustomers WHERE shorthandle = ?")->execute($shorthandle);
-            $aReturn = $oCustomer->row();
-
-            // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCustomerGetAllShorthandlesAsArray'] as $callback)
-                {
-                    \System::importStatic($callback[0]);
-                    $callback[0]::$callback[1]($aReturn, $shorthandle);
-                }
-            }
-
-
-            return $aReturn;
-        }
 
     }

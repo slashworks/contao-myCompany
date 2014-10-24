@@ -21,6 +21,7 @@
     namespace MyCompany;
 
     use Contao\FilesModel;
+    use MyCompany\Helper\MyCompanyHelper;
     use MyCompany\Helper\Text;
 
     /**
@@ -34,51 +35,207 @@
         /**
          * @var
          */
-        public $employees;
-
-        /**
-         * @var
-         */
-        public $documentType;
+        public static $documentType;
 
 
         /**
          * @return mixed
          */
-        public function getDocumentType()
+        public static function getDocumentType()
         {
 
-            return $this->documentType;
+            return self::$documentType;
         }
 
 
         /**
          * @param mixed $documentType
          */
-        public function setDocumentType($documentType)
+        public static function setDocumentType($documentType)
         {
 
-            $this->documentType = $documentType;
+            self::$documentType = $documentType;
         }
 
 
         /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getName(&$ident)
+        {
+
+            $aEmployee = EmployeeModel::getInstance($ident);
+
+            return $aEmployee['surname'] . ' ' . $aEmployee['lastname'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getPhone(&$ident)
+        {
+
+            $aEmployee = EmployeeModel::getInstance($ident);
+            $aCompany  = CompanyModel::getInstance($aEmployee['company']);
+
+            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aEmployee['data']['phoneExt']);
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getFax(&$ident)
+        {
+
+            $aEmployee = EmployeeModel::getInstance($ident);
+            $aCompany  = CompanyModel::getInstance($aEmployee['company']);
+
+            return Text::formatPhoneNumber($aCompany['faxBasic'], $aEmployee['data']['faxExt']);
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed|null
+         */
+        public static function getPicture(&$ident)
+        {
+
+            $aEmployee = EmployeeDataModel::getInstance($ident);
+            $oFile     = FilesModel::findByUuid($aEmployee['picture']);
+
+            return $oFile->path;
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getFullName(&$ident)
+        {
+
+            $aEmployee = EmployeeModel::getInstance($ident);
+
+            return $aEmployee['title'] . ' ' . $aEmployee['surname'] . ' ' . $aEmployee['lastname'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
          * @return mixed
          */
-        public function getEmployees()
+        public static function getSurname(&$ident)
         {
-
-            return $this->employees;
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['surname'];
         }
 
 
         /**
-         * @param mixed $aEmployees
+         * @param $curScope
+         *
+         * @return mixed
          */
-        public function setEmployees($aEmployees)
+        public static function getLastname(&$ident)
         {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['lastname'];
+        }
 
-            $this->employees = $aEmployees;
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getTitle(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['title'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getPosition(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['position'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getAbout(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['about'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getEmail(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['email'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getMobile(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['mobile'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getPhoneExt(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['phoneExt'];
+        }
+
+
+        /**
+         * @param $curScope
+         *
+         * @return mixed
+         */
+        public static function getFaxExt(&$ident)
+        {
+            $aEmployee = EmployeeModel::getInstance($ident);
+            return $aEmployee['data']['faxExt'];
         }
 
 
@@ -97,70 +254,95 @@
 
 
             global $objPage;
+            self::setDocumentType($objPage->outputFormat);
 
-            //set pageType
-            $this->setDocumentType($objPage->outputFormat);
+            $aTag             = MyCompanyHelper::_parseTag($strTag);
+            $mIdent           = $aTag['ident'];
+            $sItem            = $aTag['item'];
+            $aEmployeeData     = EmployeeDataModel::getInstance($mIdent);
+            $aEmployee         = EmployeeModel::getInstance($aEmployeeData['pid']);
+            $aEmployee['data'] = $aEmployeeData;
 
-            $this->_getData($strTag);
-
-
-            $sReturn  = false;
-            $curScope = $this->getEmployees();
-
-            switch ($curScope['getItem']) {
+            $sReturn = false;
+            switch ($sItem) {
                 case 'nameFull':
                 case 'fullName':
-                    $sReturn = self::_generateFullName($curScope);
+                    $sReturn = self::getFullName($mIdent);
                     break;
                 case 'name':
-                    $sReturn = self::_generateName($curScope);
+                    $sReturn = self::getName($mIdent);
+                    break;
+                case 'id':
+                    $sReturn = self::getName($mIdent);
+                    break;
+                case 'surname':
+                    $sReturn = self::getSurname($mIdent);
+                    break;
+                case 'lastname':
+                    $sReturn = self::getLastname($mIdent);
+                    break;
+                case 'title':
+                    $sReturn = self::getTitle($mIdent);
+                    break;
+                case 'position':
+                    $sReturn = self::getPosition($mIdent);
+                    break;
+                case 'about':
+                    $sReturn = self::getAbout($mIdent);
+                    break;
+                case 'email':
+                    $sReturn = self::getEmail($mIdent);
+                    break;
+                case 'mobile':
+                    $sReturn = self::getMobile($mIdent);
+                    break;
+                case 'phoneExt':
+                    $sReturn = self::getPhoneExt($mIdent);
+                    break;
+                case 'faxExt':
+                    $sReturn = self::getFaxExt($mIdent);
                     break;
                 case 'picture':
-                    $sReturn = self::_generatePicture($curScope);
+                    $sReturn = self::getPicture($mIdent);
                     break;
                 case 'phone':
-                    $sReturn = self::_generatePhone($curScope);
+                    $sReturn = self::getPhone($mIdent);
                     break;
                 case 'fax':
-                    $sReturn = self::_generateFax($curScope);
+                    $sReturn = self::getFax($mIdent);
                     break;
                 case 'companyPhoneDirectDial':
-                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    $sReturn = InsertTagsCompany::getPhoneDirect($aEmployeeData['company']);
                     break;
                 case 'companyPhoneDirect':
-                    $sReturn = self::_generateCompanyPhoneDirect($curScope);
+                    $sReturn = InsertTagsCompany::getPhoneDirect($aEmployeeData['company']);
                     break;
                 case 'companyFaxDirectDial':
-                    $sReturn = self::_generateCompanyFaxDirectDial($curScope);
+                    $sReturn = InsertTagsCompany::getFaxDirectDial($aEmployeeData['company']);
                     break;
                 case 'companyFaxDirect':
-                    $sReturn = self::_generateCompanyFaxDirect($curScope);
+                    $sReturn = InsertTagsCompany::getFaxDirect($aEmployeeData['company']);
                     break;
                 case 'companyFax':
-                    $sReturn = self::_generateCompanyFax($curScope);
+                    $sReturn = InsertTagsCompany::getFax($aEmployeeData['company']);
                     break;
                 case 'companyPhone':
-                    $sReturn = self::_generateCompanyPhone($curScope);
+                    $sReturn = InsertTagsCompany::getPhone($aEmployeeData['company']);
                     break;
                 case 'companyName':
-                    $sReturn = self::_generateCompanyName($curScope);
+                    $sReturn = InsertTagsCompany::getName($aEmployeeData['company']);
                     break;
                 case 'companyUrl':
-                    $sReturn = self::_generateCompanyUrl($curScope);
+                case 'companyWebsite':
+                case 'companyDomain':
+                    $sReturn = InsertTagsCompany::getUrl($aEmployeeData['company']);
                     break;
                 case 'companyLogo':
-                    $sReturn = self::_generateCompanyLogo($curScope);
+                    $sReturn = InsertTagsCompany::getLogo($aEmployeeData['company']);
                     break;
                 case 'companyEmail':
-                    $sReturn = self::_generateCompanyEmail($curScope);
+                    $sReturn = InsertTagsCompany::getEmail($aEmployeeData['company']);
                     break;
-            }
-
-
-            if ($sReturn === false) {
-                if (isset($curScope[$curScope['getItem']])) {
-                    $sReturn = $curScope[$curScope['getItem']];
-                }
             }
 
 
@@ -168,250 +350,12 @@
             if (isset($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag'])) {
                 foreach ($GLOBALS['TL_HOOKS']['mycEmployeeInsertTag'] as $callback) {
                     $this->import($callback[0]);
-                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $aEmployee, $this);
                 }
             }
 
 
             return $sReturn;
-        }
-
-
-        /**
-         * @param $el
-         */
-        private function _getData($el)
-        {
-
-            $strip_prefix = str_replace('employee_', '', $el);
-            $itagArr      = explode("::", $strip_prefix);
-            $shorthandle  = $itagArr[0];
-
-            $t = \MyCompany\EmployeeModel::getAllShorthandlesAsArray($shorthandle);
-
-            if (is_array($t) && count($t) > 0) {
-                $t['getItem'] = $itagArr[1];
-                $this->setEmployees($t);
-            }
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateNameWTitle($item)
-        {
-
-            $title = ($item['title']) ? $item['title'] . ' ' : '';
-
-            return $title . self::_generateName($item);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateName($item)
-        {
-
-            return $item['surname'] . ' ' . $item['lastname'];
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyEmail($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['email'];
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyName($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['name'] . ' ' . $aCompany['legalForm'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirectDial($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['phoneDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirect($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirectDial($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['faxDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirect($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyUrl($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['domain'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhone($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['phoneBasic'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFax($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['faxBasic'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generatePhone($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['phoneBasic'], $item['phoneExt']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateFax($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['faxBasic'], $item['faxExt']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyLogo($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-            $oFile    = FilesModel::findByUuid($aCompany['logo']);
-
-            return $oFile->path;
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generatePicture($item)
-        {
-
-            $oFile = FilesModel::findByUuid($item['picture']);
-
-            return $oFile->path;
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateFullName($item)
-        {
-
-            return $item['title'] . ' ' . $item['surname'] . ' ' . $item['lastname'];
         }
     }
 

@@ -27,6 +27,7 @@
      * @package MyCompany
      */
     use Contao\FilesModel;
+    use MyCompany\Helper\MyCompanyHelper;
     use MyCompany\Helper\Text;
 
     /**
@@ -40,52 +41,100 @@
         /**
          * @var
          */
-        public $customer;
-
-        /**
-         * @var
-         */
-        public $documentType;
+        public static $documentType;
 
 
         /**
          * @return mixed
          */
-        public function getCustomer()
+        public static function getDocumentType()
         {
 
-            return $this->customer;
-        }
-
-
-        /**
-         * @param mixed $customer
-         */
-        public function setCustomer($customer)
-        {
-
-            $this->customer = $customer;
-        }
-
-
-        /**
-         * @return mixed
-         */
-        public function getDocumentType()
-        {
-
-            return $this->documentType;
+            return self::$documentType;
         }
 
 
         /**
          * @param mixed $documentType
          */
-        public function setDocumentType($documentType)
+        public static function setDocumentType($documentType)
         {
 
-            $this->documentType = $documentType;
+            self::$documentType = $documentType;
         }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed|null
+         */
+        public static function getLogo(&$ident)
+        {
+
+            $aCustomer = CustomerModel::getInstance($ident);
+            $oFile     = FilesModel::findByUuid($aCustomer['logo']);
+
+            return $oFile->path;
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getName(&$ident)
+        {
+
+            $aCustomer = CustomerModel::getById($ident);
+
+            return $aCustomer['name'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getUrl(&$ident)
+        {
+
+            $aCustomer = CustomerModel::getById($ident);
+
+            return $aCustomer['url'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getDescription(&$ident)
+        {
+
+            $aCustomer = CustomerModel::getById($ident);
+
+            return $aCustomer['description'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getCompany(&$ident)
+        {
+
+            $aCustomer = CustomerModel::getById($ident);
+
+            return $aCustomer['company'];
+        }
+
+
 
 
         /**
@@ -103,60 +152,64 @@
 
             global $objPage;
 
-            //set pageType
-            $this->setDocumentType($objPage->outputFormat);
-            $this->_getData($strTag);
+            self::setDocumentType($objPage->outputFormat);
+
+            $aTag     = MyCompanyHelper::_parseTag($strTag);
+            $mIdent   = $aTag['ident'];
+            $sItem    = $aTag['item'];
+            $aProject = CustomerModel::getInstance($mIdent);
 
 
-            $sReturn  = false;
-            $curScope = $this->getCustomer();
+            $sReturn = false;
 
-            /**
-             * @TODO: IMPLEMENT INSERTTAGS HERE!
-             */
-
-
-            switch ($curScope['getItem']) {
+            switch ($sItem) {
                 case 'logo':
-                    $sReturn = $this->_getLogo($curScope);
+                    $sReturn = self::getLogo($mIdent);
+                    break;
+                case 'name':
+                    $sReturn = self::getName($mIdent);
+                    break;
+                case 'description':
+                    $sReturn = self::getDescription($mIdent);
+                    break;
+                case 'url':
+                    $sReturn = self::getUrl($mIdent);
+                    break;
+                case 'company':
+                    $sReturn = self::getCompany($mIdent);
                     break;
                 case 'companyPhoneDirectDial':
-                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    $sReturn = InsertTagsCompany::getPhoneDirect($aProject['company']);
                     break;
                 case 'companyPhoneDirect':
-                    $sReturn = self::_generateCompanyPhoneDirect($curScope);
+                    $sReturn = InsertTagsCompany::getPhoneDirect($aProject['company']);
                     break;
                 case 'companyFaxDirectDial':
-                    $sReturn = self::_generateCompanyFaxDirectDial($curScope);
+                    $sReturn = InsertTagsCompany::getFaxDirectDial($aProject['company']);
                     break;
                 case 'companyFaxDirect':
-                    $sReturn = self::_generateCompanyFaxDirect($curScope);
+                    $sReturn = InsertTagsCompany::getFaxDirect($aProject['company']);
                     break;
                 case 'companyFax':
-                    $sReturn = self::_generateCompanyFax($curScope);
+                    $sReturn = InsertTagsCompany::getFax($aProject['company']);
                     break;
                 case 'companyPhone':
-                    $sReturn = self::_generateCompanyPhone($curScope);
+                    $sReturn = InsertTagsCompany::getPhone($aProject['company']);
                     break;
                 case 'companyName':
-                    $sReturn = self::_generateCompanyName($curScope);
+                    $sReturn = InsertTagsCompany::getName($aProject['company']);
                     break;
                 case 'companyUrl':
-                    $sReturn = self::_generateCompanyUrl($curScope);
+                case 'companyDomain':
+                case 'companyWebsite':
+                    $sReturn = InsertTagsCompany::getUrl($aProject['company']);
                     break;
                 case 'companyLogo':
-                    $sReturn = self::_generateCompanyLogo($curScope);
+                    $sReturn = InsertTagsCompany::getLogo($aProject['company']);
                     break;
                 case 'companyEmail':
-                    $sReturn = self::_generateCompanyEmail($curScope);
+                    $sReturn = InsertTagsCompany::getEmail($aProject['company']);
                     break;
-            }
-
-
-            if ($sReturn === false) {
-                if (isset($curScope[$curScope['getItem']])) {
-                    $sReturn = $curScope[$curScope['getItem']];
-                }
             }
 
 
@@ -164,188 +217,11 @@
             if (isset($GLOBALS['TL_HOOKS']['mycCustomerInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'])) {
                 foreach ($GLOBALS['TL_HOOKS']['mycCustomerInsertTag'] as $callback) {
                     $this->import($callback[0]);
-                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
+                    $sReturn = $this->$callback[0]->$callback[1]($strTag, $aProject, $this);
                 }
             }
 
             return $sReturn;
-        }
-
-
-
-
-
-        /**
-         * @param $el
-         */
-        private function _getData($el)
-        {
-
-            $strip_prefix = str_replace('customer_', '', $el);
-            $itagArr      = explode("::", $strip_prefix);
-            $shorthandle  = $itagArr[0];
-
-
-            $t = \MyCompany\CustomerModel::getAllShorthandlesAsArray($shorthandle);
-
-            if (is_array($t) && count($t) > 0) {
-                $t['getItem'] = $itagArr[1];
-                $this->setCustomer($t);
-            }
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyEmail($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['email'];
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyName($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['name'] . ' ' . $aCompany['legalForm'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirectDial($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['phoneDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirect($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirectDial($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['faxDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirect($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyUrl($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['domain'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyLogo($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-            $oFile    = FilesModel::findByUuid($aCompany['logo']);
-
-            return $oFile->path;
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhone($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['phoneBasic'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFax($item)
-        {
-
-            $aCompany = CompanyModel::getById($item['company']);
-
-            return $aCompany['faxBasic'];
-        }
-
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _getLogo($item)
-        {
-
-            $oFile = FilesModel::findByUuid($item['logo']);
-
-            return $oFile->path;
         }
 
     }

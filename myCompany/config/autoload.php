@@ -42,10 +42,12 @@
                                 'MyCompany\CE\StaticMap'       => 'system/modules/myCompany/contentElements/googlemaps/StaticMap.php',
 
                                 // Helpers
+                                'MyCompany\Helper\MyCompanyHelper'    => 'system/modules/myCompany/helpers/MyCompanyHelper.php',
                                 'MyCompany\Helper\DataMaps'    => 'system/modules/myCompany/helpers/DataMaps.php',
                                 'MyCompany\Helper\Text'    => 'system/modules/myCompany/helpers/Text.php',
 
                                 // Models
+                                'MyCompany\MyCompanyModel'      => 'system/modules/myCompany/models/MyCompanyModel.php',
                                 'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',
                                 'MyCompany\EmployeeDataModel'  => 'system/modules/myCompany/models/EmployeeDataModel.php',
                                 'MyCompany\CompanyModel'       => 'system/modules/myCompany/models/CompanyModel.php',

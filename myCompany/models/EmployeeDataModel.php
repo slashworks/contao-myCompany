@@ -27,22 +27,17 @@
      *
      * @package MyCompany
      */
-    class EmployeeDataModel extends \Model
+    class EmployeeDataModel extends MyCompanyModel
     {
 
 
+
         /**
-         * @param $id
+         * Table name
          *
-         * @return array
+         * @var string
          */
-        public static function getById($id)
-        {
-
-            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycEmployeeData WHERE id = ?')->execute($id);
-
-            return $oResult->row();
-        }
+        protected static $strTable = 'tl_mycEmployeeData';
 
 
         /**

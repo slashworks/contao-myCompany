@@ -25,7 +25,7 @@
      *
      * @package MyCompany
      */
-    class EmployeeModel extends \Model
+    class EmployeeModel extends MyCompanyModel
     {
 
         /**
@@ -41,12 +41,15 @@
          *
          * @return array
          */
-        public static function getById($id)
-        {
-
-            $oEmployeeResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycEmployee WHERE id = ?')->execute($id);
-
-            return $oEmployeeResult->row();
+        public static function getInstance($ident){
+            if(is_numeric($ident)){
+                return parent::getInstance($ident);
+            }else{
+                $aEmployeeData = EmployeeDataModel::getInstance($ident);
+                $aEmployee = parent::getInstance($aEmployeeData['pid']);
+                $aEmployee['data'] = $aEmployeeData;
+                return $aEmployee;
+            }
         }
 
 

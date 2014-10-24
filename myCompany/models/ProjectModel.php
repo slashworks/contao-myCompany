@@ -26,33 +26,15 @@
      *
      * @package MyCompany
      */
-    class ProjectModel extends \Model
+    class ProjectModel extends MyCompanyModel
     {
 
         /**
-         * @param $id
+         * Table name
          *
-         * @return array
+         * @var string
          */
-        public function getById($id)
-        {
-
-            $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycProjects WHERE id = ?')->execute($id);
-
-            $aReturn = $oResult->row();
-
-            // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetById']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetById']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetById'] as $callback)
-                {
-                    $this->import($callback[0]);
-                    $this->$callback[0]->$callback[1]($aReturn, $this);
-                }
-            }
-
-            return $aReturn;
-        }
+        protected static $strTable = 'tl_mycProjects';
 
 
         /**

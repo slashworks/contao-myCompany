@@ -27,6 +27,7 @@
      * @package MyCompany
      */
     use Contao\FilesModel;
+    use MyCompany\Helper\MyCompanyHelper;
     use MyCompany\Helper\Text;
 
     /**
@@ -40,51 +41,289 @@
         /**
          * @var
          */
-        public $company;
+        public static $documentType;
+
 
         /**
-         * @var
+         * @param $ident
+         *
+         * @return mixed|null
          */
-        public $documentType;
+        public static function getLogo(&$ident)
+        {
+
+            $item  = CompanyModel::getInstance($ident);
+            $oFile = FilesModel::findByUuid($item['logo']);
+
+            return $oFile->path;
+        }
+
+
+        /**
+         * address getter
+         *
+         * @return string
+         */
+        public static function getAddress(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+            $itemsArr = array
+            (
+                'companyName'    => $aCompany['name'],
+                'companyStreet'  => $aCompany['street'],
+                'companyZipCity' => $aCompany['zip'] . ' ' . $aCompany['city']
+            );
+            $out      = self::blockBuilder($itemsArr);
+
+            return $out;
+        }
+
+
+        /**
+         * @param bool $useLabel
+         *
+         * @return string
+         */
+        public static function getContact(&$ident, $useLabel = false)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            $itemsArr = array
+            (
+                'companyEmail' => self::getEmail($ident),
+                'companyPhone' => self::getPhoneDirect($ident),
+                'companyFax'   => self::getFaxDirect($ident),
+            );
+            $out      = self::blockBuilder($itemsArr, $useLabel);
+
+            return $out;
+        }
+
+
+        /**
+         * email getter
+         *
+         * @param bool $plain
+         *
+         * @return bool|string
+         */
+        public static function getEmail(&$ident, $plain = false)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+            $sReturn = false;
+
+            //check if is plain or not
+            if ($plain === true) {
+                $sReturn = $aCompany['email'];
+            } else {
+                $sReturn = '<a href="mailto:' . $aCompany['email'] . '">' . $aCompany['email'] . '</a>';
+            }
+
+            return $sReturn;
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getPhoneDirectDial(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['phoneDirectDial'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getPhoneDirect(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getFaxDirectDial(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['faxDirectDial'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getFaxDirect(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getPhone(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['phoneBasic'];
+        }
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getName(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['name'];
+        }
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getUrl(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+            return $aCompany['domain'];
+        }
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getStreet(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['street'];
+        }
+
+/**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getCity(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['city'];
+        }
+
+/**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getZip(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['zip'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return string
+         */
+        public static function getFax(&$ident)
+        {
+
+            $aCompany = CompanyModel::getInstance($ident);
+
+            return $aCompany['faxBasic'];
+        }
+
+
+        /**
+         * Helper for html building
+         *
+         * @param        $arr
+         * @param bool   $useLabel
+         * @param string $wrap
+         * @param string $seperator
+         *
+         * @return string
+         * @throws \Exception
+         */
+        public static function blockBuilder($arr, $useLabel = false, $wrap = 'span', $seperator = 'br')
+        {
+
+            if (is_array($arr)) {
+                if (self::getDocumentType() == 'xhtml') {
+                    $seperator .= ' /';
+                }
+
+                $_out = '';
+                foreach ($arr as $key => $item) {
+                    if ($useLabel) {
+                        $_out .= '<' . $wrap . ' class="' . $key . '-label">' . $GLOBALS['TL_LANG']['MSC']['company'][$key] . '</' . $wrap . '>';
+                    }
+                    $_out .= '<' . $wrap . ' class="' . $key . '">' . $item . '</' . $wrap . '><' . $seperator . '>';
+                }
+
+                return $_out;
+            } else {
+                throw new \Exception("Parameter 1 must be an array!");
+            }
+        }
+
 
 
         /**
          * @return mixed
          */
-        public function getCompany()
+        public static function getDocumentType()
         {
 
-            return $this->company;
-        }
-
-
-        /**
-         * @param mixed $companies
-         */
-        public function setCompany($companies)
-        {
-
-            $this->company = $companies;
-        }
-
-
-        /**
-         * @return mixed
-         */
-        public function getDocumentType()
-        {
-
-            return $this->documentType;
+            return self::$documentType;
         }
 
 
         /**
          * @param mixed $documentType
          */
-        public function setDocumentType($documentType)
+        public static function setDocumentType($documentType)
         {
 
-            $this->documentType = $documentType;
+            self::$documentType = $documentType;
         }
 
 
@@ -102,55 +341,72 @@
             }
 
             global $objPage;
-
             //set pageType
-            $this->setDocumentType($objPage->outputFormat);
+            self::setDocumentType($objPage->outputFormat);
 
-            $this->_getData($strTag);
+            $aTag = MyCompanyHelper::_parseTag($strTag);
+            $mIdent = $aTag['ident'];
+            $sItem    = $aTag['item'];
+            $curScope = CompanyModel::getInstance($mIdent);
 
+            $sReturn = false;
 
-            $sReturn  = false;
-            $curScope = $this->getCompany();
-
-            switch ($curScope['getItem']) {
+            switch ($sItem) {
                 case 'mail':
-                    $sReturn = $this->_getEmail();
+                    $sReturn = self::getEmail($mIdent);
                     break;
                 case 'mailPlain':
-                    $sReturn = $this->_getEmail(true);
+                    $sReturn = self::getEmail($mIdent, true);
                     break;
                 case 'phoneDirectDial':
-                    $sReturn = self::_generateCompanyPhoneDirectDial($curScope);
+                    $sReturn = self::getPhoneDirectDial($mIdent);
                     break;
                 case 'phoneDirect':
-                    $sReturn = self::_generateCompanyPhoneDirect($curScope);
+                    $sReturn = self::getPhoneDirect($mIdent);
                     break;
                 case 'faxDirectDial':
-                    $sReturn = self::_generateCompanyFaxDirectDial($curScope);
+                    $sReturn = self::getFaxDirectDial($mIdent);
                     break;
                 case 'faxDirect':
-                    $sReturn = self::_generateCompanyFaxDirect($curScope);
+                    $sReturn = self::getFaxDirect($mIdent);
                     break;
                 case 'fax':
-                    $sReturn = self::_generateCompanyFax($curScope);
+                    $sReturn = self::getFax($mIdent);
                     break;
                 case 'phone':
-                    $sReturn = self::_generateCompanyPhone($curScope);
+                    $sReturn = self::getPhone($mIdent);
                     break;
                 case 'address':
-                    $sReturn = $this->_getAddress();
+                    $sReturn = self::getAddress($mIdent);
                     break;
                 case 'logo':
-                    $sReturn = $this->_getLogo($curScope);
+                    $sReturn = self::getLogo($mIdent);
                     break;
                 case 'contactNoLabel':
-                    $sReturn = $this->_getContact();
+                    $sReturn = self::getContact($mIdent);
                     break;
                 case 'contact':
-                    $sReturn = $this->_getContact(true);
+                    $sReturn = self::getContact($mIdent, true);
                     break;
-                case 'companyEmail':
-                    $sReturn = self::_generateCompanyEmail($curScope);
+                case 'email':
+                    $sReturn = self::getEmail($mIdent);
+                    break;
+                case 'name':
+                    $sReturn = self::getName($mIdent);
+                    break;
+                case 'url':
+                case 'website':
+                case 'domain':
+                    $sReturn = self::getUrl($mIdent);
+                    break;
+                case 'street':
+                    $sReturn = self::getStreet($mIdent);
+                    break;
+                case 'city':
+                    $sReturn = self::getCity($mIdent);
+                    break;
+                case 'zip':
+                    $sReturn = self::getZip($mIdent);
                     break;
             }
 
@@ -185,254 +441,5 @@
             }
 
             return $sReturn;
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _getLogo($item)
-        {
-
-            $oFile = FilesModel::findByUuid($item['logo']);
-
-            return $oFile->path;
-        }
-
-        /**
-         * @param $el
-         */
-        private function _getData($el)
-        {
-
-            $strip_prefix = str_replace('company_', '', $el);
-            $itagArr      = explode("::", $strip_prefix);
-            $shorthandle  = $itagArr[0];
-
-            $t = \MyCompany\CompanyModel::getAllShorthandlesAsArray($shorthandle);
-
-            if (is_array($t) && count($t) > 0) {
-                $t['getItem'] = $itagArr[1];
-                $this->setCompany($t);
-            }
-        }
-
-
-        /**
-         * address getter
-         *
-         * @return string
-         */
-        private function _getAddress()
-        {
-
-            $_cfg     = $this->getCompany();
-            $itemsArr = array
-            (
-                'companyName'    => $_cfg['name'],
-                'companyStreet'  => $_cfg['street'],
-                'companyZipCity' => $_cfg['zip'] . ' ' . $_cfg['city']
-            );
-            $out      = $this->blockBuilder($itemsArr);
-
-            return $out;
-        }
-
-
-        /**
-         * @param bool $useLabel
-         *
-         * @return string
-         */
-        private function _getContact($useLabel = false)
-        {
-
-            $_cfg     = $this->getCompany();
-            $itemsArr = array
-            (
-                'companyEmail' => $this->_getEmail(),
-                'companyPhone' => $this->_getPhoneBasic($_cfg['phoneDirectDial']),
-                'companyFax'   => $this->_getPhoneBasic($_cfg['faxDirectDial'])
-            );
-            $out      = $this->blockBuilder($itemsArr, $useLabel);
-
-            return $out;
-        }
-
-
-        /**
-         * email getter
-         *
-         * @param bool $plain
-         *
-         * @return bool|string
-         */
-        private function _getEmail($plain = false)
-        {
-
-            $sReturn = false;
-
-            // get the Data Array
-            $_cfg = $this->getCompany();
-
-            //build the mail string
-            $_mail = $_cfg['email'];
-
-            //check if is plain or not
-            if ($plain === true) {
-                $sReturn = $_mail;
-            } else {
-                $sReturn = '<a href="mailto:' . $_mail . '">' . $_mail . '</a>';
-            }
-
-            return $sReturn;
-        }
-
-
-        /**
-         * phone getter
-         *
-         * @param bool $number
-         *
-         * @return string
-         */
-        private function _getPhoneBasic($number)
-        {
-
-            $_cfg = $this->getCompany();
-
-            return $_cfg['phoneBasic'] . "-" . $number;
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirectDial($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return $aCompany['phoneDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhoneDirect($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return Text::formatPhoneNumber($aCompany['phoneBasic'], $aCompany['phoneDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirectDial($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return $aCompany['faxDirectDial'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFaxDirect($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return Text::formatPhoneNumber($aCompany['faxBasic'], $aCompany['faxDirectDial']);
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyPhone($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return $aCompany['phoneBasic'];
-        }
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyEmail($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return $aCompany['email'];
-        }
-
-
-        /**
-         * @param $item
-         *
-         * @return string
-         */
-        private function _generateCompanyFax($item)
-        {
-
-            $aCompany = $this->getCompany();
-
-            return $aCompany['faxBasic'];
-        }
-
-
-        /**
-         * Helper for html building
-         *
-         * @param        $arr
-         * @param bool   $useLabel
-         * @param string $wrap
-         * @param string $seperator
-         *
-         * @return string
-         * @throws \Exception
-         */
-        private function blockBuilder($arr, $useLabel = false, $wrap = 'span', $seperator = 'br')
-        {
-
-            if (is_array($arr)) {
-                if ($this->getDocumentType() == 'xhtml') {
-                    $seperator .= ' /';
-                }
-
-                $_out = '';
-                foreach ($arr as $key => $item) {
-                    if ($useLabel) {
-                        $_out .= '<' . $wrap . ' class="' . $key . '-label">' . $GLOBALS['TL_LANG']['MSC']['company'][$key] . '</' . $wrap . '>';
-                    }
-                    $_out .= '<' . $wrap . ' class="' . $key . '">' . $item . '</' . $wrap . '><' . $seperator . '>';
-                }
-
-                return $_out;
-            } else {
-                throw new \Exception("Parameter 1 must be an array!");
-            }
         }
     }

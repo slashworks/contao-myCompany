@@ -21,6 +21,7 @@
     namespace MyCompany;
 
     use Contao\FilesModel;
+    use MyCompany\Helper\MyCompanyHelper;
 
     /**
      * Class InsertTagsCustomer
@@ -33,51 +34,103 @@
         /**
          * @var
          */
-        public $project;
-
-        /**
-         * @var
-         */
-        public $documentType;
+        public static $documentType;
 
 
         /**
          * @return mixed
          */
-        public function getProject()
+        public static function getDocumentType()
         {
 
-            return $this->project;
-        }
-
-
-        /**
-         * @param mixed $customer
-         */
-        public function setProject($project)
-        {
-
-            $this->project = $project;
-        }
-
-
-        /**
-         * @return mixed
-         */
-        public function getDocumentType()
-        {
-
-            return $this->documentType;
+            return self::$documentType;
         }
 
 
         /**
          * @param mixed $documentType
          */
-        public function setDocumentType($documentType)
+        public static function setDocumentType($documentType)
         {
 
-            $this->documentType = $documentType;
+            self::$documentType = $documentType;
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getCustomer(&$ident)
+        {
+
+            $aProject = ProjectModel::getById($ident);
+
+            return $aProject['customer'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getName(&$ident)
+        {
+
+            $aProject = ProjectModel::getById($ident);
+
+            return $aProject['name'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getUrl(&$ident)
+        {
+
+            $aProject = ProjectModel::getById($ident);
+
+            return $aProject['url'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getDescription(&$ident)
+        {
+
+            $aProject = ProjectModel::getById($ident);
+
+            return $aProject['description'];
+        }
+
+
+        /**
+         * @param $ident
+         *
+         * @return mixed
+         */
+        public static function getImages(&$ident)
+        {
+
+            $aImages  = array();
+            $aProject = ProjectModel::getById($ident);
+            $aFiles   = FilesModel::findMultipleByUuids(deserialize($aProject['images']));
+
+            foreach ($aFiles as $oFile) {
+                $aImages[] = $oFile->path;
+            }
+
+
+            return implode("<br>", $aImages);
         }
 
 
@@ -95,27 +148,44 @@
             }
 
             global $objPage;
+            self::setDocumentType($objPage->outputFormat);
 
-            //set pageType
-            $this->setDocumentType($objPage->outputFormat);
-            $this->_getData($strTag);
+            $aTag     = MyCompanyHelper::_parseTag($strTag);
+            $mIdent   = $aTag['ident'];
+            $sItem    = $aTag['item'];
+            $curScope = ProjectModel::getInstance($mIdent);
+            $sReturn  = false;
 
-            $sReturn = false;
-            $curScope  = $this->getProject();
-
-
-            /**
-             * @TODO: IMPLEMENT INSERTTAGS HERE!
-             */
-
-
-            switch ($curScope['getItem']) {
+            switch ($sItem) {
                 case 'images':
-                    $sReturn = $this->_generateImages($curScope);
+                    $sReturn = self::getImages($mIdent);
                     break;
+                case 'name':
+                    $sReturn = self::getName($mIdent);
+                    break;
+                case 'url':
+                    $sReturn = self::getUrl($mIdent);
+                    break;
+                case 'description':
+                    $sReturn = self::getDescription($mIdent);
+                    break;
+                case 'customerLogo':
+                    $sReturn = InsertTagsCustomer::getLogo($mIdent);
+                    break;
+                case 'customerName':
+                    $sReturn = InsertTagsCustomer::getName($mIdent);
+                    break;
+                case 'customerUrl':
+                    $sReturn = InsertTagsCustomer::getUrl($mIdent);
+                    break;
+                case 'customerCompany':
+                    $sReturn = InsertTagsCustomer::getCompany($mIdent);
+                    break;
+                case 'customerDescription':
+                    $sReturn = InsertTagsCustomer::getDescription($mIdent);
+                    break;
+
             }
-
-
 
 
             if ($sReturn === false) {
@@ -126,10 +196,8 @@
 
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycProjectInsertTag']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectInsertTag'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectInsertTag']) && is_array($GLOBALS['TL_HOOKS']['mycProjectInsertTag'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectInsertTag'] as $callback) {
                     $this->import($callback[0]);
                     $sReturn = $this->$callback[0]->$callback[1]($strTag, $curScope, $this);
                 }
@@ -137,41 +205,6 @@
 
 
             return $sReturn;
-        }
-
-
-
-        private function _generateImages($item){
-            $aImages = array();
-            $aTmpImages = deserialize($item['images']);
-            $aFiles = FilesModel::findMultipleByUuids(deserialize($item['images']));
-
-            foreach($aFiles as $oFile){
-                $aImages[] = $oFile->path;
-            }
-
-
-            return implode("<br>",$aImages);
-        }
-
-
-        /**
-         * @param $el
-         */
-        private function _getData($el)
-        {
-
-            $strip_prefix = str_replace('project_', '', $el);
-            $itagArr      = explode("::", $strip_prefix);
-            $shorthandle  = $itagArr[0];
-
-
-            $t = \MyCompany\ProjectModel::getAllShorthandlesAsArray($shorthandle);
-
-            if (is_array($t) && count($t) > 0) {
-                $t['getItem'] = $itagArr[1];
-                $this->setProject($t);
-            }
         }
 
     }

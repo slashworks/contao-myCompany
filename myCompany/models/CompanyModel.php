@@ -31,7 +31,7 @@
      *
      * @package MyCompany
      */
-    class CompanyModel extends \Model
+    class CompanyModel extends MyCompanyModel
     {
 
         /**
@@ -41,31 +41,6 @@
          */
         protected static $strTable = 'tl_mycCompanies';
 
-
-        /**
-         * @param $id
-         *
-         * @return array
-         */
-        public static function getById($id)
-        {
-
-            $oCompanyResult = \Database::getInstance()->execute('SELECT * FROM tl_mycCompanies WHERE id = "' . $id . '"');
-
-            $aReturn = $oCompanyResult->row();
-
-            // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetById']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetById']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetById'] as $callback)
-                {
-                    \System::importStatic($callback[0]);
-                    $callback[0]::$callback[1]($aReturn);
-                }
-            }
-
-            return $aReturn;
-        }
 
 
         /**
@@ -139,30 +114,36 @@
         }
 
 
+
         /**
          * @param $shorthandle
          *
          * @return array
          */
-        public static function getAllShorthandlesAsArray($shorthandle)
+        public static function getByShorthandle($shorthandle, $force = false)
         {
 
-            $oCompany = \Database::getInstance()->prepare("SELECT * from tl_mycCompanies WHERE shorthandle = ?")->execute($shorthandle);
-            $aReturn = $oCompany->row();
+            $aReturn = ($force === false)?self::getInstance($shorthandle):array();
+            if(empty($aReturn)) {
+
+                $oCompany = \Database::getInstance()->prepare("SELECT * from " . static::$strTable . " WHERE shorthandle = ?")->execute($shorthandle);
+                $aReturn  = $oCompany->row();
+            }
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray']))
+            if (isset($GLOBALS['TL_HOOKS']['mycGetByShorthandle']) && is_array($GLOBALS['TL_HOOKS']['mycGetByShorthandle']))
             {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllShorthandlesAsArray'] as $callback)
+                foreach ($GLOBALS['TL_HOOKS']['mycGetByShorthandle'] as $callback)
                 {
                     \System::importStatic($callback[0]);
-                    $callback[0]::$callback[1]($aReturn, $shorthandle);
+                    $callback[0]::$callback[1]($aReturn, $shorthandle, static::$strTable);
                 }
             }
 
 
             return $aReturn;
         }
+
 
 
         /**
