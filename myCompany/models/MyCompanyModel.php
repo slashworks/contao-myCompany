@@ -50,38 +50,37 @@
 
 
         /**
-         * @param $id
+         * @param $ident
          *
          * @return array
          */
         public static function getInstance($ident = null)
         {
-            $key = get_called_class();
-            if($ident === null){
-                if(!isset(self::$instances[$key]['direct'])){
-                    self::$instances[$key]['direct'] = new $key();
-                    return self::$instances[$key]['direct'];
-                }else{
-                    return self::$instances[$key]['direct'];
+
+            $sCalledClassname = get_called_class();
+            if ($ident === null) {
+                if (!isset(self::$instances[$sCalledClassname]['direct'])) {
+                    self::$instances[$sCalledClassname]['direct'] = new $sCalledClassname();
                 }
+                return self::$instances[$sCalledClassname]['direct'];
             }
 
 
-            if (!isset(self::$instances[$key])) {
-                self::$instances[$key] = array();
+            if (!isset(self::$instances[$sCalledClassname])) {
+                self::$instances[$sCalledClassname] = array();
             }
 
-            if (array_key_exists($ident, self::$instances[$key]) && !empty(self::$instances[$key][$ident])) {
-                return self::$instances[$key][$ident];
+            if (array_key_exists($ident, self::$instances[$sCalledClassname]) && !empty(self::$instances[$sCalledClassname][$ident])) {
+                return self::$instances[$sCalledClassname][$ident];
             } else {
                 if (is_numeric($ident)) {
-                    self::$instances[$key][$ident] = self::getById($ident, true);
+                    self::$instances[$sCalledClassname][$ident] = self::getById($ident, true);
 
-                    return self::$instances[$key][$ident];
+                    return self::$instances[$sCalledClassname][$ident];
                 } elseif (is_string($ident)) {
-                    self::$instances[$key][$ident] = self::getByShorthandle($ident, true);
+                    self::$instances[$sCalledClassname][$ident] = self::getByShorthandle($ident, true);
 
-                    return self::$instances[$key][$ident];
+                    return self::$instances[$sCalledClassname][$ident];
                 }
 
                 return array();
