@@ -38,6 +38,30 @@
 
 
         /**
+         * @param $shorthandle
+         *
+         * @return array
+         */
+        public static function getAllShorthandlesAsArray($shorthandle)
+        {
+
+            $oProject = \Database::getInstance()->prepare("SELECT * from tl_mycProjects WHERE shorthandle = ?")->execute($shorthandle);
+            $aReturn  = $oProject->row();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray'] as $callback) {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, $shorthandle);
+                }
+            }
+
+
+            return $aReturn;
+        }
+
+
+        /**
          * @param $company_id
          *
          * @return array
@@ -50,10 +74,8 @@
             $aReturn = $oResult->row();
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCompany']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCompany'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCompany'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCompany'] as $callback) {
                     $this->import($callback[0]);
                     $this->$callback[0]->$callback[1]($aReturn, $this);
                 }
@@ -76,10 +98,8 @@
             $aReturn = $oResult->row();
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomer'] as $callback) {
                     $this->import($callback[0]);
                     $this->$callback[0]->$callback[1]($aReturn, $this);
                 }
@@ -103,41 +123,12 @@
             $aReturn = $oResult->row();
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany']) && is_array($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycProjectGetByCustomerAndCompany'] as $callback) {
                     $this->import($callback[0]);
                     $this->$callback[0]->$callback[1]($aReturn, $this);
                 }
             }
-
-            return $aReturn;
-        }
-
-
-
-        /**
-         * @param $shorthandle
-         *
-         * @return array
-         */
-        public static function getAllShorthandlesAsArray($shorthandle)
-        {
-
-            $oProject = \Database::getInstance()->prepare("SELECT * from tl_mycProjects WHERE shorthandle = ?")->execute($shorthandle);
-            $aReturn = $oProject->row();
-
-            // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycProjectsGetAllShorthandlesAsArray'] as $callback)
-                {
-                    \System::importStatic($callback[0]);
-                    $callback[0]::$callback[1]($aReturn, $shorthandle);
-                }
-            }
-
 
             return $aReturn;
         }

@@ -25,39 +25,39 @@
     ClassLoader::addClasses(array
                             (
                                 // Classes
-                                'MyCompany\Company'           => 'system/modules/myCompany/classes/backend/Company.php',
-                                'MyCompany\Employee'           => 'system/modules/myCompany/classes/backend/Employee.php',
-                                'MyCompany\EmployeeData'       => 'system/modules/myCompany/classes/backend/EmployeeData.php',
-                                'MyCompany\InsertTagsCompany'  => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
-                                'MyCompany\InsertTagsEmployee' => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
-                                'MyCompany\InsertTagsCustomer' => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
-                                'MyCompany\InsertTagsProject'  => 'system/modules/myCompany/classes/frontend/InsertTagsProject.php',
+                                'MyCompany\Company'                => 'system/modules/myCompany/classes/backend/Company.php',
+                                'MyCompany\Employee'               => 'system/modules/myCompany/classes/backend/Employee.php',
+                                'MyCompany\EmployeeData'           => 'system/modules/myCompany/classes/backend/EmployeeData.php',
+                                'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
+                                'MyCompany\InsertTagsEmployee'     => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
+                                'MyCompany\InsertTagsCustomer'     => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
+                                'MyCompany\InsertTagsProject'      => 'system/modules/myCompany/classes/frontend/InsertTagsProject.php',
 
 
                                 //Content elements
-                                'MyCompany\CE\Employee'        => 'system/modules/myCompany/contentElements/employee/Employee.php',
-                                'MyCompany\CE\Employees'       => 'system/modules/myCompany/contentElements/employee/Employees.php',
-                                'MyCompany\CE\RoutingButton'   => 'system/modules/myCompany/contentElements/googlemaps/RoutingButton.php',
-                                'MyCompany\CE\CeMycWrapper'    => 'system/modules/myCompany/contentElements/CeMycWrapper.php',
-                                'MyCompany\CE\StaticMap'       => 'system/modules/myCompany/contentElements/googlemaps/StaticMap.php',
+                                'MyCompany\CE\Employee'            => 'system/modules/myCompany/contentElements/employee/Employee.php',
+                                'MyCompany\CE\Employees'           => 'system/modules/myCompany/contentElements/employee/Employees.php',
+                                'MyCompany\CE\RoutingButton'       => 'system/modules/myCompany/contentElements/googlemaps/RoutingButton.php',
+                                'MyCompany\CE\CeMycWrapper'        => 'system/modules/myCompany/contentElements/CeMycWrapper.php',
+                                'MyCompany\CE\StaticMap'           => 'system/modules/myCompany/contentElements/googlemaps/StaticMap.php',
 
                                 // Helpers
-                                'MyCompany\Helper\MyCompanyHelper'    => 'system/modules/myCompany/helpers/MyCompanyHelper.php',
-                                'MyCompany\Helper\DataMaps'    => 'system/modules/myCompany/helpers/DataMaps.php',
-                                'MyCompany\Helper\Text'    => 'system/modules/myCompany/helpers/Text.php',
+                                'MyCompany\Helper\MyCompanyHelper' => 'system/modules/myCompany/helpers/MyCompanyHelper.php',
+                                'MyCompany\Helper\DataMaps'        => 'system/modules/myCompany/helpers/DataMaps.php',
+                                'MyCompany\Helper\Text'            => 'system/modules/myCompany/helpers/Text.php',
 
                                 // Models
-                                'MyCompany\MyCompanyModel'      => 'system/modules/myCompany/models/MyCompanyModel.php',
-                                'MyCompany\EmployeeModel'      => 'system/modules/myCompany/models/EmployeeModel.php',
-                                'MyCompany\EmployeeDataModel'  => 'system/modules/myCompany/models/EmployeeDataModel.php',
-                                'MyCompany\CompanyModel'       => 'system/modules/myCompany/models/CompanyModel.php',
-                                'MyCompany\CustomerModel'       => 'system/modules/myCompany/models/CustomerModel.php',
-                                'MyCompany\ProjectModel'       => 'system/modules/myCompany/models/ProjectModel.php',
+                                'MyCompany\MyCompanyModel'         => 'system/modules/myCompany/models/MyCompanyModel.php',
+                                'MyCompany\EmployeeModel'          => 'system/modules/myCompany/models/EmployeeModel.php',
+                                'MyCompany\EmployeeDataModel'      => 'system/modules/myCompany/models/EmployeeDataModel.php',
+                                'MyCompany\CompanyModel'           => 'system/modules/myCompany/models/CompanyModel.php',
+                                'MyCompany\CustomerModel'          => 'system/modules/myCompany/models/CustomerModel.php',
+                                'MyCompany\ProjectModel'           => 'system/modules/myCompany/models/ProjectModel.php',
 
                                 // Modules
-                                'MyCompany\EmployeeListModule' => 'system/modules/myCompany/modules/EmployeeListModule.php',
-                                'MyCompany\CompanyLogoModule'  => 'system/modules/myCompany/modules/CompanyLogoModule.php',
-                                'MyCompany\SocialMediaLinks'   => 'system/modules/myCompany/modules/SocialMediaLinks.php',
+                                'MyCompany\EmployeeListModule'     => 'system/modules/myCompany/modules/EmployeeListModule.php',
+                                'MyCompany\CompanyLogoModule'      => 'system/modules/myCompany/modules/CompanyLogoModule.php',
+                                'MyCompany\SocialMediaLinks'       => 'system/modules/myCompany/modules/SocialMediaLinks.php',
                             ));
 
 

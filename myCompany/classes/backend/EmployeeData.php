@@ -118,11 +118,11 @@ LISTITEM;
 
 
             $iColWidth = 70;
-            $aLogo    = \FilesModel::findByUuid($row['picture']);
-            $path     = \Image::get($aLogo->path, 56, 56, "proportional");
+            $aLogo     = \FilesModel::findByUuid($row['picture']);
+            $path      = \Image::get($aLogo->path, 56, 56, "proportional");
 
             $sReturn = "<div style=\"height:61px;float:left;width:56px;padding:8px 10px 10px 10px;vertical-align:middle;display:inline-block;text-align:center;\">
-                            <div style=\"display:inline-block;vertical-align:middle;height:100%;\"></div><img src=\"".$path."\" style=\"display:inline-block;vertical-align:middle;\">
+                            <div style=\"display:inline-block;vertical-align:middle;height:100%;\"></div><img src=\"" . $path . "\" style=\"display:inline-block;vertical-align:middle;\">
                         </div>";
             $sReturn .= "<div style='height:61px;padding:10px 0;'><b>" . $row['position'] . "</b><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;margin-top:5px;'>E-Mail:</span><a style='color:#888;' href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Durchwahl:</span><span style='color:#888'>" . $row['phoneExt'] . "</span><br><span style='color:#888;display:inline-block;width:" . $iColWidth . "px;'>Kürzel.:</span><span style='color:#888;display:inline-block;'> " . $row['shorthandle'] . "</span></div>";
 

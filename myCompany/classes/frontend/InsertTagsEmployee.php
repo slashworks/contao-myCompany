@@ -138,7 +138,9 @@
          */
         public static function getSurname(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['surname'];
         }
 
@@ -150,7 +152,9 @@
          */
         public static function getLastname(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['lastname'];
         }
 
@@ -162,7 +166,9 @@
          */
         public static function getTitle(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['title'];
         }
 
@@ -174,7 +180,9 @@
          */
         public static function getPosition(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['position'];
         }
 
@@ -186,7 +194,9 @@
          */
         public static function getAbout(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['about'];
         }
 
@@ -198,7 +208,9 @@
          */
         public static function getEmail(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['email'];
         }
 
@@ -210,7 +222,9 @@
          */
         public static function getMobile(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['mobile'];
         }
 
@@ -222,7 +236,9 @@
          */
         public static function getPhoneExt(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['phoneExt'];
         }
 
@@ -234,7 +250,9 @@
          */
         public static function getFaxExt(&$ident)
         {
+
             $aEmployee = EmployeeModel::getInstance($ident);
+
             return $aEmployee['data']['faxExt'];
         }
 
@@ -256,9 +274,9 @@
             global $objPage;
             self::setDocumentType($objPage->outputFormat);
 
-            $aTag             = MyCompanyHelper::_parseTag($strTag);
-            $mIdent           = $aTag['ident'];
-            $sItem            = $aTag['item'];
+            $aTag              = MyCompanyHelper::_parseTag($strTag);
+            $mIdent            = $aTag['ident'];
+            $sItem             = $aTag['item'];
             $aEmployeeData     = EmployeeDataModel::getInstance($mIdent);
             $aEmployee         = EmployeeModel::getInstance($aEmployeeData['pid']);
             $aEmployee['data'] = $aEmployeeData;

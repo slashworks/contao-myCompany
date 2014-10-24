@@ -62,21 +62,20 @@
             $imgSize = deserialize($this->size);
 
             foreach ($employees as $k => $v) {
-                $employee            = EmployeeModel::getById($v);
-                $curCompany          = CompanyModel::findByPk($this->mycCompany);
-                if(!empty($curCompany->logo)){
-                    $oLogo = FilesModel::findByUuid($curCompany->logo);
-                    $sLogoPath = $oLogo->path;
+                $employee   = EmployeeModel::getById($v);
+                $curCompany = CompanyModel::findByPk($this->mycCompany);
+                if (!empty($curCompany->logo)) {
+                    $oLogo            = FilesModel::findByUuid($curCompany->logo);
+                    $sLogoPath        = $oLogo->path;
                     $curCompany->logo = $sLogoPath;
                 }
 
                 $curCompany->optionals = deserialize($curCompany->optionals);
                 $curCompany->positions = deserialize($curCompany->positions);
-                $curCompany->socials = deserialize($curCompany->socials);
+                $curCompany->socials   = deserialize($curCompany->socials);
 
                 $data['employees'][] = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
             }
-
 
 
             return $data;

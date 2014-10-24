@@ -37,8 +37,6 @@
         protected static $strTable = 'tl_mycCustomers';
 
 
-
-
         /**
          * @param $company_id
          *

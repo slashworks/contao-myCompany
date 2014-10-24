@@ -65,12 +65,9 @@
             }
 
 
-
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycModifyEmployeeList']) && is_array($GLOBALS['TL_HOOKS']['mycModifyEmployeeList']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycModifyEmployeeList'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycModifyEmployeeList']) && is_array($GLOBALS['TL_HOOKS']['mycModifyEmployeeList'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycModifyEmployeeList'] as $callback) {
                     $this->import($callback[0]);
                     $this->$callback[0]->$callback[1]($aEmployees, $employeeData, $curCompany, $employeeIds, $imgSize, $this);
                 }

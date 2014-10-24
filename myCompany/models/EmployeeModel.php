@@ -41,13 +41,16 @@
          *
          * @return array
          */
-        public static function getInstance($ident){
-            if(is_numeric($ident)){
+        public static function getInstance($ident)
+        {
+
+            if (is_numeric($ident)) {
                 return parent::getInstance($ident);
-            }else{
-                $aEmployeeData = EmployeeDataModel::getInstance($ident);
-                $aEmployee = parent::getInstance($aEmployeeData['pid']);
+            } else {
+                $aEmployeeData     = EmployeeDataModel::getInstance($ident);
+                $aEmployee         = parent::getInstance($aEmployeeData['pid']);
                 $aEmployee['data'] = $aEmployeeData;
+
                 return $aEmployee;
             }
         }
@@ -88,7 +91,6 @@
             return $data;
 
         }
-
 
 
         /**

@@ -113,7 +113,7 @@
         {
 
             $aCompany = CompanyModel::getInstance($ident);
-            $sReturn = false;
+            $sReturn  = false;
 
             //check if is plain or not
             if ($plain === true) {
@@ -194,6 +194,8 @@
 
             return $aCompany['phoneBasic'];
         }
+
+
         /**
          * @param $ident
          *
@@ -206,6 +208,8 @@
 
             return $aCompany['name'];
         }
+
+
         /**
          * @param $ident
          *
@@ -215,8 +219,10 @@
         {
 
             $aCompany = CompanyModel::getInstance($ident);
+
             return $aCompany['domain'];
         }
+
 
         /**
          * @param $ident
@@ -231,7 +237,8 @@
             return $aCompany['street'];
         }
 
-/**
+
+        /**
          * @param $ident
          *
          * @return string
@@ -244,7 +251,8 @@
             return $aCompany['city'];
         }
 
-/**
+
+        /**
          * @param $ident
          *
          * @return string
@@ -306,7 +314,6 @@
         }
 
 
-
         /**
          * @return mixed
          */
@@ -344,8 +351,8 @@
             //set pageType
             self::setDocumentType($objPage->outputFormat);
 
-            $aTag = MyCompanyHelper::_parseTag($strTag);
-            $mIdent = $aTag['ident'];
+            $aTag     = MyCompanyHelper::_parseTag($strTag);
+            $mIdent   = $aTag['ident'];
             $sItem    = $aTag['item'];
             $curScope = CompanyModel::getInstance($mIdent);
 

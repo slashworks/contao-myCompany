@@ -55,7 +55,7 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'checkboxWizard',
-//            'options_callback' => array('\MyCompany\EmployeeModel', 'getAllEmployeeAsArray'),
+            //            'options_callback' => array('\MyCompany\EmployeeModel', 'getAllEmployeeAsArray'),
             'options_callback' => array('myCompany_tl_content', 'getEmployeeByCompany'),
             'eval'             => array('multiple' => true, 'helpwizard' => true),
             'sql'              => "blob NULL"

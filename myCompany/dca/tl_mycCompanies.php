@@ -51,8 +51,8 @@
             ),
             'label'             => array
             (
-                'fields' => array('name'),
-                'format' => '%s',
+                'fields'         => array('name'),
+                'format'         => '%s',
                 'label_callback' => array('MyCompany\Company', 'getListLabel')
             ),
             'global_operations' => array
@@ -145,7 +145,7 @@
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['shorthandle'],
                 'exclude'   => true,
                 'inputType' => 'text',
-                'eval'      => array('mandatory' => true,'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+                'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
             'street'          => array

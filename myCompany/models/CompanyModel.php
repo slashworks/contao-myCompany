@@ -21,11 +21,11 @@
 
     namespace MyCompany;
 
-    /**
-     * Class CompanyModel
-     *
-     * @package MyCompany
-     */
+        /**
+         * Class CompanyModel
+         *
+         * @package MyCompany
+         */
     /**
      * Class CompanyModel
      *
@@ -40,7 +40,6 @@
          * @var string
          */
         protected static $strTable = 'tl_mycCompanies';
-
 
 
         /**
@@ -58,10 +57,8 @@
             }
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllCompaniesAsArray'] as $callback) {
                     \System::importStatic($callback[0]);
                     $callback[0]::$callback[1]($data, $oCompany);
                 }
@@ -78,7 +75,7 @@
         {
 
             // select company id from active member
-            $oCompany = \Database::getInstance()->prepare('SELECT company FROM tl_mycEmployee WHERE id=?')->execute(\Input::get('id'));
+            $oCompany  = \Database::getInstance()->prepare('SELECT company FROM tl_mycEmployee WHERE id=?')->execute(\Input::get('id'));
             $companyId = false;
             while ($oCompany->next()) {
                 $companyId = $oCompany->company;
@@ -101,10 +98,8 @@
             }
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetAllPositionsAsArray'] as $callback) {
                     \System::importStatic($callback[0]);
                     $callback[0]::$callback[1]($arrPositions, $objPositions, $objCompanyId, $oCompany);
                 }
@@ -112,7 +107,6 @@
 
             return $arrPositions;
         }
-
 
 
         /**
@@ -123,18 +117,16 @@
         public static function getByShorthandle($shorthandle, $force = false)
         {
 
-            $aReturn = ($force === false)?self::getInstance($shorthandle):array();
-            if(empty($aReturn)) {
+            $aReturn = ($force === false) ? self::getInstance($shorthandle) : array();
+            if (empty($aReturn)) {
 
                 $oCompany = \Database::getInstance()->prepare("SELECT * from " . static::$strTable . " WHERE shorthandle = ?")->execute($shorthandle);
                 $aReturn  = $oCompany->row();
             }
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycGetByShorthandle']) && is_array($GLOBALS['TL_HOOKS']['mycGetByShorthandle']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycGetByShorthandle'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycGetByShorthandle']) && is_array($GLOBALS['TL_HOOKS']['mycGetByShorthandle'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycGetByShorthandle'] as $callback) {
                     \System::importStatic($callback[0]);
                     $callback[0]::$callback[1]($aReturn, $shorthandle, static::$strTable);
                 }
@@ -143,7 +135,6 @@
 
             return $aReturn;
         }
-
 
 
         /**
@@ -155,14 +146,12 @@
         {
 
             $oCompany = \Database::getInstance()->prepare("SELECT socials from tl_mycCompanies WHERE id = ?")->execute($id);
-            $aReturn = deserialize($oCompany->socials);
+            $aReturn  = deserialize($oCompany->socials);
 
 
             // HOOK
-            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray']))
-            {
-                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray'] as $callback)
-                {
+            if (isset($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray']) && is_array($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycCompanyGetSocialLinksAsArray'] as $callback) {
                     \System::importStatic($callback[0]);
                     $callback[0]::$callback[1]($aReturn, $oCompany);
                 }

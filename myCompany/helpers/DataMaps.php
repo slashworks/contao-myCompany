@@ -49,33 +49,31 @@
             $oEmployee = (is_array($aEmployee)) ? json_decode(json_encode($aEmployee), false) : $aEmployee;
             $oCompany  = (is_array($aCompany)) ? json_decode(json_encode($aCompany), false) : $aCompany;
 
-            if(!empty($oCompany->logo)){
-                $oLogo = FilesModel::findByUuid($oCompany->logo);
-                $sLogoPath = $oLogo->path;
+            if (!empty($oCompany->logo)) {
+                $oLogo          = FilesModel::findByUuid($oCompany->logo);
+                $sLogoPath      = $oLogo->path;
                 $oCompany->logo = $sLogoPath;
             }
 
             $oCompany->optionals = deserialize($oCompany->optionals);
             $oCompany->positions = deserialize($oCompany->positions);
-            $oCompany->socials = deserialize($oCompany->socials);
-
+            $oCompany->socials   = deserialize($oCompany->socials);
 
 
             $aEmployeeData = EmployeeDataModel::getDataByEmployee($oEmployee->id, $oCompany->id);
 
 
-
-            foreach($aEmployeeData as $key => $data){
-                if(!empty($data['picture'])) {
-                        $oPicture     = FilesModel::findByUuid($data['picture']);
-                    if(!empty($imgSize)) {
+            foreach ($aEmployeeData as $key => $data) {
+                if (!empty($data['picture'])) {
+                    $oPicture = FilesModel::findByUuid($data['picture']);
+                    if (!empty($imgSize)) {
                         $sPicturePath = Image::get($oPicture->path, $imgSize[0], $imgSize[1], $imgSize[2]);
-                    }else{
+                    } else {
                         $sPicturePath = $oPicture->path;
                     }
-                        $aEmployeeData[$key]['picture'] = $sPicturePath;
+                    $aEmployeeData[$key]['picture'] = $sPicturePath;
                 }
-                if($data['company'] == $oCompany->id){
+                if ($data['company'] == $oCompany->id) {
                     $aEmployeeData[$key]['company'] = $oCompany;
                 }
                 $aEmployeeData[$key]['socials'] = deserialize($aEmployeeData[$key]['socials']);
@@ -90,8 +88,8 @@
 
             //generate data array
             $data = array(
-                'gender'  => $oEmployee->gender,
-                'title'  => $oEmployee->title,
+                'gender'    => $oEmployee->gender,
+                'title'     => $oEmployee->title,
                 'name'      => $oEmployee->surname . ' ' . $oEmployee->lastname,
                 'surname'   => $oEmployee->surname,
                 'lastname'  => $oEmployee->lastname,

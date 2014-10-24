@@ -138,7 +138,7 @@
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50', 'rgxp' => 'url'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
-            'logo'            => array
+            'logo'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'],
                 'exclude'   => true,
@@ -163,12 +163,12 @@
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
                 'sql'       => "text NULL"
             ),
-            'shorthandle'     => array
+            'shorthandle' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['shorthandle'],
                 'exclude'   => true,
                 'inputType' => 'text',
-                'eval'      => array('mandatory' => true,'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
+                'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
         )

@@ -23,7 +23,7 @@
      * Content Elements
      */
 
-    $GLOBALS['TL_LANG']['CTE']['myCompany']        = 'Mein Unternehmen';
+    $GLOBALS['TL_LANG']['CTE']['myCompany']      = 'Mein Unternehmen';
     $GLOBALS['TL_LANG']['CTE']['mycEmployee'][0] = 'Teammitglied';
     $GLOBALS['TL_LANG']['CTE']['mycEmployee'][1] = 'Gibt ein Teammitglied aus.';
 
