@@ -32,32 +32,6 @@
     class EmployeeData extends \Backend
     {
 
-        /**
-         *
-         */
-        public static function createMember()
-        {
-
-        }
-
-
-        /**
-         *
-         */
-        public static function getMember()
-        {
-
-        }
-
-
-        /**
-         *
-         */
-        public static function deleteMember()
-        {
-
-        }
-
 
         /**
          * @param $objRecords

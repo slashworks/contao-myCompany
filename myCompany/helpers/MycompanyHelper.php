@@ -15,14 +15,18 @@
      * @author      rwollenburg
      * @copyright   rwollenburg@slashworks
      * @since       24.10.14 14:21
-     * @package     Core
+     * @package     MyCompany
      *
      */
-
 
     namespace MyCompany\Helper;
 
 
+    /**
+     * Class MyCompanyHelper
+     *
+     * @package MyCompany\Helper
+     */
     class MyCompanyHelper
     {
 

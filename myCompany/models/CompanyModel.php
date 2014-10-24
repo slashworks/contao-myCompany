@@ -21,11 +21,6 @@
 
     namespace MyCompany;
 
-        /**
-         * Class CompanyModel
-         *
-         * @package MyCompany
-         */
     /**
      * Class CompanyModel
      *
@@ -119,7 +114,6 @@
 
             $aReturn = ($force === false) ? self::getInstance($shorthandle) : array();
             if (empty($aReturn)) {
-
                 $oCompany = \Database::getInstance()->prepare("SELECT * from " . static::$strTable . " WHERE shorthandle = ?")->execute($shorthandle);
                 $aReturn  = $oCompany->row();
             }

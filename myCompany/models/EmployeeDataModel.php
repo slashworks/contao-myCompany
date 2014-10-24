@@ -15,7 +15,7 @@
      * @author      rwollenburg
      * @copyright   rwollenburg@slashworks
      * @since       26.09.14 16:15
-     * @package     Core
+     * @package     MyCompany
      *
      */
 
@@ -40,7 +40,8 @@
 
 
         /**
-         * @param $employee_id
+         * @param      $employee_id
+         * @param null $company
          *
          * @return array
          */
@@ -58,9 +59,6 @@
                 $aResult[] = $oResult->row();
             }
 
-
             return $aResult;
         }
-
-
     }

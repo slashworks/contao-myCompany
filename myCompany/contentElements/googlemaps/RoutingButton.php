@@ -24,36 +24,38 @@
 
     use MyCompany\CompanyModel;
 
+    /**
+     * Class RoutingButton
+     *
+     * @package MyCompany\CE
+     */
     class RoutingButton extends CeMycWrapper
     {
 
+        /**
+         * @return array
+         */
         public function setBeTplArr()
         {
-
             $curCompany = CompanyModel::getById($this->mycCompany);
-
-            return array
-            (
+            return array(
                 'title'   => 'Google Maps Routing Button',
                 'content' => $curCompany->name
             );
         }
 
 
+        /**
+         * @return array
+         */
         public function setTplDataArr()
-
         {
-
             $curCompany = CompanyModel::getById($this->mycCompany);
-
             $addr = urlencode($curCompany['street'] . ' ' . $curCompany['plz'] . ' ' . $curCompany['city']);
 
-            return array
-            (
+            return array(
                 'googleLink' => sprintf('https://maps.google.de/maps?f=d&source=s_d&saddr=&daddr=%s&hl=de&mra=ls', $addr),
                 'linkLabel'  => $this->linkTitle
             );
-
         }
-
     }

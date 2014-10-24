@@ -24,37 +24,39 @@
 
     use MyCompany\CompanyModel;
 
+    /**
+     * Class StaticMap
+     *
+     * @package MyCompany\CE
+     */
     class StaticMap extends CeMycWrapper
     {
 
+        /**
+         * @return array
+         */
         public function setBeTplArr()
         {
-
             $curCompany = CompanyModel::getById($this->mycCompany);
-
-            return array
-            (
-
+            return array(
                 'title'   => 'Google Maps static map',
                 'content' => $curCompany->name
-
             );
 
         }
 
 
+        /**
+         * @return array
+         */
         public function setTplDataArr()
         {
-
             $curCompany = CompanyModel::getById($this->mycCompany);
-
-            return array
-            (
+            return array(
                 'street'   => urlencode($curCompany['street']),
                 'zip'      => urlencode($curCompany['zip']),
                 'city'     => urlencode($curCompany['city']),
                 'isStatic' => $this->mycTeamMapStatic
             );
-
         }
     }

@@ -53,7 +53,6 @@
             </div>
 LABEL;
 
-
             return $sLabel;
         }
     }

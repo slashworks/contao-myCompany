@@ -44,9 +44,7 @@
          */
         public function getByCompany($company_id)
         {
-
             $oResult = \Database::getInstance()->prepare('SELECT * FROM tl_mycCustomers WHERE company = ?')->execute($company_id);
-
             return $oResult->row();
         }
 

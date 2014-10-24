@@ -37,26 +37,27 @@
 
 
         /**
-         * @param $id
+         * @param $ident
          *
          * @return array
          */
         public static function getInstance($ident = null)
         {
 
-            if($ident === null){
-                if(!isset(self::$instances[$key]['direct'])){
-                    self::$instances[$key]['direct'] = new $key();
-                    return self::$instances[$key]['direct'];
-                }else{
-                    return self::$instances[$key]['direct'];
+            $sCalledClassname = get_called_class();
+            if ($ident === null) {
+                if (!isset(self::$instances[$sCalledClassname]['direct'])) {
+                    self::$instances[$sCalledClassname]['direct'] = new $sCalledClassname();
                 }
+
+                return self::$instances[$sCalledClassname]['direct'];
             }
 
 
             if (is_numeric($ident)) {
                 return parent::getInstance($ident);
             } else {
+                // if shorthandle provided, get employeedata first, then employee by id
                 $aEmployeeData     = EmployeeDataModel::getInstance($ident);
                 $aEmployee         = parent::getInstance($aEmployeeData['pid']);
                 $aEmployee['data'] = $aEmployeeData;

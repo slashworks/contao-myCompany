@@ -26,18 +26,35 @@
     use Contao\FrontendTemplate;
     use SlashHelper\HelperTemplate;
 
+    /**
+     * Class CeMycWrapper
+     *
+     * @package MyCompany\CE
+     */
     abstract class CeMycWrapper extends ContentElement
     {
 
+        /**
+         * @var string
+         */
         protected $strTemplate = 'ce_mycwrapper';
 
 
+        /**
+         * @return mixed
+         */
         abstract public function setTplDataArr();
 
 
+        /**
+         * @return mixed
+         */
         abstract public function setBeTplArr();
 
 
+        /**
+         *
+         */
         public function compile()
         {
 
@@ -67,9 +84,13 @@
         }
 
 
+        /**
+         * @param $item
+         *
+         * @return mixed
+         */
         public function getLabel($item)
         {
-
             return $GLOBALS['TL_LANG']['myC'][$item];
         }
 
