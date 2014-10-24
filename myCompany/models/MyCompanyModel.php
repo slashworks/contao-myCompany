@@ -33,7 +33,7 @@
         /**
          * @var array
          */
-        private static $instances = array();
+        protected static $instances = array();
 
 
         public static function getField($ident, $item)
@@ -54,10 +54,19 @@
          *
          * @return array
          */
-        public static function getInstance($ident)
+        public static function getInstance($ident = null)
         {
-
             $key = get_called_class();
+            if($ident === null){
+                if(!isset(self::$instances[$key]['direct'])){
+                    self::$instances[$key]['direct'] = new $key();
+                    return self::$instances[$key]['direct'];
+                }else{
+                    return self::$instances[$key]['direct'];
+                }
+            }
+
+
             if (!isset(self::$instances[$key])) {
                 self::$instances[$key] = array();
             }

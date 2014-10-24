@@ -41,8 +41,18 @@
          *
          * @return array
          */
-        public static function getInstance($ident)
+        public static function getInstance($ident = null)
         {
+
+            if($ident === null){
+                if(!isset(self::$instances[$key]['direct'])){
+                    self::$instances[$key]['direct'] = new $key();
+                    return self::$instances[$key]['direct'];
+                }else{
+                    return self::$instances[$key]['direct'];
+                }
+            }
+
 
             if (is_numeric($ident)) {
                 return parent::getInstance($ident);

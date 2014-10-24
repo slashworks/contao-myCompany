@@ -81,7 +81,8 @@
         {
 
             $aEmployee = EmployeeModel::getInstance($ident);
-            $aCompany  = CompanyModel::getInstance($aEmployee['company']);
+            $aCompany  = CompanyModel::getInstance($aEmployee['data']['company']);
+
 
             return Text::formatPhoneNumber($aCompany['phoneBasic'], $aEmployee['data']['phoneExt']);
         }
@@ -96,7 +97,7 @@
         {
 
             $aEmployee = EmployeeModel::getInstance($ident);
-            $aCompany  = CompanyModel::getInstance($aEmployee['company']);
+            $aCompany  = CompanyModel::getInstance($aEmployee['data']['company']);
 
             return Text::formatPhoneNumber($aCompany['faxBasic'], $aEmployee['data']['faxExt']);
         }
