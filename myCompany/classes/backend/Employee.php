@@ -19,7 +19,11 @@
      *
      */
 
-    namespace MyCompany;
+    namespace MyCompany\Backend;
+
+    use MyCompany\CompanyModel;
+    use MyCompany\EmployeeDataModel;
+    use MyCompany\EmployeeModel;
 
 
     /**
@@ -27,8 +31,30 @@
      *
      * @package MyCompany
      */
-    class Employee extends \Backend
+    class Employee extends MyCompanyBase
     {
+
+
+        /**
+         * @param $dc
+         *
+         * @return array
+         */
+        public function getEmployeeByCompany($dc)
+        {
+
+            return \MyCompany\EmployeeModel::getAllEmployeeByCompanyAsArray($dc->activeRecord->mycCompany);
+        }
+
+
+        /**
+         * @return array
+         */
+        public function getEmployeeTemplates()
+        {
+
+            return $this->getTemplateGroup('ce_mycEmployee_');
+        }
 
         /**
          * @param $objRecords

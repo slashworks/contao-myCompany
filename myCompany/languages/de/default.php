@@ -54,4 +54,11 @@
 // Twitter
     $GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['twitter']['title'] = 'Diese Person auf Twitter besuchen';
     $GLOBALS['TL_LANG']['MSC']['MyCompany']['socialButtons']['twitter']['label'] = 'Twitter';
+
+    // Templates
+    $GLOBALS['TL_LANG']['MSC']['MyCompany']['template']['ce_mycCompany_address']   = "Unternehmen - Adressblock";
+    $GLOBALS['TL_LANG']['MSC']['MyCompany']['template']['ce_mycCompany_full']      = "Unternehmen - Alle Informationen";
+    $GLOBALS['TL_LANG']['MSC']['MyCompany']['template']['ce_mycEmployee_default']  = "Ein Mitarbeiter - Standard";
+    $GLOBALS['TL_LANG']['MSC']['MyCompany']['template']['ce_mycEmployee_short']    = "Ein Mitarbeiter - Kurzdarstellung";
+    $GLOBALS['TL_LANG']['MSC']['MyCompany']['template']['ce_mycEmployees_default'] = "Liste der Mitarbeiter";
 ?>

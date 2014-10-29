@@ -20,7 +20,9 @@
      */
 
 
-    namespace MyCompany;
+    namespace MyCompany\Backend;
+
+    use MyCompany\Helper\DataMaps;
 
 
     /**
@@ -28,7 +30,7 @@
      *
      * @package MyCompany
      */
-    class Company extends \Backend
+    class Company extends MyCompanyBase
     {
 
         /**
@@ -54,5 +56,25 @@
 LABEL;
 
             return $sLabel;
+        }
+
+
+        public function getCompanyRows4AddressBlock($dc)
+        {
+
+            $aRows                               = array();
+            $aRows['logo']                       = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["logo"];
+            $aRows['name']                       = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["name"];
+            $aRows['name:legalForm']             = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["name:legalForm"];
+            $aRows['street']                     = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["street"];
+            $aRows['zip:city']                   = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["zip:city"];
+            $aRows['country']                    = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["country"];
+            $aRows['phoneBasic:phoneDirectDial'] = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["phoneBasic:phoneDirectDial"];
+            $aRows['faxBasic:faxDirectDial']     = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["faxBasic:faxDirectDial"];
+            $aRows['domain']                     = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["domain"];
+            $aRows['email']                      = &$GLOBALS['TL_LANG']['tl_mycCompanies']['row']["email"];
+
+
+            return $aRows;
         }
     }

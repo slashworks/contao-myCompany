@@ -19,6 +19,7 @@
      *
      */
 
+    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycCompany']      = '{type_legend},type,mycCompany,mycAddressBlockRows;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployee']      = '{type_legend},type,mycCompany,mycEmployee;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']     = '{type_legend},type,mycCompany,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycRoutingButton'] = '{type_legend},type,mycCompany,linkTitle;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
@@ -44,9 +45,19 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'select',
-            'options_callback' => array('myCompany_tl_content', 'getEmployeeByCompany'),
+            'options_callback' => array('\MyCompany\Backend\Employee', 'getEmployeeByCompany'),
             'eval'             => array('chosen' => true, 'submitOnChange' => true, 'includeBlankOption' => true),
             'sql'              => "varchar(32) NOT NULL default ''"
+        ),
+        'mycAddressBlockRows'         => array
+        (
+            'label'            => &$GLOBALS['TL_LANG']['tl_content']['mycAddressBlockRows'],
+            'exclude'          => true,
+            'filter'           => true,
+            'inputType'        => 'checkboxWizard',
+            'options_callback' => array('\MyCompany\Backend\Company', 'getCompanyRows4AddressBlock'),
+            'eval'             => array('multiple' => true, 'helpwizard' => true),
+            'sql'              => "blob NULL"
         ),
 
         'mycEmployees'        => array
@@ -55,8 +66,7 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'checkboxWizard',
-            //            'options_callback' => array('\MyCompany\EmployeeModel', 'getAllEmployeeAsArray'),
-            'options_callback' => array('myCompany_tl_content', 'getEmployeeByCompany'),
+            'options_callback' => array('\MyCompany\Backend\Employee', 'getEmployeeByCompany'),
             'eval'             => array('multiple' => true, 'helpwizard' => true),
             'sql'              => "blob NULL"
         ),
@@ -67,7 +77,7 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'select',
-            'options_callback' => array('myCompany_tl_content', 'getEmployeeTemplates'),
+            'options_callback' => array('\MyCompany\Backend\Employee', 'getEmployeeTemplates'),
             'eval'             => array('chosen' => true),
             'sql'              => "varchar(64) NOT NULL default ''"
         ),
@@ -78,7 +88,7 @@
             'exclude'          => true,
             'filter'           => true,
             'inputType'        => 'select',
-            'options_callback' => array('myCompany_tl_content', 'getMyCTemplate'),
+            'options_callback' => array('\MyCompany\Backend\MyCompanyBase', 'getMyCTemplate'),
             'eval'             => array('chosen' => true),
             'sql'              => "varchar(64) NOT NULL default ''"
         )
@@ -86,43 +96,3 @@
 
     $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge($GLOBALS['TL_DCA']['tl_content']['fields'], $fields);
 
-    /**
-     * Class myCompany_tl_content
-     */
-    class myCompany_tl_content extends Backend
-    {
-
-        /**
-         * @param $dc
-         *
-         * @return array
-         */
-        public function getEmployeeByCompany($dc)
-        {
-
-            return \MyCompany\EmployeeModel::getAllEmployeeByCompanyAsArray($dc->activeRecord->mycCompany);
-        }
-
-
-        /**
-         * @return array
-         */
-        public function getEmployeeTemplates()
-        {
-
-            return $this->getTemplateGroup('ce_mycEmployee_');
-        }
-
-
-        /**
-         * @param $dc
-         *
-         * @return array
-         */
-        public function getMyCTemplate($dc)
-        {
-
-            return $this->getTemplateGroup('ce_' . $dc->activeRecord->type . '_');
-        }
-
-    }

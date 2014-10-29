@@ -19,17 +19,18 @@
      *
      */
 
-    namespace MyCompany;
+    namespace MyCompany\Backend;
 
 
     use Contao\DataContainer;
+    use MyCompany\CompanyModel;
 
     /**
      * Class EmployeeData
      *
      * @package MyCompany
      */
-    class EmployeeData extends \Backend
+    class EmployeeData extends MyCompanyBase
     {
 
 

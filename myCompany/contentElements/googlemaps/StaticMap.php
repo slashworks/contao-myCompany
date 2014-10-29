@@ -35,7 +35,7 @@
         /**
          * @return array
          */
-        public function setBeTplArr()
+        public function setBackendTemplateData()
         {
             $curCompany = CompanyModel::getById($this->mycCompany);
             return array(
@@ -49,7 +49,7 @@
         /**
          * @return array
          */
-        public function setTplDataArr()
+        public function setTemplateData()
         {
             $curCompany = CompanyModel::getById($this->mycCompany);
             return array(

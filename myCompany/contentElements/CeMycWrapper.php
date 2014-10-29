@@ -43,13 +43,13 @@
         /**
          * @return mixed
          */
-        abstract public function setTplDataArr();
+        abstract public function setTemplateData();
 
 
         /**
          * @return mixed
          */
-        abstract public function setBeTplArr();
+        abstract public function setBackendTemplateData();
 
 
         /**
@@ -60,8 +60,9 @@
 
 
             if (TL_MODE == 'BE') {
+
                 $tplname        = 'be_wildcard';
-                $varsArr        = $this->setBETplArr();
+                $varsArr        = $this->setBackendTemplateData();
                 $tpl            = new \BackendTemplate($tplname);
                 $tpl->wildcard  = '### ' . $varsArr['title'] . ' ###';
                 $tpl->title     = $varsArr['content'];
@@ -73,7 +74,7 @@
                 $partial = new FrontendTemplate($this->mycTemplate);
 
                 // Add some template vars
-                $partial->setData($this->setTplDataArr());
+                $partial->setData($this->setTemplateData());
 
                 // implement the Template into the myCompany Template Wrapper
 

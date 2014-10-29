@@ -25,7 +25,7 @@
     class Employee extends CeMycWrapper
     {
 
-        public function setBeTplArr()
+        public function setBackendTemplateData()
         {
 
             $employee     = \MyCompany\EmployeeModel::getById($this->mycEmployee);
@@ -42,7 +42,7 @@
         }
 
 
-        public function setTplDataArr()
+        public function setTemplateData()
         {
 
             $employee   = \MyCompany\EmployeeModel::getById($this->mycEmployee);

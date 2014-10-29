@@ -60,6 +60,7 @@
      */
     $GLOBALS['TL_CTE']['myCompany'] = array
     (
+        'mycCompany'      => 'MyCompany\CE\Company',
         'mycEmployee'      => 'MyCompany\CE\Employee',
         'mycEmployees'     => 'MyCompany\CE\Employees',
         'mycRoutingButton' => 'MyCompany\CE\RoutingButton',

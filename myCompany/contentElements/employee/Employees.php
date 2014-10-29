@@ -37,7 +37,7 @@
         /**
          * @return array
          */
-        public function setBeTplArr()
+        public function setBackendTemplateData()
         {
 
             return array
@@ -53,7 +53,7 @@
         /**
          * @return array
          */
-        public function setTplDataArr()
+        public function setTemplateData()
         {
 
             $employees = deserialize($this->mycEmployees);

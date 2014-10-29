@@ -20,5 +20,21 @@
      *
      */
 
-    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][0] = 'Teammitglied wählen';
-    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][1] = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';
+    $GLOBALS['TL_LANG']['tl_content']['mycTemplate'][0]         = 'Vorlage wählen';
+    $GLOBALS['TL_LANG']['tl_content']['mycCompany'][0]          = 'Unternehmen wählen';
+    $GLOBALS['TL_LANG']['tl_content']['mycAddressBlockRows'][0] = 'Zeilen des Adressblocks';
+    $GLOBALS['TL_LANG']['tl_content']['mycAddressBlockRows'][1] = 'Entsprechende Zeilen aktivieren und die Reihenfolge per Drag\'n\'Drop bestimmen';
+    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][0]         = 'Teammitglied wählen';
+    $GLOBALS['TL_LANG']['tl_content']['mycEmployee'][1]         = 'Bitte wählen Sie ein Teammitglied aus, das ausgegeben werden soll.';
+
+
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["logo"]                       = "Firmenlogo";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["name"]                       = "Firmenname";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["name:legalForm"]             = "Firmenname inkl. Rechtsform";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["street"]                     = "Straße";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["zip:city"]                   = "Plz + Stadt";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["country"]                    = "Land";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["phoneBasic:phoneDirectDial"] = "Telefonnummer + Durchwahl";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["faxBasic:faxDirectDial"]     = "Faxnummer + Durchwahl";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["domain"]                     = "Webseite";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["email"]                      = "E-Mail";

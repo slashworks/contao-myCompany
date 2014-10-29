@@ -47,18 +47,8 @@
 
             //check and convert params if they are an array
             $oEmployee = (is_array($aEmployee)) ? json_decode(json_encode($aEmployee), false) : $aEmployee;
+            $aCompany  = self::getCompanyData($aCompany, array(), $scope);
             $oCompany  = (is_array($aCompany)) ? json_decode(json_encode($aCompany), false) : $aCompany;
-
-            if (!empty($oCompany->logo)) {
-                $oLogo          = FilesModel::findByUuid($oCompany->logo);
-                $sLogoPath      = $oLogo->path;
-                $oCompany->logo = $sLogoPath;
-            }
-
-            $oCompany->optionals = deserialize($oCompany->optionals);
-            $oCompany->positions = deserialize($oCompany->positions);
-            $oCompany->socials   = deserialize($oCompany->socials);
-
 
             $aEmployeeData = EmployeeDataModel::getDataByEmployee($oEmployee->id, $oCompany->id);
 
@@ -105,5 +95,45 @@
 
 
             return $data;
+        }
+
+
+        /**
+         * @param $aCompany
+         * @param $scope
+         *
+         * @return array
+         */
+        public static function getCompanyData($aCompany, $imgSize = array(), $scope)
+        {
+
+            if (empty($aCompany) || !is_array($aCompany)) {
+                return array();
+            }
+
+
+            if (!empty($aCompany['logo'])) {
+                $oLogo     = FilesModel::findByUuid($aCompany['logo']);
+                $sLogoPath = $oLogo->path;
+                if (!empty($imgSize)) {
+                    $sLogoPath = Image::get($sLogoPath, $imgSize[0], $imgSize[1], $imgSize[2]);
+                }
+                $aCompany['logo'] = $sLogoPath;
+            }
+
+            $aCompany['optionals']           = deserialize($aCompany['optionals']);
+            $aCompany['positions']           = deserialize($aCompany['positions']);
+            $aCompany['socials']             = deserialize($aCompany['socials']);
+            $aCompany['mycAddressBlockRows'] = deserialize($aCompany['mycAddressBlockRows']);
+
+
+            if (isset($GLOBALS['TL_HOOKS']['MyCompany']['modifyCompanyData']) && is_array($GLOBALS['TL_HOOKS']['MyCompany']['modifyCompanyData'])) {
+                foreach ($GLOBALS['TL_HOOKS']['MyCompany']['modifyCompanyData'] as $callback) {
+                    $scope->import($callback[0]);
+                    $data = $scope->$callback[0]->$callback[1]($aCompany);
+                }
+            }
+
+            return $aCompany;
         }
     }

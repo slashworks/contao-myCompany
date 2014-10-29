@@ -101,6 +101,10 @@
                 $aReturn = $oResult->row();
             }
 
+            if(!is_array($aReturn)){
+                $aReturn = array();
+            }
+
             // HOOK
             if (isset($GLOBALS['TL_HOOKS']['mycGetById']) && is_array($GLOBALS['TL_HOOKS']['mycGetById'])) {
                 foreach ($GLOBALS['TL_HOOKS']['mycGetById'] as $callback) {
@@ -108,6 +112,7 @@
                     $callback[0]::$callback[1]($aReturn, static::$strTable);
                 }
             }
+
 
             return $aReturn;
         }

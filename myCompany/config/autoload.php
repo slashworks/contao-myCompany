@@ -25,9 +25,10 @@
     ClassLoader::addClasses(array
                             (
                                 // Classes
-                                'MyCompany\Company'                => 'system/modules/myCompany/classes/backend/Company.php',
-                                'MyCompany\Employee'               => 'system/modules/myCompany/classes/backend/Employee.php',
-                                'MyCompany\EmployeeData'           => 'system/modules/myCompany/classes/backend/EmployeeData.php',
+                                'MyCompany\Backend\MyCompanyBase'  => 'system/modules/myCompany/classes/backend/MyCompanyBase.php',
+                                'MyCompany\Backend\Company'        => 'system/modules/myCompany/classes/backend/Company.php',
+                                'MyCompany\Backend\Employee'       => 'system/modules/myCompany/classes/backend/Employee.php',
+                                'MyCompany\Backend\EmployeeData'   => 'system/modules/myCompany/classes/backend/EmployeeData.php',
                                 'MyCompany\InsertTagsCompany'      => 'system/modules/myCompany/classes/frontend/InsertTagsCompany.php',
                                 'MyCompany\InsertTagsEmployee'     => 'system/modules/myCompany/classes/frontend/InsertTagsEmployee.php',
                                 'MyCompany\InsertTagsCustomer'     => 'system/modules/myCompany/classes/frontend/InsertTagsCustomer.php',
@@ -35,6 +36,7 @@
 
 
                                 //Content elements
+                                'MyCompany\CE\Company'             => 'system/modules/myCompany/contentElements/company/Company.php',
                                 'MyCompany\CE\Employee'            => 'system/modules/myCompany/contentElements/employee/Employee.php',
                                 'MyCompany\CE\Employees'           => 'system/modules/myCompany/contentElements/employee/Employees.php',
                                 'MyCompany\CE\RoutingButton'       => 'system/modules/myCompany/contentElements/googlemaps/RoutingButton.php',
@@ -70,6 +72,7 @@
                                  'myc_team_list'               => 'system/modules/myCompany/templates',
 
                                  'ce_mycwrapper'               => 'system/modules/myCompany/templates/elements',
+                                 'ce_mycCompany_address'       => 'system/modules/myCompany/templates/elements/company',
                                  'ce_mycEmployee_default'      => 'system/modules/myCompany/templates/elements/employee',
                                  'ce_mycEmployee_short'        => 'system/modules/myCompany/templates/elements/employee',
                                  'ce_mycEmployees_default'     => 'system/modules/myCompany/templates/elements/employee',
