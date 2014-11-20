@@ -21,8 +21,6 @@
 
     namespace MyCompany\Helper;
 
-    use Contao\FilesModel;
-    use Contao\Image;
     use MyCompany\EmployeeDataModel;
 
     /**
@@ -55,9 +53,9 @@
 
             foreach ($aEmployeeData as $key => $data) {
                 if (!empty($data['picture'])) {
-                    $oPicture = FilesModel::findByUuid($data['picture']);
+                    $oPicture = \FilesModel::findByUuid($data['picture']);
                     if (!empty($imgSize)) {
-                        $sPicturePath = Image::get($oPicture->path, $imgSize[0], $imgSize[1], $imgSize[2]);
+                        $sPicturePath = \Image::get($oPicture->path, $imgSize[0], $imgSize[1], $imgSize[2]);
                     } else {
                         $sPicturePath = $oPicture->path;
                     }
@@ -113,10 +111,10 @@
 
 
             if (!empty($aCompany['logo'])) {
-                $oLogo     = FilesModel::findByUuid($aCompany['logo']);
+                $oLogo     = \FilesModel::findByUuid($aCompany['logo']);
                 $sLogoPath = $oLogo->path;
                 if (!empty($imgSize)) {
-                    $sLogoPath = Image::get($sLogoPath, $imgSize[0], $imgSize[1], $imgSize[2]);
+                    $sLogoPath = \Image::get($sLogoPath, $imgSize[0], $imgSize[1], $imgSize[2]);
                 }
                 $aCompany['logo'] = $sLogoPath;
             }

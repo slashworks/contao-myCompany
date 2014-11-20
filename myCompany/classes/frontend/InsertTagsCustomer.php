@@ -26,7 +26,6 @@
      *
      * @package MyCompany
      */
-    use Contao\FilesModel;
     use MyCompany\Helper\MyCompanyHelper;
     use MyCompany\Helper\Text;
 
@@ -73,7 +72,7 @@
         {
 
             $aCustomer = CustomerModel::getInstance($ident);
-            $oFile     = FilesModel::findByUuid($aCustomer['logo']);
+            $oFile     = \FilesModel::findByUuid($aCustomer['logo']);
 
             return $oFile->path;
         }

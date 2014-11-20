@@ -22,7 +22,6 @@
     namespace MyCompany\CE;
 
 
-    use Contao\FilesModel;
     use MyCompany\CompanyModel;
     use MyCompany\EmployeeModel;
 
@@ -65,7 +64,7 @@
                 $employee   = EmployeeModel::getById($v);
                 $curCompany = CompanyModel::findByPk($this->mycCompany);
                 if (!empty($curCompany->logo)) {
-                    $oLogo            = FilesModel::findByUuid($curCompany->logo);
+                    $oLogo            = \FilesModel::findByUuid($curCompany->logo);
                     $sLogoPath        = $oLogo->path;
                     $curCompany->logo = $sLogoPath;
                 }

@@ -20,7 +20,6 @@
      */
     namespace MyCompany;
 
-    use Contao\FilesModel;
     use MyCompany\Helper\MyCompanyHelper;
     use MyCompany\Helper\Text;
 
@@ -112,7 +111,7 @@
         {
 
             $aEmployee = EmployeeDataModel::getInstance($ident);
-            $oFile     = FilesModel::findByUuid($aEmployee['picture']);
+            $oFile     = \FilesModel::findByUuid($aEmployee['picture']);
 
             return $oFile->path;
         }

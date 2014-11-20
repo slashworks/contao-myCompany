@@ -20,7 +20,6 @@
      */
     namespace MyCompany;
 
-    use Contao\FilesModel;
     use MyCompany\Helper\MyCompanyHelper;
 
     /**
@@ -123,7 +122,7 @@
 
             $aImages  = array();
             $aProject = ProjectModel::getById($ident);
-            $aFiles   = FilesModel::findMultipleByUuids(deserialize($aProject['images']));
+            $aFiles   = \FilesModel::findMultipleByUuids(deserialize($aProject['images']));
 
             foreach ($aFiles as $oFile) {
                 $aImages[] = $oFile->path;
