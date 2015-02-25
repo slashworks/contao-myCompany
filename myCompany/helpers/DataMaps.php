@@ -78,8 +78,8 @@
             $data = array(
                 'gender'    => $oEmployee->gender,
                 'title'     => $oEmployee->title,
-                'name'      => $oEmployee->surname . ' ' . $oEmployee->lastname,
-                'surname'   => $oEmployee->surname,
+                'name'      => $oEmployee->firstname . ' ' . $oEmployee->lastname,
+                'firstname'   => $oEmployee->firstname,
                 'lastname'  => $oEmployee->lastname,
                 'positions' => $aEmployeeData
             );
@@ -131,6 +131,8 @@
                     $data = $scope->$callback[0]->$callback[1]($aCompany);
                 }
             }
+
+
 
             return $aCompany;
         }

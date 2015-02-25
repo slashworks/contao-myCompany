@@ -51,9 +51,9 @@
             ),
             'label'             => array
             (
-                'fields'         => array('lastname', 'surname', 'company'),
+                'fields'         => array('lastname', 'firstname', 'company'),
                 'format'         => '%s %s %s',
-                'label_callback' => array('MyCompany\Employee', 'getListLabel')
+                'label_callback' => array('MyCompany\Backend\Employee', 'getListLabel')
             ),
             'global_operations' => array
             (
@@ -99,7 +99,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => 'gender,title,surname,lastname;{employeeData_legend},employeeData'
+            'default'      => 'gender,title,firstname,lastname;{employeeData_legend},employeeData'
         ),
 
         // Subpalettes
@@ -143,9 +143,9 @@
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(1) NOT NULL default ''"
             ),
-            'surname'      => array
+            'firstname'      => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['surname'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['firstname'],
                 'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
@@ -181,7 +181,7 @@
                     'orderField'       => 'position DESC',
 
                     // Use the callback to generate the list
-                    'listCallback'     => array('MyCompany\EmployeeData', 'generateWizardList'),
+                    'listCallback'     => array('MyCompany\Backend\EmployeeData', 'generateWizardList'),
                 )
             )
         )

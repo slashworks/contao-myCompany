@@ -165,7 +165,7 @@
             ),
             'shorthandle' => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['shorthandle'],
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['shorthandle'],
                 'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),

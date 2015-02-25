@@ -18,3 +18,20 @@
  * @package     Core
  *
  */
+
+
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['new'] = array('Neuen Kunden anlegen');
+
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['name'] = array('Kundenname');
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['url'] = array('Webseite');
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['logo'] = array('Logo');
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['company'] = array('Zugehörige Firma');
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['description'] = array('Beschreibung');
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['shorthandle'] = array('Abkürzung');
+
+
+
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['edit'][1]   = 'Kunden bearbeiten';
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['copy'][1]   = 'Kunden kopieren';
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['delete'][1] = 'Kunden löschen';
+    $GLOBALS['TL_LANG']['tl_mycCustomers']['show'][1]   = 'Informationen anzeigen';

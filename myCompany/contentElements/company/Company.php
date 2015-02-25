@@ -51,6 +51,9 @@
             $aData['mycAddressBlockRows'] = array();
             $aTmp = deserialize($this->mycAddressBlockRows);
 
+
+
+
             foreach($aTmp as $key => $row){
                 if(stristr($row,":") !== false){
                     $fields = explode(":",$row);
@@ -58,9 +61,8 @@
                     $fields = array($row);
                 }
 
-
                 foreach($fields as $fieldKey => $field){
-                    if(!empty($aData[$field])) {
+                    if(!empty($aData[$field]) || $aData[$field] == "0") {
                         $fields[$fieldKey] = $aData[$field];
                     }else{
                         unset($fields[$fieldKey]);
@@ -68,6 +70,7 @@
                 }
 
                 $aData['mycAddressBlockRows'][] = implode(" ",$fields);
+                $aData['mycAddressBlockRows'][$row] = implode(" ",$fields);
             }
 
             return $aData;

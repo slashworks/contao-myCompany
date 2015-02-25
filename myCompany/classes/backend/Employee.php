@@ -85,7 +85,7 @@
         public function getListLabel($aData, $sLabel, $oDca)
         {
 
-            $sLabel = "<div style=\"margin:10px 0;font-size:1.1em;\"><strong>" . $aData['surname'] . " " . $aData['lastname'] . "</strong></div>";
+            $sLabel = "<div style=\"margin:10px 0;font-size:1.1em;\"><strong>" . $aData['firstname'] . " " . $aData['lastname'] . "</strong></div>";
             $sLabel .= "<div style=\"padding:8px 8px 0 8px;margin-bottom:8px;float:none;\">";
             $aEmployeeData = EmployeeDataModel::getDataByEmployee($aData['id']);
 
@@ -134,7 +134,7 @@ LISTITEM;
             while ($objRecords->next()) {
                 $aEmployee = EmployeeModel::getById($objRecords->pid);
 
-                $strReturn .= '<li><b>' . $aEmployee['surname'] . ' ' . $aEmployee['lastname'] . '</b> ' . $objRecords->position . '</li>';
+                $strReturn .= '<li><b>' . $aEmployee['firstname'] . ' ' . $aEmployee['lastname'] . '</b> ' . $objRecords->position . '</li>';
             }
 
             return '<ul id="sort_' . $strId . '">' . $strReturn . '</ul>';

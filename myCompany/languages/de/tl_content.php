@@ -34,7 +34,7 @@
     $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["street"]                     = "Straße";
     $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["zip:city"]                   = "Plz + Stadt";
     $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["country"]                    = "Land";
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["phoneBasic:phoneDirectDial"] = "Telefonnummer + Durchwahl";
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["faxBasic:faxDirectDial"]     = "Faxnummer + Durchwahl";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["phoneBasic:phoneDirectDial"] = "Telefonnummer + Durchwahl (Zentrale)";
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["faxBasic:faxDirectDial"]     = "Faxnummer + Durchwahl (Zentrale)";
     $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["domain"]                     = "Webseite";
     $GLOBALS['TL_LANG']['tl_mycCompanies']['row']["email"]                      = "E-Mail";

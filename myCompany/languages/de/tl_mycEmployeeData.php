@@ -19,7 +19,6 @@
      *
      */
 
-//    company,position;{contact_legend},email,phone,mobile;{about_legend},about,picture;{social_legend:hide},socials;{others_legend:hide},shorthandle,detailPage
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['position_default'] = "Zunächst Firma wählen...";
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['contact_legend']   = "Kontaktdaten";
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['about_legend']     = "Persönlich";
@@ -38,3 +37,10 @@
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['socials']     = array("Soziale Netzwerke", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['shorthandle'] = array("Kürzel", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['detailPage']  = array("Detailseite", "");
+
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['new']  = array("Neue Position anlegen", "");
+
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['edit'][1]   = 'Firmenzugehörigkeit bearbeiten';
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['copy'][1]   = 'Firmenzugehörigkeit kopieren';
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['delete'][1] = 'Firmenzugehörigkeit löschen';
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['show'][1]   = 'Informationen anzeigen';

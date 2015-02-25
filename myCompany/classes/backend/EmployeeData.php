@@ -119,11 +119,11 @@ LISTITEM;
 
             $oCompany = CompanyModel::getById($row['company']);
             $aLogo    = \FilesModel::findByUuid($oCompany['logo']);
-            $path     = \Image::get($aLogo->path, 128, 48, "proportional");
+            $path     = \Image::get($aLogo->path, 96, 64, "proportional");
 
             $html = "<div style='padding:16px;overflow: hidden;'>
-                <div style='background:transparent url(" . $path . ") center center no-repeat; float:left;margin-right: 10px;display:table-cell;vertical-align:middle;height:48px;'><img src='" . $path . "' style='visibility:hidden;'></div>
-                <div style='font-size:1.4em;display:table-cell;vertical-align:middle;height:48px;'>" . $oCompany['name'] . " " . $oCompany['legalForm'] . "</div>
+                <div style='background:transparent url(" . $path . ") center center no-repeat; float:left;margin-right: 10px;display:table-cell;vertical-align:middle;height:64px;'><img src='" . $path . "' style='visibility:hidden;'></div>
+                <div style='font-size:1.4em;display:table-cell;vertical-align:middle;height:64px;'>" . $oCompany['name'] . " " . $oCompany['legalForm'] . "</div>
                 </div>
             ";
 

@@ -29,3 +29,13 @@
     $GLOBALS['TL_LANG']['tl_mycEmployee']['employeeData_legend'] = "Firmenzugehörigkeit";
 
     $GLOBALS['TL_LANG']['tl_mycEmployee']['positions'] = "Position";
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['new'] = array("Neuen Mitarbeiter anlegen","");
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['gender'] = array("Anrede","");
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['title'] = array("Titel","");
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['firstname'] = array("Vorname","");
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['lastname'] = array("Nachname","");
+
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['edit'][1]   = 'Mitarbeiter bearbeiten';
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['copy'][1]   = 'Mitarbeiter kopieren';
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['delete'][1] = 'Mitarbeiter löschen';
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['show'][1]   = 'Informationen anzeigen';

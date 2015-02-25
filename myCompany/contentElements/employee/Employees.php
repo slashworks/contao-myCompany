@@ -73,7 +73,7 @@
                 $curCompany->positions = deserialize($curCompany->positions);
                 $curCompany->socials   = deserialize($curCompany->socials);
 
-                $data['employees'][] = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
+                $data['employees'][] = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany->row(), $imgSize, $this);
             }
 
 

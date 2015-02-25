@@ -53,7 +53,7 @@
             (
                 'fields'         => array('name'),
                 'format'         => '%s',
-                'label_callback' => array('MyCompany\Company', 'getListLabel')
+                'label_callback' => array('MyCompany\Backend\Company', 'getListLabel')
             ),
             'global_operations' => array
             (

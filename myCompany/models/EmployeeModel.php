@@ -73,12 +73,12 @@
         public static function getAllEmployeeAsArray()
         {
 
-            $oEmployeeResult = \Database::getInstance()->execute('SELECT id,surname,lastname FROM tl_mycEmployee');
+            $oEmployeeResult = \Database::getInstance()->execute('SELECT id,firstname,lastname FROM tl_mycEmployee');
 
             $data = array();
 
             while ($oEmployeeResult->next()) {
-                $data[$oEmployeeResult->id] = $oEmployeeResult->surname . ' ' . $oEmployeeResult->lastname;
+                $data[$oEmployeeResult->id] = $oEmployeeResult->firstname . ' ' . $oEmployeeResult->firstname;
             }
 
             return $data;
@@ -93,10 +93,10 @@
         public static function getAllEmployeeByCompanyAsArray($id)
         {
 
-            $oEmployeeResult = \Database::getInstance()->prepare("SELECT e.id, e.title, e.gender, e.surname, e.lastname ,d.id as data_id,d.pid as employee_id, d.company, d.position, d.shorthandle, d.picture, d.about, d.email, d.mobile, d.socials, d.detailPage, d.phoneExt, d.faxExt,c.name as company_name, c.legalForm as company_legalForm, c.shorthandle as company_shorthandle, c.street as company_street, c.zip as company_zip, c.city as company_city, c.country as cmpany_country, c.logo as company_logo, c.phoneBasic as company_phoneBasic, c.phoneDirectDial as company_phoneDirectDial, c.faxBasic as company_faxBasic, c.faxDirectDial as company_faxDirectDial, c.domain as company_domain, c.email as company_email, c.socials as company_socials, c.optionals as company_optionals, c.positions as company_positions FROM tl_mycEmployee e, tl_mycEmployeeData d, tl_mycCompanies c WHERE d.company = ? AND d.pid = e.id AND c.id = d.company")->execute($id);
+            $oEmployeeResult = \Database::getInstance()->prepare("SELECT e.id, e.title, e.gender, e.firstname, e.lastname ,d.id as data_id,d.pid as employee_id, d.company, d.position, d.shorthandle, d.picture, d.about, d.email, d.mobile, d.socials, d.detailPage, d.phoneExt, d.faxExt,c.name as company_name, c.legalForm as company_legalForm, c.shorthandle as company_shorthandle, c.street as company_street, c.zip as company_zip, c.city as company_city, c.country as cmpany_country, c.logo as company_logo, c.phoneBasic as company_phoneBasic, c.phoneDirectDial as company_phoneDirectDial, c.faxBasic as company_faxBasic, c.faxDirectDial as company_faxDirectDial, c.domain as company_domain, c.email as company_email, c.socials as company_socials, c.optionals as company_optionals, c.positions as company_positions FROM tl_mycEmployee e, tl_mycEmployeeData d, tl_mycCompanies c WHERE d.company = ? AND d.pid = e.id AND c.id = d.company")->execute($id);
             $data            = array();
             while ($oEmployeeResult->next()) {
-                $data[$oEmployeeResult->id] = $oEmployeeResult->surname . ' ' . $oEmployeeResult->lastname;
+                $data[$oEmployeeResult->id] = $oEmployeeResult->firstname . ' ' . $oEmployeeResult->lastname;
             }
 
             return $data;

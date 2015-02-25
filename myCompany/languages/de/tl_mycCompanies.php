@@ -23,6 +23,7 @@
     /**
      * Fields
      */
+
     $GLOBALS['TL_LANG']['tl_mycCompanies']['name'][0]            = 'Firmenname';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['name'][1]            = 'Geben Sie hier den Firmennamen ein.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['legalForm'][0]       = 'Rechtsform';
@@ -86,19 +87,14 @@
     $GLOBALS['TL_LANG']['tl_mycCompanies']['fieldsets']['Structure']      = 'Einstellungen für Firmenstrukturen';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['fieldsets']['Syndication']    = 'Unternehmens Syndikationen';
 
+    $GLOBALS['TL_LANG']['tl_mycEmployee']['edit'] = array("dssss");
 
     /**
      * Buttons
      */
     $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][0]      = 'Neue Firmenonfiguration';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][1]      = 'Eine neue Firmenkonfiguration hinzufügen.';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['new'][0]    = 'Leistung hinzufügen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['new'][1]    = 'Einen neuen Kunden hinzufügen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][0]   = 'Diese Leistung bearbeiten';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['edit'][1]   = 'Klicken Sie hier wenn Sie die Leistung bearbeiten wollen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][0]   = 'Diese Leistung kopieren';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['copy'][1]   = 'Klicken Sie hier wenn Sie die Leistung kopieren wollen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][0] = 'Diese Leistung löschen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['delete'][1] = 'Klicken Sie hier wenn Sie die Leistung löschen wollen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['show'][0]   = 'Informationen anzeigen';
-    $GLOBALS['TL_LANG']['tl_boziAttainment']['show'][1]   = 'Klicken Sie hier wenn Sie den Information über diese Leistung sehen möchten.';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['edit'][1]   = 'Leistung bearbeiten';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['copy'][1]   = 'Firmenonfiguration kopieren';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['delete'][1] = 'Firmenonfiguration löschen';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['show'][1]   = 'Informationen anzeigen';

@@ -40,7 +40,7 @@
                 )
             ),
             'onload_callback'  => array(
-                array('MyCompany\EmployeeData', 'filterList')
+                array('MyCompany\Backend\EmployeeData', 'filterList')
             )
 
         ),
@@ -54,16 +54,13 @@
                 'fields'       => array('company', 'position'),
                 'headerFields' => array('company', 'position'),
                 'flag'         => 1,
-                //                'filter' => array(
-                //                    array('company = ?', \Input::get('company')? \Input::get('company'):'')
-                //                )
             ),
             'label'             => array
             (
                 'fields'         => array('position'),
                 'format'         => '%s',
-                'label_callback' => array('MyCompany\EmployeeData', 'getLabel'),
-                'group_callback' => array('MyCompany\EmployeeData', 'getGroupLabel'),
+                'label_callback' => array('MyCompany\Backend\EmployeeData', 'getLabel'),
+                'group_callback' => array('MyCompany\Backend\EmployeeData', 'getGroupLabel'),
             ),
             'global_operations' => array
             (
@@ -79,26 +76,26 @@
             (
                 'edit'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['edit'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['edit'],
                     'href'  => 'act=edit',
                     'icon'  => 'edit.gif'
                 ),
                 'copy'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['copy'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['copy'],
                     'href'  => 'act=copy',
                     'icon'  => 'copy.gif'
                 ),
                 'delete' => array
                 (
-                    'label'      => &$GLOBALS['TL_LANG']['tl_mycEmployee']['delete'],
+                    'label'      => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['delete'],
                     'href'       => 'act=delete',
                     'icon'       => 'delete.gif',
                     'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
                 ),
                 'show'   => array
                 (
-                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployee']['show'],
+                    'label' => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['show'],
                     'href'  => 'act=show',
                     'icon'  => 'show.gif'
                 )
@@ -149,10 +146,10 @@
             ),
             'position'    => array
             (
-                'label'            => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['jobTitle'],
+                'label'            => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['position'],
                 'exclude'          => true,
                 'inputType'        => 'select',
-                'options_callback' => array('MyCompany\EmployeeData', 'getPositionsByCompany'),
+                'options_callback' => array('MyCompany\Backend\EmployeeData', 'getPositionsByCompany'),
                 'eval'             => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50', 'chosen' => true),
                 'sql'              => "varchar(255) NOT NULL default ''"
             ),

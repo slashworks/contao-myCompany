@@ -67,7 +67,7 @@
 
             $aEmployee = EmployeeModel::getInstance($ident);
 
-            return $aEmployee['surname'] . ' ' . $aEmployee['lastname'];
+            return $aEmployee['firstname'] . ' ' . $aEmployee['lastname'];
         }
 
 
@@ -127,7 +127,7 @@
 
             $aEmployee = EmployeeModel::getInstance($ident);
 
-            return $aEmployee['title'] . ' ' . $aEmployee['surname'] . ' ' . $aEmployee['lastname'];
+            return $aEmployee['title'] . ' ' . $aEmployee['firstname'] . ' ' . $aEmployee['lastname'];
         }
 
 
@@ -136,12 +136,12 @@
          *
          * @return mixed
          */
-        public static function getSurname(&$ident)
+        public static function getFirstname(&$ident)
         {
 
             $aEmployee = EmployeeModel::getInstance($ident);
 
-            return $aEmployee['surname'];
+            return $aEmployee['firstname'];
         }
 
 
@@ -293,8 +293,8 @@
                 case 'id':
                     $sReturn = self::getName($mIdent);
                     break;
-                case 'surname':
-                    $sReturn = self::getSurname($mIdent);
+                case 'firstname':
+                    $sReturn = self::getFirstname($mIdent);
                     break;
                 case 'lastname':
                     $sReturn = self::getLastname($mIdent);

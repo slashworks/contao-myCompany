@@ -29,7 +29,7 @@
         {
 
             $employee     = \MyCompany\EmployeeModel::getById($this->mycEmployee);
-            $employeeName = $employee['surname'] . ' ' . $employee['lastname'];
+            $employeeName = $employee['firstname'] . ' ' . $employee['lastname'];
 
             return array
             (
@@ -49,7 +49,7 @@
             $curCompany = \MyCompany\CompanyModel::findByPk($this->mycCompany);
             $imgSize    = deserialize($this->size);
 
-            $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany, $imgSize, $this);
+            $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany->row(), $imgSize, $this);
 
 
             return $aData;
