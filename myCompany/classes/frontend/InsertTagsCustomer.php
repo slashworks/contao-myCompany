@@ -129,7 +129,6 @@
         {
 
             $aCustomer = CustomerModel::getById($ident);
-
             return $aCustomer['company'];
         }
 
@@ -174,6 +173,9 @@
                     break;
                 case 'company':
                     $sReturn = self::getCompany($mIdent);
+                    if(isset($sReturn['name'])) {
+                        $sReturn = $sReturn['name'];
+                    }
                     break;
                 case 'companyPhoneDirectDial':
                     $sReturn = InsertTagsCompany::getPhoneDirect($aProject['company']);

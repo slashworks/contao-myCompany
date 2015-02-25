@@ -123,13 +123,12 @@
             $aImages  = array();
             $aProject = ProjectModel::getById($ident);
             $aFiles   = \FilesModel::findMultipleByUuids(deserialize($aProject['images']));
-
             foreach ($aFiles as $oFile) {
-                $aImages[] = $oFile->path;
+                $aImages[] = "<img src=\"".$oFile->path."\" class=\"myc_project_image\">";
             }
 
 
-            return implode("<br>", $aImages);
+            return implode("", $aImages);
         }
 
 
@@ -169,19 +168,19 @@
                     $sReturn = self::getDescription($mIdent);
                     break;
                 case 'customerLogo':
-                    $sReturn = InsertTagsCustomer::getLogo($mIdent);
+                    $sReturn = InsertTagsCustomer::getLogo($curScope['customer']);
                     break;
                 case 'customerName':
-                    $sReturn = InsertTagsCustomer::getName($mIdent);
+                    $sReturn = InsertTagsCustomer::getName($curScope['customer']);
                     break;
                 case 'customerUrl':
-                    $sReturn = InsertTagsCustomer::getUrl($mIdent);
+                    $sReturn = InsertTagsCustomer::getUrl($curScope['customer']);
                     break;
                 case 'customerCompany':
-                    $sReturn = InsertTagsCustomer::getCompany($mIdent);
+                    $sReturn = InsertTagsCustomer::getCompany($curScope['customer']);
                     break;
                 case 'customerDescription':
-                    $sReturn = InsertTagsCustomer::getDescription($mIdent);
+                    $sReturn = InsertTagsCustomer::getDescription($curScope['customer']);
                     break;
 
             }
