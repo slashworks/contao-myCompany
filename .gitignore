@@ -2,3 +2,5 @@ atlassian-ide-plugin.xml
 .idea
 .DS_Store
 
+.DS_STORE
+atlassian-ide-plugin.xml
