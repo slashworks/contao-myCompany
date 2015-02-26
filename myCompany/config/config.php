@@ -30,19 +30,19 @@
         'MyCompany' => array(
             'mycCompanies' => array(
                 'tables' => array('tl_mycCompanies', 'tl_mycEmployee', 'tl_mycEmployeeData'),
-                'icon'   => $modulePath . 'assets/icons/config.png'
+                'icon'   => $modulePath . 'assets/building.png'
             ),
             'mycEmployees' => array(
                 'tables' => array('tl_mycEmployee', 'tl_mycEmployeeData'),
-                'icon'   => $modulePath . 'assets/icons/config.png'
+                'icon'   => $modulePath . 'assets/group_link.png'
             ),
             'mycCustomers' => array(
                 'tables' => array('tl_mycCustomers', 'tl_mycCompanies'),
-                'icon'   => $modulePath . 'assets/icons/config.png'
+                'icon'   => $modulePath . 'assets/user_suit.png'
             ),
             'mycProjects'  => array(
                 'tables' => array('tl_mycProjects', 'tl_mycCustomers', 'tl_mycCompanies'),
-                'icon'   => $modulePath . 'assets/icons/config.png'
+                'icon'   => $modulePath . 'assets/layers.png'
             )
         )
     ));
