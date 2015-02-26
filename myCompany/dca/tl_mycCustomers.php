@@ -45,9 +45,10 @@
         (
             'sorting'           => array
             (
-                'mode'   => 1,
-                'fields' => array('name'),
-                'flag'   => 1
+                'mode'        => 1,
+                'fields'      => array('name'),
+                'flag'        => 1,
+                'panelLayout' => 'filter;search,limit'
             ),
             'label'             => array
             (
@@ -125,7 +126,8 @@
             'name'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['name'],
-                'exclude'   => true,
+                'filter'    => false,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -133,7 +135,8 @@
             'url'         => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['url'],
-                'exclude'   => true,
+                'filter'    => false,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50', 'rgxp' => 'url'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -141,14 +144,14 @@
             'logo'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['logo'],
-                'exclude'   => true,
                 'inputType' => 'fileTree',
                 'eval'      => array('fieldType' => 'radio', 'mandatory' => true, 'files' => true, 'tl_class' => 'clr'),
                 'sql'       => "binary(16) NULL"
             ),
             'company'     => array(
-                'label'      => &$GLOBALS['TL_LANG']['tl_mycProjects']['company'],
-                'exclude'    => true,
+                'label'      => &$GLOBALS['TL_LANG']['tl_mycCustomers']['company'],
+                'filter'     => true,
+                'search'     => true,
                 'inputType'  => 'select',
                 'foreignKey' => "tl_mycCompanies.name",
                 'eval'       => array('mandatory' => false, 'includeBlankOption' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
@@ -157,7 +160,6 @@
             'description' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['description'],
-                'exclude'   => true,
                 'search'    => true,
                 'inputType' => 'textarea',
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
@@ -166,7 +168,8 @@
             'shorthandle' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCustomers']['shorthandle'],
-                'exclude'   => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"

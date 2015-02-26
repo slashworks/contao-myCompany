@@ -45,9 +45,10 @@
         (
             'sorting'           => array
             (
-                'mode'   => 1,
-                'fields' => array('name'),
-                'flag'   => 1
+                'mode'        => 1,
+                'fields'      => array('name'),
+                'flag'        => 1,
+                'panelLayout' => 'filter;search,limit'
             ),
             'label'             => array
             (
@@ -98,7 +99,7 @@
         'palettes'    => array
         (
             '__selector__' => array(''),
-            'default'      => 'name,url,company,customer,description,images;properties, shorthandle'
+            'default'      => 'name,url,company,customer,description;images;properties;shorthandle'
         ),
 
         // Subpalettes
@@ -124,7 +125,8 @@
             ),
             'customer'    => array(
                 'label'      => &$GLOBALS['TL_LANG']['tl_mycProjects']['customer'],
-                'exclude'    => true,
+                'filter'     => true,
+                'search'     => true,
                 'inputType'  => 'select',
                 'foreignKey' => "tl_mycCustomers.name",
                 'eval'       => array('mandatory' => false, 'includeBlankOption' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
@@ -132,7 +134,8 @@
             ),
             'company'     => array(
                 'label'      => &$GLOBALS['TL_LANG']['tl_mycProjects']['company'],
-                'exclude'    => true,
+                'filter'     => true,
+                'search'     => true,
                 'inputType'  => 'select',
                 'foreignKey' => "tl_mycCompanies.name",
                 'eval'       => array('mandatory' => false, 'includeBlankOption' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
@@ -141,7 +144,8 @@
             'name'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['name'],
-                'exclude'   => true,
+                'filter'    => false,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -149,7 +153,8 @@
             'url'         => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['url'],
-                'exclude'   => true,
+                'filter'    => false,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50', 'rgxp' => 'url'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -159,13 +164,17 @@
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['images'],
                 'exclude'   => true,
                 'inputType' => 'fileTree',
-                'eval'      => array('fieldType' => 'checkbox', 'files' => true, 'multiple' => true, 'tl_class' => 'clr'),
+                'eval'      => array('multiple' => true, 'fieldType' => 'checkbox', 'orderField' => 'imagesOrder', 'files' => true, 'filesOnly' => true, 'mandatory' => true, 'isGallery' => true),
                 'sql'       => "blob NULL"
+            ),
+            'imagesOrder' => array
+            (
+                'label' => &$GLOBALS['TL_LANG']['tl_content']['imagesOrder'],
+                'sql'   => "blob NULL"
             ),
             'description' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['description'],
-                'exclude'   => true,
                 'search'    => true,
                 'inputType' => 'textarea',
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
@@ -174,28 +183,30 @@
             'properties'  => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties'],
-                'exclude'   => true,
                 'inputType' => 'multiColumnWizard',
-                'eval'      => array('tl_class' => 'clr long', 'columnFields' => array(
-                    'label'      => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties']['name'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width:200px', 'columnPos' => 1)
-                    ),
-                    'optiontext' => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties']['text'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width: 300px')
+                'eval'      => array(
+                    'tl_class' => 'clr long', 'columnFields' => array(
+                        'label'      => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties']['name'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width:200px')
+                        ),
+                        'optiontext' => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['properties']['text'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('mandatory' => true, 'maxlength' => 255, 'style' => 'width: 300px')
+                        )
                     )
-                )),
+                ),
                 'sql'       => "blob NULL"
             ),
             'shorthandle' => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['shorthandle'],
-                'exclude'   => true,
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycProjects']['shorthandle'],
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"

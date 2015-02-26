@@ -54,6 +54,7 @@
                 'fields'       => array('company', 'position'),
                 'headerFields' => array('company', 'position'),
                 'flag'         => 1,
+                'panelLayout'  => 'filter;search,limit'
             ),
             'label'             => array
             (
@@ -136,7 +137,8 @@
             ),
             'company'     => array(
                 'label'        => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['company'],
-                'exclude'      => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType'    => 'select',
                 'foreignKey'   => 'tl_mycCompanies.name',
                 'foreignField' => 'id',
@@ -147,7 +149,8 @@
             'position'    => array
             (
                 'label'            => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['position'],
-                'exclude'          => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType'        => 'select',
                 'options_callback' => array('MyCompany\Backend\EmployeeData', 'getPositionsByCompany'),
                 'eval'             => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50', 'chosen' => true),
@@ -156,7 +159,8 @@
             'shorthandle' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['shorthandle'],
-                'exclude'   => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -164,7 +168,6 @@
             'picture'     => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['picture'],
-                'exclude'   => true,
                 'inputType' => 'fileTree',
                 'eval'      => array('fieldType' => 'radio', 'files' => true, 'tl_class' => 'clr'),
                 'sql'       => "binary(16) NULL"
@@ -172,7 +175,6 @@
             'about'       => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['about'],
-                'exclude'   => true,
                 'search'    => true,
                 'inputType' => 'textarea',
                 'eval'      => array('rte' => 'tinyMCE', 'helpwizard' => true),
@@ -181,7 +183,6 @@
             'phoneExt'    => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['phoneExt'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(10) NOT NULL default ''"
@@ -189,7 +190,6 @@
             'faxExt'      => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['faxExt'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(10) NOT NULL default ''"
@@ -197,7 +197,7 @@
             'email'       => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['email'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -205,7 +205,7 @@
             'mobile'      => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['mobile'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -213,28 +213,28 @@
             'socials'     => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['socials'],
-                'exclude'   => true,
                 'inputType' => 'multiColumnWizard',
-                'eval'      => array('tl_class' => 'clr long', 'columnFields' => array(
-                    'name' => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['name'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('maxlength' => 255, 'style' => 'width:200px')
-                    ),
-                    'url'  => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['url'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('maxlength' => 255, 'style' => 'width: 300px')
+                'eval'      => array(
+                    'tl_class' => 'clr long', 'columnFields' => array(
+                        'name' => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['name'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('maxlength' => 255, 'style' => 'width:200px')
+                        ),
+                        'url'  => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanys']['socials']['url'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('maxlength' => 255, 'style' => 'width: 300px')
+                        )
                     )
-                )),
+                ),
                 'sql'       => "blob NULL"
             ),
             'detailPage'  => array
             (
                 'label'      => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['detailPage'],
-                'exclude'    => true,
                 'inputType'  => 'pageTree',
                 'foreignKey' => 'tl_page.title',
                 'eval'       => array('fieldType' => 'radio', 'tl_class' => 'clr'),

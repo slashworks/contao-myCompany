@@ -45,9 +45,10 @@
         (
             'sorting'           => array
             (
-                'mode'   => 1,
-                'fields' => array('lastname'),
-                'flag'   => 1
+                'mode'        => 1,
+                'fields'      => array('lastname'),
+                'flag'        => 1,
+                'panelLayout' => 'filter;search,limit'
             ),
             'label'             => array
             (
@@ -126,15 +127,15 @@
             'title'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['title'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
             'gender'       => array
             (
-                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['title'],
-                'exclude'   => true,
+                'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['gender'],
+                'search'    => true,
                 'inputType' => 'select',
                 'options'   => array(
                     "m" => &$GLOBALS['TL_LANG']['tl_mycEmployee']['male'],
@@ -143,10 +144,10 @@
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(1) NOT NULL default ''"
             ),
-            'firstname'      => array
+            'firstname'    => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['firstname'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -154,7 +155,7 @@
             'lastname'     => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycEmployee']['lastname'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"

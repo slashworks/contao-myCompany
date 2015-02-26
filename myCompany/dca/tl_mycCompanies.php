@@ -45,9 +45,10 @@
         (
             'sorting'           => array
             (
-                'mode'   => 1,
-                'fields' => array('name'),
-                'flag'   => 1
+                'mode'        => 1,
+                'fields'      => array('name'),
+                'flag'        => 1,
+                'panelLayout' => 'filter;search,limit'
             ),
             'label'             => array
             (
@@ -126,7 +127,7 @@
             'name'            => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['name'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -134,7 +135,8 @@
             'legalForm'       => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['legalForm'],
-                'exclude'   => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'select',
                 'options'   => array('' => 'Einzelunternehmen / Keine', 'AG' => 'AG', 'AG & Co. KG' => 'AG & Co. KG', 'AG & Co. KGaA' => 'AG & Co. KGaA', 'GbR' => 'GbR', 'gGmbH' => 'gGmbH', 'GmbH' => 'GmbH', 'GmbH & Co. KG' => 'GmbH & Co. KG', 'GmbH & Co. KGaA' => 'GmbH & Co. KGaA', 'GmbH & Co. OHG' => 'GmbH & Co. OHG', 'eK' => 'eK', 'eG' => 'eG', 'Limited & Co. KG' => 'Limited & Co. KG', 'OHG' => 'OHG', 'KG' => 'KG', 'Co. KG' => 'Co. KG', 'InvAG' => 'InvAG', 'Partenreederei' => 'Partenreederei', 'PartG' => 'PartG', 'PartG mbB' => 'PartG mbB', 'Stiftung' => 'Stiftung', 'Stiftung & Co. KG' => 'Stiftung & Co. KG', 'Stiftung & Co. KGaA' => 'Stiftung & Co. KGaA', 'Stiftung GmbH & Co. KG' => 'Stiftung GmbH & Co. KG', 'Stille Gesellschaft' => 'Stille Gesellschaft', 'UG' => 'UG (haftungsbeschränkt)', 'UG & Co. KG' => 'UG (haftungsbeschränkt) & Co. KG', 'VVaG' => 'VVaG', 'e.V.' => 'e.V.', 'EWIV' => 'EWIV', 'SCE' => 'SCE', 'SE' => 'SE', 'GesbR' => 'GesbR', 'GewO' => 'GewO', 'OG' => 'OG', 'Ltd.' => 'Ltd.', 'LLC' => 'LLC', 'LLP' => 'LLP', 'LP' => 'LP', 'PLC' => 'PLC'),
                 'eval'      => array('mandatory' => false, 'maxlength' => 255, 'tl_class' => 'w50', 'chosen' => true),
@@ -143,7 +145,8 @@
             'shorthandle'     => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['shorthandle'],
-                'exclude'   => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -151,7 +154,7 @@
             'street'          => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['street'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -159,7 +162,7 @@
             'zip'             => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['zip'],
-                'exclude'   => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -167,15 +170,16 @@
             'city'            => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['city'],
-                'exclude'   => true,
+                'filter'    => true,
+                'search'    => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
             ),
             'country'         => array(
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['country'],
-                'exclude'   => true,
                 'filter'    => true,
+                'search'    => true,
                 'sorting'   => true,
                 'inputType' => 'select',
                 'options'   => System::getCountries(),
@@ -185,7 +189,6 @@
             'logo'            => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['logo'],
-                'exclude'   => true,
                 'inputType' => 'fileTree',
                 'eval'      => array('fieldType' => 'radio', 'mandatory' => true, 'files' => true, 'tl_class' => 'clr'),
                 'sql'       => "binary(16) NULL"
@@ -193,7 +196,6 @@
             'phoneBasic'      => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['phoneBasic'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -201,7 +203,6 @@
             'phoneDirectDial' => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['phoneDirectDial'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -209,7 +210,6 @@
             'faxBasic'        => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['faxBasic'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -217,7 +217,6 @@
             'faxDirectDial'   => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['faxDirectDial'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -225,7 +224,6 @@
             'domain'          => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['domain'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -233,7 +231,6 @@
             'email'           => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['email'],
-                'exclude'   => true,
                 'inputType' => 'text',
                 'eval'      => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'),
                 'sql'       => "varchar(255) NOT NULL default ''"
@@ -241,49 +238,51 @@
             'positions'       => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['positions'],
-                'exclude'   => true,
                 'inputType' => 'multiColumnWizard',
-                'eval'      => array('tl_class' => 'clr long', 'columnFields' => array(
-                    'name' => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['name'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('maxlength' => 255, 'style' => 'width:200px'),
+                'eval'      => array(
+                    'tl_class' => 'clr long', 'columnFields' => array(
+                        'name' => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['name'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('maxlength' => 255, 'style' => 'width:200px'),
+                        )
                     )
-                )),
+                ),
                 'sql'       => "blob NULL"
             ),
             'socials'         => array
             (
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials'],
-                'exclude'   => true,
                 'inputType' => 'multiColumnWizard',
-                'eval'      => array('tl_class' => 'clr long', 'columnFields' => array(
-                    'name' => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['name'],
-                        'exclude'   => true,
-                        'inputType' => 'select',
-                        'eval'      => array('maxlength' => 255, 'style' => 'width:200px', 'chosen' => true, 'includeBlankOption' => true),
-                        'options'   => array(
-                            'google+'   => 'Google+',
-                            'facebook'  => 'Facebook',
-                            'twitter'   => 'Twitter',
-                            'linkedin'  => 'Linkedin',
-                            'xing'      => 'Xing',
-                            'youtube'   => 'Youtube',
-                            'yelp'      => 'Yelp',
-                            'instagram' => 'Instagram',
-                            'flickr'    => 'Flickr',
-                            'pinterest' => 'Pinterest',
+                'eval'      => array(
+                    'tl_class' => 'clr long', 'columnFields' => array(
+                        'name' => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['name'],
+                            'exclude'   => true,
+                            'inputType' => 'select',
+                            'eval'      => array('maxlength' => 255, 'style' => 'width:200px', 'chosen' => true, 'includeBlankOption' => true),
+                            'options'   => array(
+                                'google+'   => 'Google+',
+                                'facebook'  => 'Facebook',
+                                'twitter'   => 'Twitter',
+                                'linkedin'  => 'Linkedin',
+                                'xing'      => 'Xing',
+                                'youtube'   => 'Youtube',
+                                'yelp'      => 'Yelp',
+                                'instagram' => 'Instagram',
+                                'flickr'    => 'Flickr',
+                                'pinterest' => 'Pinterest',
+                            )
+                        ),
+                        'url'  => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['url'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('maxlength' => 255, 'style' => 'width: 300px')
                         )
-                    ),
-                    'url'  => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['url'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('maxlength' => 255, 'style' => 'width: 300px')
                     )
-                )),
+                ),
                 'sql'       => "blob NULL"
             ),
             'optionals'       => array
@@ -291,20 +290,22 @@
                 'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals'],
                 'exclude'   => true,
                 'inputType' => 'multiColumnWizard',
-                'eval'      => array('tl_class' => 'clr long', 'columnFields' => array(
-                    'label'      => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['name'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width:200px', 'columnPos' => 1)
-                    ),
-                    'optiontext' => array(
-                        'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['text'],
-                        'exclude'   => true,
-                        'inputType' => 'text',
-                        'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width: 300px')
+                'eval'      => array(
+                    'tl_class' => 'clr long', 'columnFields' => array(
+                        'label'      => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['name'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width:200px', 'columnPos' => 1)
+                        ),
+                        'optiontext' => array(
+                            'label'     => &$GLOBALS['TL_LANG']['tl_mycCompanies']['optionals']['text'],
+                            'exclude'   => true,
+                            'inputType' => 'text',
+                            'eval'      => array('mandatory' => false, 'maxlength' => 255, 'style' => 'width: 300px')
+                        )
                     )
-                )),
+                ),
                 'sql'       => "blob NULL"
             ),
             'employees'       => array(
