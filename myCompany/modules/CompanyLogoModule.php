@@ -55,7 +55,7 @@
             global $objPage;
 
             $imgSize = deserialize($this->imgSize);
-            $company = CompanysModel::findByPk($this->mycCompany);
+            $company = CompanyModel::findByPk($this->mycCompany);
 
             $imagePath = \Image::get(HelperFile::getPath($company->logo), $imgSize[0], $imgSize[1], $imgSize[2]);
 
