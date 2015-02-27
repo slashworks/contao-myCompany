@@ -56,6 +56,7 @@
             return $this->getTemplateGroup('ce_mycEmployee_');
         }
 
+
         /**
          * @param $objRecords
          * @param $strId
@@ -121,16 +122,18 @@ LISTITEM;
         }
 
 
-        public function deleteEmployeeData($oDt){
+        public function deleteEmployeeData($oDt)
+        {
 
             // Return if there is no ID
-            if (!$oDt->id){
+            if (!$oDt->id) {
                 return;
             }
 
             $aChilds = EmployeeDataModel::getByPid($oDt->id);
             EmployeeDataModel::deleteAllByArray($aChilds);
         }
+
 
         /**
          * @param $objRecords

@@ -38,7 +38,7 @@
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['shorthandle'] = array("Kürzel", "");
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['detailPage']  = array("Detailseite", "");
 
-    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['new']  = array("Neue Position anlegen", "");
+    $GLOBALS['TL_LANG']['tl_mycEmployeeData']['new'] = array("Neue Position anlegen", "");
 
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['edit'][1]   = 'Firmenzugehörigkeit bearbeiten';
     $GLOBALS['TL_LANG']['tl_mycEmployeeData']['copy'][1]   = 'Firmenzugehörigkeit kopieren';

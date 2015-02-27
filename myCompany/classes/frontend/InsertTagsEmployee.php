@@ -274,10 +274,10 @@
             global $objPage;
             self::setDocumentType($objPage->outputFormat);
 
-            $aTag              = MyCompanyHelper::_parseTag($strTag);
-            $mIdent            = $aTag['ident'];
-            $sItem             = $aTag['item'];
-            $aEmployeeData     = EmployeeDataModel::getInstance($mIdent);
+            $aTag          = MyCompanyHelper::_parseTag($strTag);
+            $mIdent        = $aTag['ident'];
+            $sItem         = $aTag['item'];
+            $aEmployeeData = EmployeeDataModel::getInstance($mIdent);
 
             $aEmployee         = EmployeeModel::getInstance($aEmployeeData['pid']);
             $aEmployee['data'] = $aEmployeeData;

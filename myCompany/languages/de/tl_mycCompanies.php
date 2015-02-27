@@ -34,8 +34,8 @@
     $GLOBALS['TL_LANG']['tl_mycCompanies']['country'][1]         = 'Wählen Sie das Land aus in dem ihre Firma ansässig ist.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['phoneBasic'][0]      = 'Telefonnummer ohne Durchwahl';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['phoneBasic'][1]      = 'Geben Sie hier die Telefonnummer (ohne Durchwahl!) an. Diese Nummer steht Ihnen dann bei jeder Person Ihres Unternehmens zur Verfügung.';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['faxBasic'][0]      = 'Faxnummer ohne Durchwahl';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['faxBasic'][1]      = 'Geben Sie hier die Faxnummer (ohne Durchwahl!) an. Diese Nummer steht Ihnen dann bei jeder Person Ihres Unternehmens zur Verfügung.';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['faxBasic'][0]        = 'Faxnummer ohne Durchwahl';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['faxBasic'][1]        = 'Geben Sie hier die Faxnummer (ohne Durchwahl!) an. Diese Nummer steht Ihnen dann bei jeder Person Ihres Unternehmens zur Verfügung.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['phoneDirectDial'][0] = 'Durchwahlwahlnummer zur Zentrale';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['phoneDirectDial'][1] = 'Geben Sie hier die Durchwahl zur Zentrale an.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['faxDirectDial'][0]   = 'Durchwahlwahlnummer für Ihr Fax';
@@ -62,8 +62,8 @@
     $GLOBALS['TL_LANG']['tl_mycCompanies']['socials']['url']     = 'Link (url)';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['submit']             = 'Konfiguration Speichern';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['headline']           = 'Firmen Konfiguration';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['optionals'][0]           = 'Zusatzfelder';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['optionals'][1]           = '';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['optionals'][0]       = 'Zusatzfelder';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['optionals'][1]       = '';
 
 
     /**
@@ -92,8 +92,8 @@
     /**
      * Buttons
      */
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][0]      = 'Neue Firmenonfiguration';
-    $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][1]      = 'Eine neue Firmenkonfiguration hinzufügen.';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][0]    = 'Neue Firmenonfiguration';
+    $GLOBALS['TL_LANG']['tl_mycCompanies']['new'][1]    = 'Eine neue Firmenkonfiguration hinzufügen.';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['edit'][1]   = 'Leistung bearbeiten';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['copy'][1]   = 'Firmenonfiguration kopieren';
     $GLOBALS['TL_LANG']['tl_mycCompanies']['delete'][1] = 'Firmenonfiguration löschen';

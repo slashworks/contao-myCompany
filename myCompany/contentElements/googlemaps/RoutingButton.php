@@ -37,7 +37,9 @@
          */
         public function setBackendTemplateData()
         {
+
             $curCompany = CompanyModel::getById($this->mycCompany);
+
             return array(
                 'title'   => 'Google Maps Routing Button',
                 'content' => $curCompany->name
@@ -50,8 +52,9 @@
          */
         public function setTemplateData()
         {
+
             $curCompany = CompanyModel::getById($this->mycCompany);
-            $addr = urlencode($curCompany['street'] . ' ' . $curCompany['plz'] . ' ' . $curCompany['city']);
+            $addr       = urlencode($curCompany['street'] . ' ' . $curCompany['plz'] . ' ' . $curCompany['city']);
 
             return array(
                 'googleLink' => sprintf('https://maps.google.de/maps?f=d&source=s_d&saddr=&daddr=%s&hl=de&mra=ls', $addr),

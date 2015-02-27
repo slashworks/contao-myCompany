@@ -41,7 +41,7 @@
         {
 
             $aTemplateGroup = $this->getTemplateGroup('ce_' . $dc->activeRecord->type . '_');
-            foreach($aTemplateGroup as $key => $value){
+            foreach ($aTemplateGroup as $key => $value) {
                 $aTemplateGroup[$key] = &$GLOBALS['TL_LANG']['MSC']['MyCompany']['template'][$value];
             }
 

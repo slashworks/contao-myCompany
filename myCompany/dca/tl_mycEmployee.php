@@ -28,10 +28,10 @@
         // Config
         'config'      => array
         (
-            'dataContainer'    => 'Table',
-            'ctable'           => array('tl_mycEmployeeData'),
-            'enableVersioning' => true,
-            'sql'              => array
+            'dataContainer'     => 'Table',
+            'ctable'            => array('tl_mycEmployeeData'),
+            'enableVersioning'  => true,
+            'sql'               => array
             (
                 'keys' => array
                 (
@@ -39,7 +39,7 @@
                 )
             ),
             'ondelete_callback' => array(
-                array('MyCompany\Backend\Employee','deleteEmployeeData')
+                array('MyCompany\Backend\Employee', 'deleteEmployeeData')
             )
         ),
 

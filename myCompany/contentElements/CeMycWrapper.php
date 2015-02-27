@@ -77,11 +77,8 @@
                 $partial->setData($this->setTemplateData());
 
                 // implement the Template into the myCompany Template Wrapper
-
-
                 $this->Template->partial = $partial->parse();
             }
-
         }
 
 
@@ -92,6 +89,7 @@
          */
         public function getLabel($item)
         {
+
             return $GLOBALS['TL_LANG']['myC'][$item];
         }
 

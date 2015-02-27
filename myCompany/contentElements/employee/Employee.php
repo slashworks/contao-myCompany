@@ -28,7 +28,11 @@
         public function setBackendTemplateData()
         {
 
-            $employee     = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            $employee = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            if (empty($employee)) {
+                return array();
+
+            }
             $employeeName = $employee['firstname'] . ' ' . $employee['lastname'];
 
             return array
@@ -45,12 +49,13 @@
         public function setTemplateData()
         {
 
-            $employee   = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            $employee = \MyCompany\EmployeeModel::getById($this->mycEmployee);
+            if (empty($employee)) {
+                return array();
+            }
             $curCompany = \MyCompany\CompanyModel::findByPk($this->mycCompany);
             $imgSize    = deserialize($this->size);
-
-            $aData = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany->row(), $imgSize, $this);
-
+            $aData      = \MyCompany\Helper\DataMaps::getEmployeeData($employee, $curCompany->row(), $imgSize, $this);
 
             return $aData;
         }

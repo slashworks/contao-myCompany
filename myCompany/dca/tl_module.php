@@ -102,7 +102,6 @@
     $GLOBALS['TL_DCA']['tl_module']['fields'] = array_merge($GLOBALS['TL_DCA']['tl_module']['fields'], $fields);
 
 
-
     /**
      * Class tl_mycModule
      */
@@ -116,6 +115,7 @@
          */
         public function getEmployeesByCompany($dc)
         {
+
             $t = \MyCompany\EmployeeModel::getAllEmployeeByCompanyAsArray($dc->activeRecord->mycCompany);
             if (count($t) > 0) {
                 return $t;

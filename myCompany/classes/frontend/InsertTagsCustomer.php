@@ -129,6 +129,7 @@
         {
 
             $aCustomer = CustomerModel::getById($ident);
+
             return $aCustomer['company'];
         }
 
@@ -173,7 +174,7 @@
                     break;
                 case 'company':
                     $sReturn = self::getCompany($mIdent);
-                    if(isset($sReturn['name'])) {
+                    if (isset($sReturn['name'])) {
                         $sReturn = $sReturn['name'];
                     }
                     break;

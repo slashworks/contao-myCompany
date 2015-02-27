@@ -137,8 +137,8 @@
             ),
             'company'     => array(
                 'label'        => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['company'],
-                'filter'    => true,
-                'search'    => true,
+                'filter'       => true,
+                'search'       => true,
                 'inputType'    => 'select',
                 'foreignKey'   => 'tl_mycCompanies.name',
                 'foreignField' => 'id',
@@ -149,8 +149,8 @@
             'position'    => array
             (
                 'label'            => &$GLOBALS['TL_LANG']['tl_mycEmployeeData']['position'],
-                'filter'    => true,
-                'search'    => true,
+                'filter'           => true,
+                'search'           => true,
                 'inputType'        => 'select',
                 'options_callback' => array('MyCompany\Backend\EmployeeData', 'getPositionsByCompany'),
                 'eval'             => array('mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50', 'chosen' => true),

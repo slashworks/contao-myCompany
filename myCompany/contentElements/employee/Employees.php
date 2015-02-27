@@ -62,9 +62,9 @@
 
             $data['employees'] = array();
             foreach ($employees as $k => $v) {
-                $employee   = EmployeeModel::getById($v);
+                $employee = EmployeeModel::getById($v);
 
-                if(empty($employee)){
+                if (empty($employee)) {
                     continue;
                 }
 

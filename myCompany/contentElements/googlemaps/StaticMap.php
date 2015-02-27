@@ -37,7 +37,9 @@
          */
         public function setBackendTemplateData()
         {
+
             $curCompany = CompanyModel::getById($this->mycCompany);
+
             return array(
                 'title'   => 'Google Maps static map',
                 'content' => $curCompany->name
@@ -51,7 +53,9 @@
          */
         public function setTemplateData()
         {
+
             $curCompany = CompanyModel::getById($this->mycCompany);
+
             return array(
                 'street'   => urlencode($curCompany['street']),
                 'zip'      => urlencode($curCompany['zip']),

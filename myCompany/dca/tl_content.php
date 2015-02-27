@@ -19,7 +19,7 @@
      *
      */
 
-    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycCompany']      = '{type_legend},type,mycCompany,mycAddressBlockRows;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
+    $GLOBALS['TL_DCA']['tl_content']['palettes']['mycCompany']       = '{type_legend},type,mycCompany,mycAddressBlockRows;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployee']      = '{type_legend},type,mycCompany,mycEmployee;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycEmployees']     = '{type_legend},type,mycCompany,mycEmployees;{image_legend},size;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
     $GLOBALS['TL_DCA']['tl_content']['palettes']['mycRoutingButton'] = '{type_legend},type,mycCompany,linkTitle;{protected_legend:hide},protected;{expert_legend:hide},mycTemplate,guests,cssID,space;{invisible_legend:hide},invisible,start,stop';
@@ -49,7 +49,7 @@
             'eval'             => array('chosen' => true, 'submitOnChange' => true, 'includeBlankOption' => true),
             'sql'              => "varchar(32) NOT NULL default ''"
         ),
-        'mycAddressBlockRows'         => array
+        'mycAddressBlockRows' => array
         (
             'label'            => &$GLOBALS['TL_LANG']['tl_content']['mycAddressBlockRows'],
             'exclude'          => true,

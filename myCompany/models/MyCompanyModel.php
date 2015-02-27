@@ -61,6 +61,7 @@
                 if (!isset(self::$instances[$sCalledClassname]['direct'])) {
                     self::$instances[$sCalledClassname]['direct'] = new $sCalledClassname();
                 }
+
                 return self::$instances[$sCalledClassname]['direct'];
             }
 
@@ -101,7 +102,7 @@
                 $aReturn = $oResult->row();
             }
 
-            if(!is_array($aReturn)){
+            if (!is_array($aReturn)) {
                 $aReturn = array();
             }
 

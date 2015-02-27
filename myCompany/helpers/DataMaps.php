@@ -79,7 +79,7 @@
                 'gender'    => $oEmployee->gender,
                 'title'     => $oEmployee->title,
                 'name'      => $oEmployee->firstname . ' ' . $oEmployee->lastname,
-                'firstname'   => $oEmployee->firstname,
+                'firstname' => $oEmployee->firstname,
                 'lastname'  => $oEmployee->lastname,
                 'positions' => $aEmployeeData
             );
@@ -131,7 +131,6 @@
                     $data = $scope->$callback[0]->$callback[1]($aCompany);
                 }
             }
-
 
 
             return $aCompany;

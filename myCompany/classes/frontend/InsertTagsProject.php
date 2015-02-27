@@ -124,7 +124,7 @@
             $aProject = ProjectModel::getById($ident);
             $aFiles   = \FilesModel::findMultipleByUuids(deserialize($aProject['images']));
             foreach ($aFiles as $oFile) {
-                $aImages[] = "<img src=\"".$oFile->path."\" class=\"myc_project_image\">";
+                $aImages[] = "<img src=\"" . $oFile->path . "\" class=\"myc_project_image\">";
             }
 
 
