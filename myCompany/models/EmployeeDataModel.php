@@ -61,4 +61,26 @@
 
             return $aResult;
         }
+
+
+        public static function deleteById($id){
+            if(empty($id)){
+                return;
+            }
+            \Database::getInstance()->prepare('DELETE FROM tl_mycEmployeeData WHERE id = ?')->execute($id);
+        }
+
+
+        public static function deleteAllByArray($aDatas){
+
+            if(empty($aDatas)){
+                return;
+            }
+
+            foreach($aDatas as $aData){
+                if(isset($aData['id'])) {
+                    self::deleteById($aData['id']);
+                }
+            }
+        }
     }

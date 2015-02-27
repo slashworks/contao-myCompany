@@ -37,6 +37,9 @@
                 (
                     'id' => 'primary'
                 )
+            ),
+            'ondelete_callback' => array(
+                array('MyCompany\Backend\Employee','deleteEmployeeData')
             )
         ),
 

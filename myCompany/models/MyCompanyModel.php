@@ -119,6 +119,30 @@
 
 
         /**
+         * @param $pid
+         *
+         * @return array
+         */
+        public static function getByPid($pid)
+        {
+
+            $oResult = \Database::getInstance()->prepare('SELECT * FROM ' . static::$strTable . ' WHERE pid = ?')->execute($pid);
+            $aReturn = $oResult->fetchAllAssoc();
+
+            // HOOK
+            if (isset($GLOBALS['TL_HOOKS']['mycGetByPid']) && is_array($GLOBALS['TL_HOOKS']['mycGetByPid'])) {
+                foreach ($GLOBALS['TL_HOOKS']['mycGetByPid'] as $callback) {
+                    \System::importStatic($callback[0]);
+                    $callback[0]::$callback[1]($aReturn, static::$strTable);
+                }
+            }
+
+
+            return $aReturn;
+        }
+
+
+        /**
          * @param $shorthandle
          *
          * @return array

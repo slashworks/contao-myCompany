@@ -121,6 +121,17 @@ LISTITEM;
         }
 
 
+        public function deleteEmployeeData($oDt){
+
+            // Return if there is no ID
+            if (!$oDt->id){
+                return;
+            }
+
+            $aChilds = EmployeeDataModel::getByPid($oDt->id);
+            EmployeeDataModel::deleteAllByArray($aChilds);
+        }
+
         /**
          * @param $objRecords
          * @param $strId

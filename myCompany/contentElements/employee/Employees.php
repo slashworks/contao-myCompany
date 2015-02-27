@@ -60,8 +60,14 @@
 
             $imgSize = deserialize($this->size);
 
+            $data['employees'] = array();
             foreach ($employees as $k => $v) {
                 $employee   = EmployeeModel::getById($v);
+
+                if(empty($employee)){
+                    continue;
+                }
+
                 $curCompany = CompanyModel::findByPk($this->mycCompany);
                 if (!empty($curCompany->logo)) {
                     $oLogo            = \FilesModel::findByUuid($curCompany->logo);
